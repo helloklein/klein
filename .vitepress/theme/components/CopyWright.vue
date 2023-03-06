@@ -1,7 +1,7 @@
 <template>
   <footer>
     Powered by
-    <a href="https://github.com/wuxiaozhu06" target="_blank" title="作者"
+    <a href="https://github.com/helloklein" target="_blank" title="作者"
       >klein</a
     >
     | Copyright © 2019-{{ date }} | MIT License

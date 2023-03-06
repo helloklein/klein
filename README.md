@@ -29,3 +29,6 @@ If you want to view rss result, you should run
 pnpm run build
 pnpm run serve
 ```
+
+## 上传到github命令
+sh deploy.sh

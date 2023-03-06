@@ -7,6 +7,7 @@ async function config() {
   return {
     lang: "en-US",
     title: "klein",
+    base: '/klein/',
     description: "Home of klein",
     // 配置折叠代码
     markdown: {
@@ -90,7 +91,7 @@ async function config() {
         },
       },
       socialLinks: [
-        { icon: "github", link: "https://github.com/wuxiaozhu06" },
+        { icon: "github", link: "https://github.com/helloklein" },
         // { icon: "twitter", link: "https://twitter.com/qingshuihe1" },
         // {
         //   icon: {
