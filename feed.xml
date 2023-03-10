@@ -4,7 +4,7 @@
         <title>Clark Cui</title>
         <link>https://clark-cui.top/</link>
         <description>Clark Cui' Blog</description>
-        <lastBuildDate>Mon, 06 Mar 2023 08:44:36 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Mar 2023 03:03:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,6 +14,1413 @@
         </image>
         <copyright>MIT License</copyright>
         <atom:link href="https://clark-cui.top/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Vue3搭建项目]]></title>
+            <link>https://clark-cui.top/posts/Vue3搭建项目.html</link>
+            <guid>https://clark-cui.top/posts/Vue3搭建项目.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue3搭建项目]]></description>
+            <content:encoded><![CDATA[<h2>使用 vite 快速创建脚手架</h2>
+<ol>
+<li>在需要创建项目文件目录下打开 cmd 运行以下命令</li>
+</ol>
+<pre><code class="language-ts">yarn create vite 项目名
+pnpm create vite 项目名
+
+# 使用的模板
+yarn create vite 项目名 --template vue
+pnpm create vite 项目名 --template vue
+</code></pre>
+<blockquote>
+<p>我这里选择 yarn</p>
+<ul>
+<li>yarn create vite 项目名 --template vue</li>
+<li>选择 vue =&gt; vue-ts 回车</li>
+<li>cd 进入项目</li>
+<li>code ./ vscode 打开项目 然后打开终端</li>
+<li>yarn install 安装依赖</li>
+<li>yarn dev 运行</li>
+</ul>
+</blockquote>
+<h2>代码约束风格</h2>
+<pre><code class="language-ts"># 创建文件.prettierrc
+{
+  &quot;printWidth&quot;: 80,
+  &quot;tabWidth&quot;: 2,
+  &quot;useTabs&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: false,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: false,
+  &quot;arrowParens&quot;: &quot;avoid&quot;
+}
+</code></pre>
+<pre><code class="language-ts">yarn add eslint -D
+# 初始化eslint
+yarn  eslint --init
+</code></pre>
+<pre><code class="language-ts"># 文件.eslintrc.cjs
+module.exports = {
+  &quot;env&quot;: {
+      &quot;browser&quot;: true,
+      &quot;es2021&quot;: true,
+      &quot;node&quot;: true
+  },
+  &quot;extends&quot;: [
+      &quot;eslint:recommended&quot;,
+      &quot;plugin:vue/vue3-essential&quot;,
+      &quot;plugin:@typescript-eslint/recommended&quot;
+  ],
+  &quot;parser&quot;: &quot;vue-eslint-parser&quot;,  //👈解析template
+  &quot;parserOptions&quot;: {
+      &quot;ecmaVersion&quot;: &quot;latest&quot;,
+      &quot;parser&quot;: &quot;@typescript-eslint/parser&quot;,//👈解析script
+      &quot;sourceType&quot;: &quot;module&quot;
+  },
+  &quot;plugins&quot;: [
+      &quot;vue&quot;,
+      &quot;@typescript-eslint&quot;
+  ],
+  &quot;rules&quot;: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;],//👈
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;],//👈允许使用any
+    '@typescript-eslint/no-unused-vars': 'off'
+  }
+};
+</code></pre>
+<pre><code class="language-ts">yarn add prettier -D
+# 文件package.json
+&quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;,
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;
+},
+</code></pre>
+<pre><code class="language-ts"># 创建文件.vscode/settings.json
+{
+  &quot;editor.codeActionsOnSave&quot;: {
+    &quot;source.fixAll&quot;: false,
+    &quot;source.fixAll.eslint&quot;: true
+  },
+  &quot;editor.guides.bracketPairs&quot;: &quot;active&quot;
+}
+</code></pre>
+<pre><code class="language-ts"># 在文件.eslintignore
+public
+dist
+*.d.ts
+package.json
+</code></pre>
+<h2>配置环境 env</h2>
+<pre><code class="language-ts">公共的 .env
+开发环境 .env.development
+生产环境 .env.production
+预发布环境 .env.staging
+
+# 端口
+VITE_PORT= 3100
+
+# 开发环境读取配置文件路径
+VITE_PUBLIC_PATH = /
+
+# 开发环境代理
+VITE_PROXY_DOMAIN = /api
+
+# 开发环境路由历史模式
+VITE_ROUTER_HISTORY = &quot;hash&quot;
+
+# 开发环境后端地址
+VITE_PROXY_DOMAIN_REAL = &quot;http://127.0.0.1:3000&quot;
+</code></pre>
+<h2>配置 scss|less</h2>
+<pre><code class="language-ts">// 安装scss
+yarn add sass-loader sass -D
+// 安装node/type
+yarn add @node/type
+</code></pre>
+<pre><code class="language-ts">创建全局样式文件 src/styles/main.scss
+</code></pre>
+<pre><code class="language-ts"># vite.config.ts
+import  { UserConfig, ConfigEnv,loadEnv } from 'vite';
+import vue from '@vitejs/plugin-vue'
+import { resolve } from &quot;path&quot;;
+
+const root :string = process.cwd();
+
+export default ({ command, mode }: ConfigEnv): UserConfig =&gt; {
+  // 获取当前环境的配置
+  const {VITE_PORT,VITE_PUBLIC_PATH}: any =  loadEnv(mode, root)
+  return {
+    base:VITE_PUBLIC_PATH,
+
+    // 服务相关
+    server:{
+      https:false,
+      port:VITE_PORT
+    },
+    plugins: [vue()],
+
+    // 解析相关 【别名】
+    resolve: {
+      alias: [
+        {
+          find: '@',  //字符串｜正则
+          replacement: resolve(__dirname, 'src')
+        },
+        {
+          find: '@asset',  //字符串｜正则
+          replacement: resolve(__dirname, 'src/assets')
+        }
+      ],
+    },
+
+    // css相关
+    css: {
+      // 引入全局scss |less 指定传递给 CSS 预处理器的选项。
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import &quot;./src/styles/main.scss&quot;;'
+        }
+      },
+    },
+
+    // .构建相关【打包相关】
+    build: {
+      sourcemap: false,
+      // 消除打包大小超过500kb警告
+      chunkSizeWarningLimit: 4000
+    },
+
+    // 常量
+    define: {
+      //是否开发环境 可供业务代码中直接使用 const dev = __IS_DEV__ 判断当前是否开发环境
+      __IS_DEV__: mode === 'development',
+    }
+  }
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue国际化]]></title>
+            <link>https://clark-cui.top/posts/Vue国际化.html</link>
+            <guid>https://clark-cui.top/posts/Vue国际化.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue国际化]]></description>
+            <content:encoded><![CDATA[<p><a href="https://kazupon.github.io/vue-i18n/zh/installation.html">Vue-I18n官网</a></p>
+<h2>安装I18n</h2>
+<pre><code class="language-ts">yarn add vue-i18n@next
+OR
+pnpm add vue-i18n@next
+</code></pre>
+<h2>1.创建文件</h2>
+<pre><code class="language-ts">src
+  └─ I18n
+  |   └──language
+  |   |   └──zh.ts //中文
+  |   |   └──en.ts //英文
+  |   └──index.ts
+</code></pre>
+<h4>文件内容</h4>
+<ul>
+<li>/src/I18n/index.ts</li>
+</ul>
+<pre><code class="language-ts">//index.js
+import {createI18n,I18n} from 'vue-i18n'
+import zh from './language/zh'
+import en from './language/en'
+const i18n:I18n = createI18n({
+	locale:  'zh',//默认中文
+	messages:{
+      zh,en
+  },
+  fallbackLocale: &quot;en&quot;, //备用设置
+})
+
+// 此函数只是配合i18n Ally插件来进行国际化智能提示，并无实际意义（只对提示起作用），如果不需要国际化可删除
+export const $t = (key: string) =&gt; key;
+
+export default i18n
+</code></pre>
+<ul>
+<li>zh.ts</li>
+</ul>
+<pre><code class="language-ts">export default{
+	title:{
+		home:'首页',
+    login: '登录'
+	},
+	btn:{
+		login:&quot;登录&quot;
+	}
+}
+</code></pre>
+<ul>
+<li>en.ts</li>
+</ul>
+<pre><code class="language-ts">export default{
+	title:{
+		home:'home',
+    login: 'login'
+	},
+	btn:{
+		login:&quot;login&quot;
+	}
+}
+</code></pre>
+<h2>2.修改src/main.ts</h2>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import App from './App.vue'
+import i18n from '@/I18n' // 引入刚才创建的I18文件
+const app  = createApp(App)
+app.use(i18n) // 引入刚才创建的I18文件
+app.mount('#app')
+</code></pre>
+<h2>3.可以简单使用了</h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div @click=&quot;seleLanguage('zh')&quot;&gt;zh&lt;/div&gt;
+  &lt;div @click=&quot;seleLanguage('en')&quot;&gt;en&lt;/div&gt;
+  {{$t('title.home')}}
+  {{$t('title.login')}}
+  {{$t('btn.login')}}
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot; name=&quot;HomeView&quot;&gt;
+import i18n from &quot;@/I18n&quot;;
+import loginApi  from &quot;@/api/modules/loginApi&quot;;
+
+function seleLanguage(indexValue:string) {
+    i18n.global.locale = indexValue;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+</code></pre>
+<h2>4.vscodeI18插件</h2>
+<p>建议安装 【i18n Ally】 配置vscode文件 .vscode/settings</p>
+<pre><code class="language-ts">{
+  // ...其他配置项
+  // I18n插件提示 start
+  &quot;i18n-ally.localesPaths&quot;: [&quot;src/I18n/language&quot;], //这里写放zh.ts的路径
+  &quot;i18n-ally.keystyle&quot;: &quot;nested&quot;,
+  &quot;i18n-ally.sortKeys&quot;: true,
+  &quot;i18n-ally.namespace&quot;: true,
+  &quot;i18n-ally.enabledParsers&quot;: [&quot;yaml&quot;, &quot;js&quot;,&quot;ts&quot;], // zh en文件的后缀 
+  &quot;i18n-ally.sourceLanguage&quot;: &quot;en&quot;, //翻译源语言
+  &quot;i18n-ally.displayLanguage&quot;: &quot;zh&quot;, //翻译语言
+  &quot;i18n-ally.enabledFrameworks&quot;: [&quot;vue&quot;]
+  // I18n插件提示 end
+  // ...其他配置项
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[代码风格约束]]></title>
+            <link>https://clark-cui.top/posts/代码风格约束.html</link>
+            <guid>https://clark-cui.top/posts/代码风格约束.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[代码风格约束]]></description>
+            <content:encoded><![CDATA[<h2>约束插件</h2>
+<ol>
+<li>
+<p>eslint<br>
+主要作用：解决代码质量问题。校验代码是否存在质量问题<br>
+次要作用：可以配置代码风格【代码格式】，但是 eslint 并没有完善代码风格</p>
+</li>
+<li>
+<p>prettier<br>
+主要作用：接管了 eslint 的代码风格问题。<br>
+而使用 Prettier + ESLint 就完完全全解决了两个问题。<br>
+建议先配置代码风格【Prettier】再配置【eslint】【styleling】</p>
+</li>
+</ol>
+<h4><font color="ff0000">【配置前先看这里】</font></h4>
+<ul>
+<li>如果只需要保存时候就自动格式化，可只配置 Prettier 的【.prettierrc】文件，然后设置一下 vscode</li>
+<li>想要上传提交代码前也自动格式化文件，还要配置 husky</li>
+<li>eslint 建议都配置</li>
+</ul>
+<h2>配置 Prettier</h2>
+<ol>
+<li><font color="#002fa7">【下载插件】</font>vsCode 下载格式化插件 👉 【Prettier - Code formatter】</li>
+<li><font color="#002fa7">【修改 vscode 配置】</font>实现保存文件代码时候，自动格式化代码</li>
+</ol>
+<ul>
+<li>进入【设置】 ，可快捷键 ctrl + 逗号</li>
+<li>搜索 save 找到 Format On Save (保存时格式化文件) 勾选上即可</li>
+</ul>
+<ol start="3">
+<li><font color="#002fa7">【配置自定义格式】</font>再根目录新建配置文件 .prettierrc.js | .prettierrc 一般是这两种【推荐选择 js 方式】</li>
+</ol>
+<ul>
+<li>一般 js 结尾的 是需要在 package.json 里面配置调用 prettier 进行格式化的命令<br>
+<font color="ff0000">【用于配合 husky 使用，在代码提交之前进行格式化，确保存入仓库的代码都是格式化后的良好的代码。】</font></li>
+</ul>
+<ul>
+<li>.prettierrc 用于配合 vscode 保存时候立即进行格式化。<font color="ff0000">【注意：这个文件不要写注释等其他内容，不然不生效】</font></li>
+</ul>
+<pre><code class="language-ts">// 多种命名方式
+&quot;package.json&quot;, &quot;.prettierrc&quot;, &quot;.prettierrc.json&quot;, &quot;.prettierrc.yaml&quot;, &quot;.prettierrc.yml&quot;,&quot;.prettierrc.json5&quot;,
+&quot;.prettierrc.js&quot;, &quot;.prettierrc.cjs&quot;, &quot;prettier.config.js&quot;, &quot;prettier.config.cjs&quot;, &quot;.prettierrc.toml&quot;]
+</code></pre>
+<p>.prettierrc<font color="ff0000">【注意：这个文件不要写注释等其他内容，不然不生效】</font></p>
+<pre><code class="language-ts">{
+  &quot;printWidth&quot;: 80,
+  &quot;tabWidth&quot;: 2,
+  &quot;useTabs&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: true,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: false,
+  &quot;arrowParens&quot;: &quot;avoid&quot;
+  // ...
+}
+</code></pre>
+<p>.prettierrc.js</p>
+<pre><code class="language-ts">module.exports = {
+  printWidth: 80, // 每行代码长度（默认80）
+  tabWidth: 2, // 每个tab相当于多少个空格（默认2）
+  useTabs: false, // 是否使用tab进行缩进（默认false）
+  semi: true, // 声明结尾使用分号(默认true)
+  singleQuote: true, // 使用单引号（默认false）
+  trailingComma: &quot;all&quot;, // 多行使用拖尾逗号（默认none）
+  bracketSpacing: true, // 对象字面量的大括号间使用空格（默认true）
+  jsxBracketSameLine: false, // 多行JSX中的&gt;放置在最后一行的结尾，而不是另起一行（默认false）
+  arrowParens: &quot;avoid&quot;, // 只有一个参数的箭头函数的参数是否带圆括号（默认avoid）
+  // ...
+};
+</code></pre>
+<ol start="4">
+<li><font color="#002fa7">【忽略检查】</font> .eslintignore</li>
+</ol>
+<pre><code class="language-ts"># eslint 忽略检查 (根据项目需要自行添加)
+node_modules
+dist
+</code></pre>
+<ol start="5">
+<li>【命令方式格式化】</li>
+</ol>
+<pre><code class="language-ts"># 安装 prettier
+yarn add prettier -D
+pnpm add prettier -D
+</code></pre>
+<pre><code class="language-ts"># package.json 配置命令
+{
+  &quot;script&quot;: {
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;
+  }
+}
+</code></pre>
+<pre><code class="language-ts"># prettier 自动格式化命令
+yarn prettier
+
+# 如果报错
+Invalid configuration file `src\App.vue`: require() of ES Module
+# 可以将package.json中的 &quot;type&quot;: &quot;module&quot;, 删除了再运行
+</code></pre>
+<blockquote>
+<p>到这步就已经配置好 Prettier 了<br>
+husky + lint-staged</p>
+</blockquote>
+<h2>配置 Eslint</h2>
+<ol>
+<li><font color="#002fa7">【下载插件】</font>vsCode 下载格式化插件 👉 【Eslint】</li>
+<li>在项目中新建.vscode/settings.json 文件，然后在其中加入以下配置</li>
+</ol>
+<pre><code class="language-ts">{
+  // 开启自动修复
+  &quot;editor.codeActionsOnSave&quot;: {
+    &quot;source.fixAll&quot;: false,
+    &quot;source.fixAll.eslint&quot;: true
+  },
+  // 括号之间的连接
+  &quot;editor.guides.bracketPairs&quot;: &quot;active&quot;,
+}
+</code></pre>
+<ol start="3">
+<li>执行安装命令</li>
+</ol>
+<pre><code class="language-ts">yarn add eslint -D
+# 初始化eslint
+yarn  eslint --init
+</code></pre>
+<p>依次初始化选项(可根据实际情况自行选择)</p>
+<pre><code class="language-ts">(1) How would you like to use ESLint?
+选择：To check syntax and find problems
+
+(2) What type of modules does your project use?
+选择：JavaScript modules (import/export)
+
+(3) Which framework does your project use?
+选择：Vue.js
+
+(4) Does your project use TypeScript?
+选择：Yes
+
+(5) Where does your code run? //空格勾选
+选择：Browser &amp; node
+
+(6) What format do you want your config file to be in?
+选择：JavaScript
+
+(7) Would you like to install them now?
+选择：Yes
+
+(8) Which package manager do you want to use?
+选择：pnpm
+</code></pre>
+<ol start="4">
+<li>在 package.json 文件中的 script 中添加 lint 命令</li>
+</ol>
+<pre><code class="language-ts">{
+    &quot;scripts&quot;: {
+        // eslint . 为指定lint当前项目中的文件
+        // --ext 为指定lint哪些后缀的文件
+        // --fix 开启自动修复
+        &quot;eslint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;
+    }
+}
+</code></pre>
+<ol start="5">
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-ts">yarn add @typescript-eslint/eslint-plugin -D
+yarn add @typescript-eslint/parser -D
+yarn add eslint-plugin-vue -D
+
+==============我这里安装了下面几个版本==========
+
+&quot;@typescript-eslint/eslint-plugin&quot;: &quot;^5.36.1&quot;,
+&quot;@typescript-eslint/parser&quot;: &quot;^5.36.1&quot;,
+&quot;eslint-plugin-vue&quot;: &quot;^9.4.0&quot;,
+</code></pre>
+<ol start="6">
+<li>执行 lint 命令</li>
+</ol>
+<pre><code class="language-ts">yarn lint
+</code></pre>
+<p><img src="https://clark-cui.top/eslint.b8cc06d2.png" alt=""></p>
+<blockquote>
+<p>这时候命令行中会显示出上图中的报错，意思就是在解析.vue 后缀的文件时候出现解析错误 parsing error。<br /><br>
+eslint 默认是不会解析.vue 后缀文件的。因此，需要一个额外的解析器来解析.vue 后缀文件。<br /><br>
+按照.eslintrc.js 文件中的 extends 配置的顺序可知，最终导致报错的原因就是@typescript-eslint/parser 把 vue-eslint-parser 覆盖了。</p>
+</blockquote>
+<ul>
+<li>如果已经使用了另外的解析器（例如&quot;parser&quot;: &quot;@typescript-eslint/parser&quot;），则需要将其移至 parseOptions，这样才不会与 vue-eslint-parser 冲突。</li>
+</ul>
+<blockquote>
+<p>两个 parser 的区别在于，外面的 parser 用来解析.vue 后缀文件，使得 eslint 能解析<strong>template 标签中的内容.<br /><br>
+而 parserOptions 中的 parser，即@typescript-eslint/parser 用来解析 vue 文件中 script</strong>标签中的代码。</p>
+</blockquote>
+<p>初始化出来的文件使用了@typescript-eslint/parser 解 template 里面的内容, vue-eslint-parser 解析 script 里面的内容 所以会报错</p>
+<pre><code class="language-ts">修改.eslintrc.js文件;
+</code></pre>
+<pre><code class="language-ts">module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:vue/vue3-essential&quot;,
+    &quot;plugin:@typescript-eslint/recommended&quot;,
+  ],
+  parser: &quot;vue-eslint-parser&quot;, //👈解析template
+  parserOptions: {
+    ecmaVersion: &quot;latest&quot;,
+    parser: &quot;@typescript-eslint/parser&quot;, //👈解析script
+    sourceType: &quot;module&quot;,
+  },
+  plugins: [&quot;vue&quot;, &quot;@typescript-eslint&quot;],
+  rules: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;], //👈
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;], //👈允许使用any
+    &quot;@typescript-eslint/no-unused-vars&quot;: &quot;off&quot;, // 允许使用未使用变量
+    &quot;vue/multi-word-component-names&quot;: [
+      &quot;error&quot;,
+      {
+        ignores: [&quot;index&quot;], //需要忽略的组件名
+      },
+    ],
+  },
+};
+</code></pre>
+<h4>此时，再执行pnpm lint，就会发现校验通过了。</h4>
+<h4>给rules添加一些规则 然后检验一下是否已经配置好</h4>
+<pre><code class="language-ts">&quot;rules&quot;: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;],
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;],
+    'no-console': 'warn', //出现console.log();就会警告
+}
+</code></pre>
+<h2>解决冲突</h2>
+<p>解决 ESLint 中的样式规范和 prettier 中样式规范的冲突，以 prettier 的样式规范为准，使 ESLint 中的样式规范自动失效</p>
+<ul>
+<li>解决方式一：要么修改 eslintrc，要么修改 prettierrc 配置，让它们配置保持一致；</li>
+<li>解决方式二：社区已经为我们提供了一个非常成熟的方案，即eslint-config-prettier + eslint-plugin-prettier;</li>
+</ul>
+<pre><code class="language-ts">yarn add eslint-config-prettier eslint-plugin-prettier -D
+</code></pre>
+<p>在 .eslintrc.json中extends的最后添加一个配置</p>
+<pre><code class="language-ts">{ 
+   extends: [
+   // 'eslint:recommended',
+   // 'plugin:vue/vue3-essential',
+   // 'plugin:@typescript-eslint/recommended',
+   // 新增，必须放在最后面
+   'plugin:prettier/recommended' 
+ ],
+}
+</code></pre>
+<h4>最后重启vscode，你会发现冲突消失了，eslint与prettier也按照我们预想的各司其职了。</h4>
+<h2>配置styleling</h2>
+<ol>
+<li><font color="#002fa7">【安装依赖】</font> stylelint 是运行工具，stylelint-config-standard 是stylelint的推荐配置，stylelint-order是CSS属性排序插件,stylelint-scss引入了特定于SCSS语法的规则</li>
+</ol>
+<pre><code class="language-ts">npm install stylelint stylelint-config-standard stylelint-scss stylelint-order -D
+OR
+yarn add stylelint stylelint-config-standard stylelint-scss stylelint-order -D
+</code></pre>
+<h4>Stylelint是14版本不兼容vue3，Stylelint降级到13版本</h4>
+<pre><code class="language-ts">&quot;stylelint&quot;: &quot;^13.13.1&quot;,
+&quot;stylelint-config-standard&quot;: &quot;^22.0.0&quot;,
+&quot;stylelint-order&quot;: &quot;^4.1.0&quot;,
+&quot;stylelint-scss&quot;: &quot;^3.19.0&quot;,
+</code></pre>
+<ol start="2">
+<li><font color="#002fa7">【配置 stylelint】</font>在项目根目录建立stylelint配置文件 .stylelintrc.js(json格式也行，推荐使用js可以添加注释) ：</li>
+</ol>
+<pre><code class="language-ts">module.exports = {
+  root: true,
+  extends: [&quot;stylelint-config-standard&quot;],
+  plugins: [&quot;stylelint-order&quot;, &quot;stylelint-scss&quot;],
+  ignoreFiles: [&quot;src/assets/icon/*.css&quot;],
+  rules: {
+    &quot;at-rule-no-unknown&quot;: null,
+    &quot;scss/at-rule-no-unknown&quot;: true,
+  }
+}
+</code></pre>
+<ol start="3">
+<li><font color="#002fa7">【添加忽略配置】</font>根目录添加.stylelintignore文件，添加需要忽略的文件夹或文件地址</li>
+</ol>
+<pre><code class="language-ts">/dist/*
+/public/*
+public/*
+</code></pre>
+<ol start="4">
+<li><font color="#002fa7">【添加命令 】</font>stylelint 检测 stylefix 修复 有些不能自动修改的 需要手动修复</li>
+</ol>
+<pre><code class="language-ts">&quot;scripts&quot;: {
+  &quot;stylelint&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot;&quot;,
+  &quot;stylefix&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot; --fix&quot;
+}
+</code></pre>
+<h2>配置husky</h2>
+<p>作用：在代码提交之前进行格式化（对个人要提交的代码的一个规范和约束） 防止vscode没有自动格式化等配置 所以在提交代码前 要给代码进行一些校验以及格式化<br>
+<font color="#002fa7">【请确保在此之前安装（npm install --save-dev）并配置所有代码质量工具，如Prettier和ESlint。并配置好以下命令】</font></p>
+<pre><code class="language-ts">// package.json
+&quot;scripts&quot;: {
+    &quot;eslint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;,
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;,
+    &quot;stylelint&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot;&quot;,
+    &quot;stylefix&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot; --fix&quot;
+},
+</code></pre>
+<ol start="2">
+<li><font color="#002fa7">【安装 lint-staged】</font>mrm 安装 lint-staged 会自动把 husky 一起安装下来</li>
+</ol>
+<pre><code class="language-ts">npx mrm lint-staged
+</code></pre>
+<ol start="3">
+<li>安装成功后会发现 package.json 中多了一下几个配置:<br>
+<img src="/rule2.6c3204d1.jpg" alt=""></li>
+</ol>
+<h4>到这里代码格式化配置基本大功告成了 可以试试git commit 看看代码会不会格式化</h4>
+<h2>规则列表</h2>
+<ul>
+<li>prettier</li>
+</ul>
+<pre><code class="language-ts">// 超过最大值换行
+printWidth: 100, 
+ // 缩进字节数
+tabWidth: 4,
+ // 缩进不使用tab, 使用空格
+useTabs: false,
+ // 句尾添加分号
+semi: true,
+// 使用单引号代替双引号
+singleQuote: true, 
+// 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
+proseWrap: &quot;preserve&quot;, 
+//  (x) =&gt; {} 箭头函数参数只有一个时是否要有小括号。avoid: 省略括号
+arrowParens: &quot;avoid&quot;, 
+ // 在对象，数组括号与文字之间加空格 &quot;{ foo: bar }&quot;
+bracketSpacing: true,
+ // 不格式化vue文件，vue文件的格式化单独设置
+disableLanguages: [&quot;vue&quot;],
+// 结尾是 \n \r \n\r auto
+endOfLine: &quot;auto&quot;, 
+//不让prettier使用eslint的代码格式进行校验
+eslintIntegration: false, 
+htmlWhitespaceSensitivity: &quot;ignore&quot;,
+ // 不使用prettier格式化的文件填写在项目的.prettierignore文件中
+ignorePath: &quot;.prettierignore&quot;,
+// 在jsx中把'&gt;' 是否单独放一行
+jsxBracketSameLine: false, 
+// 在jsx中使用单引号代替双引号
+jsxSingleQuote: false, 
+ // 格式化的解析器，默认是babylon
+parser: &quot;babylon&quot;,
+// Require a 'prettierconfig' to format prettier
+requireConfig: false, 
+ //不让prettier使用stylelint的代码格式进行校验
+stylelintIntegration: false,
+ // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）
+trailingComma: &quot;es5&quot;,
+ // 不让prettier使用tslint的代码格式进行校验
+tslintIntegration: false
+</code></pre>
+<ul>
+<li>eslint</li>
+</ul>
+<pre><code class="language-ts"> rules: {
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-var': 'error',
+    'prettier/prettier': 'error',
+    // 禁止出现console
+    'no-console': 'warn',
+    // 禁用debugger
+    'no-debugger': 'warn',
+    // 禁止出现重复的 case 标签
+    'no-duplicate-case': 'warn',
+    // 禁止出现空语句块
+    'no-empty': 'warn',
+    // 禁止不必要的括号
+    'no-extra-parens': 'off',
+    // 禁止对 function 声明重新赋值
+    'no-func-assign': 'warn',
+    // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
+    'no-unreachable': 'warn',
+    // 强制所有控制语句使用一致的括号风格
+    curly: 'warn',
+    // 要求 switch 语句中有 default 分支
+    'default-case': 'warn',
+    // 强制尽可能地使用点号
+    'dot-notation': 'warn',
+    // 要求使用 === 和 !==
+    eqeqeq: 'warn',
+    // 禁止 if 语句中 return 语句之后有 else 块
+    'no-else-return': 'warn',
+    // 禁止出现空函数
+    'no-empty-function': 'warn',
+    // 禁用不必要的嵌套块
+    'no-lone-blocks': 'warn',
+    // 禁止使用多个空格
+    'no-multi-spaces': 'warn',
+    // 禁止多次声明同一变量
+    'no-redeclare': 'warn',
+    // 禁止在 return 语句中使用赋值语句
+    'no-return-assign': 'warn',
+    // 禁用不必要的 return await
+    'no-return-await': 'warn',
+    // 禁止自我赋值
+    'no-self-assign': 'warn',
+    // 禁止自身比较
+    'no-self-compare': 'warn',
+    // 禁止不必要的 catch 子句
+    'no-useless-catch': 'warn',
+    // 禁止多余的 return 语句
+    'no-useless-return': 'warn',
+    // 禁止变量声明与外层作用域的变量同名
+    'no-shadow': 'off',
+    // 允许delete变量
+    'no-delete-var': 'off',
+    // 强制数组方括号中使用一致的空格
+    'array-bracket-spacing': 'warn',
+    // 强制在代码块中使用一致的大括号风格
+    'brace-style': 'warn',
+    // 强制使用骆驼拼写法命名约定
+    camelcase: 'warn',
+    // 强制使用一致的缩进
+    indent: 'off',
+    // 强制在 JSX 属性中一致地使用双引号或单引号
+    // 'jsx-quotes': 'warn',
+    // 强制可嵌套的块的最大深度4
+    'max-depth': 'warn',
+    // 强制最大行数 300
+    // &quot;max-lines&quot;: [&quot;warn&quot;, { &quot;max&quot;: 1200 }],
+    // 强制函数最大代码行数 50
+    // 'max-lines-per-function': ['warn', { max: 70 }],
+    // 强制函数块最多允许的的语句数量20
+    'max-statements': ['warn', 100],
+    // 强制回调函数最大嵌套深度
+    'max-nested-callbacks': ['warn', 3],
+    // 强制函数定义中最多允许的参数数量
+    'max-params': ['warn', 3],
+    // 强制每一行中所允许的最大语句数量
+    'max-statements-per-line': ['warn', { max: 1 }],
+    // 要求方法链中每个调用都有一个换行符
+    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
+    // 禁止 if 作为唯一的语句出现在 else 语句中
+    'no-lonely-if': 'warn',
+    // 禁止空格和 tab 的混合缩进
+    'no-mixed-spaces-and-tabs': 'warn',
+    // 禁止出现多行空行
+    'no-multiple-empty-lines': 'warn',
+    // 禁止出现;
+    semi: ['warn', 'never'],
+    // 强制在块之前使用一致的空格
+    'space-before-blocks': 'warn',
+    // 强制在 function的左括号之前使用一致的空格
+    // 'space-before-function-paren': ['warn', 'never'],
+    // 强制在圆括号内使用一致的空格
+    'space-in-parens': 'warn',
+    // 要求操作符周围有空格
+    'space-infix-ops': 'warn',
+    // 强制在一元操作符前后使用一致的空格
+    'space-unary-ops': 'warn',
+    // 强制在注释中 // 或 /* 使用一致的空格
+    // &quot;spaced-comment&quot;: &quot;warn&quot;,
+    // 强制在 switch 的冒号左右有空格
+    'switch-colon-spacing': 'warn',
+    // 强制箭头函数的箭头前后使用一致的空格
+    'arrow-spacing': 'warn',
+    'no-var': 'warn',
+    'prefer-const': 'warn',
+    'prefer-rest-params': 'warn',
+    'no-useless-escape': 'warn',
+    'no-irregular-whitespace': 'warn',
+    'no-prototype-builtins': 'warn',
+    'no-fallthrough': 'warn',
+    'no-extra-boolean-cast': 'warn',
+    'no-case-declarations': 'warn',
+    'no-async-promise-executor': 'warn',
+}
+</code></pre>
+<ul>
+<li>stylelint</li>
+</ul>
+<pre><code class="language-ts">Color
+color-hex-case: 指定大写或小写十六进制的颜色。
+color-hex-length: 指定十六进制颜色长或短的符号。
+color-named: 需要（如果可能）或不允许命名的颜色。
+color-no-hex: 不允许十六进制的颜色。
+color-no-invalid-hex: 禁止无效的十六进制颜色。
+
+font-family
+font-family-name-quotes:指定是否引号应该围绕字体系列名称中使用。
+
+function
+function-blacklist:指定不允许的功能黑名单
+function-calc-no-unspaced-operator:计算的函数中禁止的unspaced执行
+function-comma-newline-after:要求一个新行或函数的逗号后禁止空白。
+function-comma-newline-before: 要求一个新行或函数的逗号之前不允许空白。
+function-comma-space-after: 要求一个空格或函数的逗号后禁止空白。
+function-comma-space-before:要求一个空格或函数的逗号前禁止空白。
+function-linear-gradient-no-nonstandard-direction:禁止在线性梯度方向值（），根据标准语法是无效的呼叫。
+function-max-empty-lines: 限制方法中相邻的空行数
+function-name-case: 指定大写或小写的函数名。
+function-parentheses-newline-inside:要求一个新行或函数的括号内不允许空白。
+function-parentheses-space-inside: 要求一个空格或函数的括号内不允许空白。
+function-url-data-uris: 要求或禁止数据的URI的URL
+function-url-no-scheme-relative:不允许文档相对的URL。
+function-url-quotes: 要求或禁止对于网址报价
+function-url-scheme-whitelist: 指定允许URL方案的白名单。
+function-whitelist: 指定允许的功能的白名单。
+function-whitespace-after: 要求方法后不允许空白。
+
+Number
+number-leading-zero:要求或分数低于1的数字禁止前导零。
+number-max-precision:限制允许的小数位数的数目。
+number-no-trailing-zeros: 禁止在数量尾随零。
+String
+string-no-newline: 禁止在字符串（转义）换行。
+string-quotes: 指定字串，单或双引号。
+Length
+length-zero-no-unit: 禁止单位零长度。
+Time
+time-no-imperceptible: 禁止动画和过渡小于或等于100毫秒。
+Unit
+unit-blacklist: 指定不允许使用单位的黑名单。
+unit-case: 指定大写或小写的单位。
+unit-no-unknown: 禁止未知的单位。
+unit-whitelist: 指定允许单位的白名单&gt;
+Value
+value-keyword-case: 指定大写或小写关键字的值。
+value-no-vendor-prefix: 不允许供应商前缀值。
+Value list
+value-list-comma-newline-after: 逗号后需要一个换行符或不允许空白值列表。
+value-list-comma-newline-before: 逗号前需要一个换行符或不允许空白值列表。
+value-list-comma-space-after: 需要一个空格或者逗号后不允许空白值列表。
+value-list-comma-space-before:需要一个空格或者逗号前不允许空白值列表。
+value-list-max-empty-lines: 限制相邻的数量值列表内空行。
+Custom property
+custom-property-empty-line-before: 自定义属性之前equire或不允许空行。
+custom-property-no-outside-root: 不允许自定义属性以外的:根规则。
+custom-property-pattern: 为自定义属性指定一个模式。
+Shorthand property
+shorthand-property-no-redundant-values:不允许在简写属性冗余值。
+Property
+property-blacklist: 指定一个不允许属性的黑名单。
+property-case: 为属性指定小写或大写。
+property-no-unknown: 不允许未知属性。
+property-no-vendor-prefix: 不允许前缀的属性。
+property-whitelist: 指定一个白名单允许属性。
+Keyframe declaration
+keyframe-declaration-no-important: 不允许!important在关键帧声明。
+Declaration
+declaration-bang-space-after: bang声明之后需要一个空格或者不允许空白
+declaration-bang-space-before: bang声明之前需要一个空格或者不允许空白
+declaration-colon-newline-after: 冒号后的声明需要一个换行符或不允许空白。
+declaration-colon-space-after: 冒号后的声明需要一个空格或不允许空白。
+declaration-colon-space-before: 冒号之前的声明需要一个空格或不允许空白。
+declaration-empty-line-before: 要求声明前不允许空一行。
+declaration-no-important: 不允许!important声明。
+declaration-property-unit-blacklist: 指定一个黑名单内不允许声明属性。
+declaration-property-unit-whitelist: 指定一个白名单内允许声明属性。
+declaration-property-value-blacklist: 指定一个黑名单,不允许在声明属性和值对。
+declaration-property-value-whitelist: 指定一个允许属性和值对声明的白名单。
+Declaration block
+declaration-block-no-duplicate-properties: 不允许复制属性块中声明
+declaration-block-no-ignored-properties:不允许被忽略是因为另一个属性值的属性值相同的规则。
+declaration-block-no-redundant-longhand-properties: 不允许手写属性,可以组合成一个简写属性。
+declaration-block-no-shorthand-property-overrides: 不允许简写属性覆盖相关手写属性声明块。
+declaration-block-properties-order: 声明块中指定的顺序属性。
+declaration-block-semicolon-newline-after: 要求一个换行符或不允许空白块分号后。
+declaration-block-semicolon-newline-before: 要求一个换行符或不允许空白块分号之前的声明。
+declaration-block-semicolon-space-after: 要求一个空间或不允许空白块分号后的声明。
+declaration-block-semicolon-space-before: 要求一个空间或不允许空白块分号之前的声明
+declaration-block-single-line-max-declarations: 限制声明在一行声明块的数量
+declaration-block-trailing-semicolon: 要求或不允许在声明块后面的分号。
+Block
+block-closing-brace-empty-line-before: 要求或不允许关闭括号前空一行。
+block-closing-brace-newline-after: 需要一个换行符或不允许关闭括号后的空白。
+block-closing-brace-newline-before: 需要一个换行符或不允许空白关闭括号前的块。
+block-closing-brace-space-after: 需要一个空间或不允许关闭括号后的空白块。
+block-closing-brace-space-before: 在关闭括号前的块需要一个空格或者不允许空白。
+block-no-empty: 不允许空块
+block-no-single-line: 不允许单行块
+block-opening-brace-newline-after: 开括号的块之后需要新的一行。
+block-opening-brace-newline-before: 开括号的块之后需要一个换行符或不允许空白
+block-opening-brace-space-after: 开括号的块之后需要一个空格或不允许空白。
+block-opening-brace-space-before: 开括号的块之前需要一个空格或不允许空白。
+Selector
+selector-attribute-brackets-space-inside: 在括号里的属性选择器需要一个空格或者不允许空白。
+selector-attribute-operator-blacklist: 指定一个黑名单不允许属性的操作符。
+selector-attribute-operator-space-after: 需要一个空间或不允许空格后运营商在属性选择器。
+selector-attribute-operator-space-before: 需要一个空间或不允许空格内运营商之前属性选择器。
+selector-attribute-operator-whitelist: 指定一个属性允许运营商的白名单。
+selector-attribute-quotes: 需要或不允许引用属性值。
+selector-class-pattern: 指定一个模式类选择符。
+selector-combinator-space-after: 需要一个空间或不允许空格后的组合子选择器。
+selector-combinator-space-before: 需要一个空间或不允许空格前的组合子选择器。
+selector-descendant-combinator-no-non-space: 不允许的字符的后代组合子选择器进行技术改造。
+selector-id-pattern: 指定一个模式,id选择器。
+selector-max-compound-selectors: 在一个选择器里面限制复合选择器的数量。
+selector-max-specificity: 限制的特异性选择器。
+selector-nested-pattern: 指定一个模式选择器的规则嵌套规则。
+selector-no-attribute: 不允许属性选择器。
+selector-no-combinator: 不允许在选择器组合。
+selector-no-id: 不允许id选择器。
+selector-no-qualifying-type: 不允许符合条件的选择器的类型。
+selector-no-type: 不允许类型选择器。
+selector-no-universal: Disallow the universal selector.
+selector-no-vendor-prefix: 不允许选择器的前缀。
+selector-pseudo-class-blacklist: 指定一个黑名单禁止伪类选择器。
+selector-pseudo-class-case: 为伪类选择器指定小写或大写。
+selector-pseudo-class-no-unknown: 不允许未知的伪类选择器。
+selector-pseudo-class-parentheses-space-inside: 需要一个空格或不允许空格在括号里面的伪类选择器。
+selector-pseudo-class-whitelist: 伪类选择器允许指定一个白名单。
+selector-pseudo-element-case: 为伪元素选择器指定小写或大写。
+selector-pseudo-element-colon-notation: 为适用的伪元素指定单引号或双冒号符号。
+selector-pseudo-element-no-unknown: 不允许未知的伪元素选择器。
+selector-root-no-composition: 在选择器不允许根的构成。
+selector-type-case: 指定小写或大写类型选择器。
+selector-type-no-unknown: 不允许未知类型选择器。
+selector-max-empty-lines: 限制内相邻的空行选择器的数量。
+Selector list
+selector-list-comma-newline-after: 需要一个换行符或不允许空白选择逗号后的列表。
+selector-list-comma-newline-before: 逗号前需要一个换行符或不允许空白选择器列表。
+selector-list-comma-space-after: 需要一个空格或者逗号后不允许空格选择器列表。
+selector-list-comma-space-before: 需要一个空格或者逗号前不允许空格选择器列表。
+Root rule
+root-no-standard-properties: 根规则内不允许标准属性。
+Rule
+rule-nested-empty-line-before: 需要或不允许嵌套规则前空一行。
+rule-non-nested-empty-line-before: 需要或不允许non-nested规则前空一行。
+Media feature
+media-feature-colon-space-after: 需要一个空间或不允许空格在冒号之后媒体的特性。
+media-feature-colon-space-before: 需要一个空间或不允许空格在冒号之前媒体的特性。
+media-feature-name-case: 为媒体特性名称指定小写或大写。
+media-feature-name-no-unknown: 不允许未知的媒体功能的名字。
+media-feature-name-no-vendor-prefix: 不允许媒体特性名称的前缀。
+media-feature-no-missing-punctuation: 不允许标点non-boolean媒体功能
+media-feature-parentheses-space-inside: 需要一个空间或不允许空格在括号里面的媒体功能。
+media-feature-range-operator-space-after: 需要一个空间或不允许空白范围运算符后媒体的特性。
+media-feature-range-operator-space-before: 之前需要一个空间或不允许空格符范围在媒体功能。
+Custom media
+custom-media-pattern: 为定制媒体查询名称指定一个模式。
+Media query list
+media-query-list-comma-newline-after: 需要一个换行符或不允许空格后媒体查询的逗号分隔列表。
+media-query-list-comma-newline-before: 需要一个换行符或不允许空格之前媒体查询的逗号分隔列表
+media-query-list-comma-space-after: 需要一个空间或不允许空格后媒体查询的逗号分隔列表。
+media-query-list-comma-space-before:需要一个空间或不允许空格之前媒体查询的逗号分隔列表。
+At-rule
+at-rule-blacklist: 不允许at-rules指定一个黑名单。
+at-rule-empty-line-before: 需要或不允许at-rules前空一行。
+at-rule-name-case: 指定at-rules小写或大写的名字。
+at-rule-name-newline-after: at-rule名称后需要一个换行符。
+at-rule-name-space-after: 需要一个空格后at-rule名称。
+at-rule-no-unknown: 不允许at-rules不明。
+at-rule-no-vendor-prefix: 不允许at-rules前缀。
+at-rule-semicolon-newline-after: 需要一个换行符之后at-rules的分号。
+at-rule-whitelist: 指定允许at-rules的白名单。
+stylelint-disable comment
+stylelint-disable-reason: 需要一个理由stylelint-disable之前或之后的评论发表评论。
+Comment
+comment-empty-line-before: 需要或不允许评论之前一个空行。
+comment-no-empty: 不允许空的评论。
+comment-whitespace-inside:需要或不允许空格里面的注释标记。
+comment-word-blacklist: 指定一个黑名单内不允许的话评论。
+General / Sheet
+indentation: 指定缩进。
+max-empty-lines: 限制数量的相邻的空行。
+max-line-length: 限制线的长度。
+max-nesting-depth: 限制的深度嵌套。
+no-browser-hacks: 不允许浏览器黑客,无关你目标的浏览器。
+no-descending-specificity: 不允许选择器之后覆盖选择器的低特异性更高的特异性。
+no-duplicate-selectors: 不允许重复的选择器。
+no-empty-source: 不允许空的来源。
+no-eol-whitespace: 不允许行尾空白。
+no-extra-semicolons: 不允许额外的分号。
+no-indistinguishable-colors: 不允许产品极其接近的颜色相同。
+no-invalid-double-slash-comments: 不允许双斜杠注释(/ /…)不支持CSS。
+no-missing-end-of-source-newline: 不允许丢失end-of-source换行。
+no-unknown-animations: 不允许动画名称不对应@keyframes声明。
+no-unsupported-browser-features: 不允许功能的浏览器不支持的目标
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[全局样式css]]></title>
+            <link>https://clark-cui.top/posts/全局样式css.html</link>
+            <guid>https://clark-cui.top/posts/全局样式css.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[全局样式css]]></description>
+            <content:encoded><![CDATA[<h2>方法一、windicss</h2>
+<p><a href="https://windicss.org/">windicss 官网</a></p>
+<h3>使用 windicss</h3>
+<ol>
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-ts">npm i -D vite-plugin-windicss windicss
+或者
+yarn add -D vite-plugin-windicss windicss
+</code></pre>
+<ol start="2">
+<li>vite 安装插件</li>
+</ol>
+<ul>
+<li>vite.config.js 文件</li>
+</ul>
+<pre><code class="language-ts">import WindiCSS from &quot;vite-plugin-windicss&quot;;
+export default {
+  plugins: [
+    WindiCSS({
+      scan: {
+        dirs: [&quot;.&quot;], // all files in the cwd   cwd里的所有文件
+        fileExtensions: [&quot;vue&quot;, &quot;js&quot;, &quot;ts&quot;], // also enabled scanning for js/ts   扫描什么文件
+      },
+    }),
+  ],
+};
+</code></pre>
+<ul>
+<li>main.js 文件</li>
+</ul>
+<pre><code class="language-ts">import &quot;virtual:windi.css&quot;;
+</code></pre>
+<ul>
+<li>根目录创建 windi.config.js|ts 文件</li>
+</ul>
+<pre><code class="language-ts">import { defineConfig } from &quot;vite-plugin-windicss&quot;;
+
+export default defineConfig({
+  darkMode: &quot;class&quot;, // or 'media'
+  plugins: [createEnterPlugin()],
+  theme: {
+    extend: {
+      zIndex: {
+        &quot;-1&quot;: &quot;-1&quot;,
+      },
+      colors: {
+        pink: 400,
+      },
+      screens: {
+        sm: &quot;576px&quot;,
+        md: &quot;768px&quot;,
+        lg: &quot;992px&quot;,
+        xl: &quot;1200px&quot;,
+        &quot;2xl&quot;: &quot;1600px&quot;,
+      },
+    },
+  },
+});
+
+/**
+ * 自定义插件
+ * 用于显示元素时的动画。
+ * @param maxOutput maxOutput输出越大，生成的css卷就越大。
+ */
+function createEnterPlugin(maxOutput = 6) {
+  const createCss = (index: number, d = &quot;x&quot;) =&gt; {
+    const upd = d.toUpperCase();
+    return {
+      [`*&gt; .enter-${d}:nth-child(${index})`]: {
+        transform: `translate${upd}(50px)`,
+      },
+      [`*&gt; .-enter-${d}:nth-child(${index})`]: {
+        transform: `translate${upd}(-50px)`,
+      },
+      [`* &gt; .enter-${d}:nth-child(${index}),* &gt; .-enter-${d}:nth-child(${index})`]:
+        {
+          &quot;z-index&quot;: `${10 - index}`,
+          opacity: &quot;0&quot;,
+          animation: `enter-${d}-animation 0.4s ease-in-out 0.3s`,
+          &quot;animation-fill-mode&quot;: &quot;forwards&quot;,
+          &quot;animation-delay&quot;: `${(index * 1) / 10}s`,
+        },
+    };
+  };
+  const handler = ({ addBase }) =&gt; {
+    const addRawCss = {};
+    for (let index = 1; index &lt; maxOutput; index++) {
+      Object.assign(addRawCss, {
+        ...createCss(index, &quot;x&quot;),
+        ...createCss(index, &quot;y&quot;),
+      });
+    }
+    addBase({
+      ...addRawCss,
+      [`@keyframes enter-x-animation`]: {
+        to: {
+          opacity: &quot;1&quot;,
+          transform: &quot;translateX(0)&quot;,
+        },
+      },
+      [`@keyframes enter-y-animation`]: {
+        to: {
+          opacity: &quot;1&quot;,
+          transform: &quot;translateY(0)&quot;,
+        },
+      },
+    });
+  };
+  return { handler };
+}
+</code></pre>
+<h2>方法二、Tailwind CSS</h2>
+<p>Tailwind CSS 是一个由 js 编写的 CSS 框架 他是基于 postCss 去解析的<br /><br>
+<a href="https://www.tailwindcss.cn/">Tailwind CSS 官网</a></p>
+<p>对于 PostCSS 的插件使用，我们再使用的过程中一般都需要如下步骤：</p>
+<ol>
+<li>PostCSS 配置文件 postcss.config.js，新增 tailwindcss 插件。</li>
+<li>TaiWindCss 插件需要一份配置文件，比如:tailwind.config.js。<br /></li>
+</ol>
+<p><a href="https://www.postcss.com.cn/">PostCSS 官网</a></p>
+<h4>postCss 功能介绍</h4>
+<p>1.增强代码的可读性 （利用从 Can I Use 网站获取的数据为 CSS 规则添加特定厂商的前缀。 Autoprefixer 自动获取浏览器的流行度和能够支持的属性，并根据这些数据帮你自动为 CSS 规则添加前缀。）</p>
+<p>2.将未来的 CSS 特性带到今天！（PostCSS Preset Env 帮你将最新的 CSS 语法转换成大多数浏览器都能理解的语法，并根据你的目标浏览器或运行时环境来确定你需要的 polyfills，此功能基于 cssdb 实现。）</p>
+<p>3.终结全局 CSS（CSS 模块 能让你你永远不用担心命名太大众化而造成冲突，只要用最有意义的名字就行了。）</p>
+<p>4.避免 CSS 代码中的错误（通过使用 stylelint 强化一致性约束并避免样式表中的错误。stylelint 是一个现代化 CSS 代码检查工具。它支持最新的 CSS 语法，也包括类似 CSS 的语法，例如 SCSS 。）</p>
+<p>postCss 处理 tailWind Css 大致流程</p>
+<ul>
+<li>将 CSS 解析成抽象语法树(AST 树)</li>
+<li>读取插件配置，根据配置文件，生成新的抽象语法树</li>
+<li>将 AST 树”传递”给一系列数据转换操作处理（变量数据循环生成，切套类名循环等）</li>
+<li>清除一系列操作留下的数据痕迹</li>
+<li>将处理完毕的 AST 树重新转换成字符串</li>
+</ul>
+<ol>
+<li>安装 Tailwind 以及其它依赖项</li>
+</ol>
+<pre><code class="language-ts">npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+或者
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+</code></pre>
+<ol start="2">
+<li>生成配置文件</li>
+</ol>
+<pre><code class="language-ts">npx tailwindcss init -p
+</code></pre>
+<ol start="3">
+<li>修改配置文件 tailwind.config.js</li>
+</ol>
+<p>2.6 版本</p>
+<pre><code class="language-ts">module.exports = {
+  purge: [&quot;./index.html&quot;, &quot;./src/**/*.{vue,js,ts,jsx,tsx}&quot;],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+</code></pre>
+<p>3.0 版本</p>
+<pre><code class="language-ts">module.exports = {
+  content: [&quot;./index.html&quot;, &quot;./src/**/*.{vue,js,ts,jsx,tsx}&quot;],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+</code></pre>
+<ol start="4">
+<li>创建一个index.css</li>
+</ol>
+<pre><code class="language-ts">@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre>
+<ul>
+<li>在main.ts 引入</li>
+</ul>
+<p><img src="https://clark-cui.top/f1c25cd3a4e64dcfac2039b59d2f0748.png" alt=""></p>
+<p><img src="/82e4bef02496472d8d2edf6262d29b8b.png" alt=""></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[移动端自适应]]></title>
+            <link>https://clark-cui.top/posts/移动端自适应.html</link>
+            <guid>https://clark-cui.top/posts/移动端自适应.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[移动端自适应]]></description>
+            <content:encoded><![CDATA[<h2>方案一 js 方式</h2>
+<pre><code class="language-ts">// h5-rem.js
+detectOrient();
+window.onresize = function () {
+  detectOrient();
+};
+// 判断横屏竖屏  相当于媒体查询
+function detectOrient() {
+  const width = document.documentElement.clientWidth; //视窗宽
+  const height = document.documentElement.clientHeight; //视窗高
+  // const width = window.screen.width //显示屏宽
+  // const height = window.screen.height //显示屏高
+  const deviceWidth = width &lt; 320 ? 320 : width; // &gt; 750 ? 750 : width
+  const deviceHeight = height &lt; 320 ? 320 : height; // &gt; 750 ? 750 : width
+
+  if (width &lt;= height) {
+    x;
+    // 7.5 显示屏分辨率
+    // 竖屏
+    document.documentElement.style.fontSize = deviceWidth / 7.5 + &quot;px&quot;;
+  } else {
+    // 横屏
+    document.documentElement.style.fontSize = deviceHeight / 7.5 + &quot;px&quot;;
+  }
+}
+// 使用时候 直接在首页引入即可
+// main.js
+import &quot;@/utils/h5-rem&quot;;
+</code></pre>
+<h2>方案二 px2rem-loader</h2>
+<p><code>px2rem-loader</code><br>
+<code>lib-flexible</code><br>
+一般而言，lib-flexible 并不独立出现，而是搭配 px2rem-loader 一起做适配方案，目的是自动将 css 中的 px 转换成 rem。以下为它在 vue 中的使用。</p>
+<ol>
+<li>安装 lib-flexible</li>
+</ol>
+<pre><code class="language-ts">npm install lib-flexible --save-dev
+或者
+yarn add lib-flexible --save-dev
+</code></pre>
+<ol start="2">
+<li>引入 lib-flexible 在 main.ts 中引入 lib-flexible</li>
+</ol>
+<pre><code class="language-ts">// px2rem 自适应
+import &quot;lib-flexible&quot;;
+</code></pre>
+<ol start="3">
+<li>安装 px2rem-loader</li>
+</ol>
+<pre><code class="language-ts">npm install px2rem-loader --save-dev
+或者
+yarn add px2rem-loader --save-dev
+</code></pre>
+<ol start="4">
+<li>配置 px2rem-loader</li>
+</ol>
+<ul>
+<li>vue-cli 2.x 这里就不介绍了 基本上不会遇到了</li>
+<li>vue-cli 3.x <br /></li>
+</ul>
+<p>找到 vue.config.js 文件</p>
+<pre><code class="language-ts">module.exports = {
+  css: {
+    loaderOptions: {
+      css: {},
+      postcss: {
+        plugins: [
+          require(&quot;postcss-px2rem&quot;)({
+            // 以设计稿750为例， 750 / 10 = 75
+            remUnit: 75,
+          }),
+        ],
+      },
+    },
+  },
+};
+</code></pre>
+<ol start="5">
+<li>如果是大屏 打开./node_modules/lib-flexible/flexible.js，找到如下片段源码：</li>
+</ol>
+<pre><code class="language-ts">function refreshRem() {
+  var width = docEl.getBoundingClientRect().width;
+  if (width / dpr &gt; 540) {
+    width = 540 * dpr;
+  }
+  var rem = width / 10;
+  docEl.style.fontSize = rem + &quot;px&quot;;
+  flexible.rem = win.rem = rem;
+}
+</code></pre>
+<p>在上述源码中，进行修改。例如我要适配的大屏幕尺寸是基于 3840 的设计稿，而要求最小范围是 1980，最大为 5760，那么我们要修改的则变为：</p>
+<pre><code class="language-ts">function refreshRem() {
+  var width = docEl.getBoundingClientRect().width;
+  if (width / dpr &lt; 1980) {
+    width = 1980 * dpr;
+  } else if (width / dpr &gt; 5760) {
+    width = 5760 * dpr;
+  }
+  var rem = width / 10;
+  docEl.style.fontSize = rem + &quot;px&quot;;
+  flexible.rem = win.rem = rem;
+}
+</code></pre>
+<p><code>修改源码要注意当前的项目重新安装依赖包的之后 就要重新修改一次源码</code></p>
+<h2>方案三 vw-layout</h2>
+<pre><code class="language-ts">npm i vw-layout --save
+或者
+yarn add vw-layout --save
+</code></pre>
+<p>项目根目录新建.postcssrc.js</p>
+<pre><code class="language-ts">module.exports = {
+  plugins: {
+    &quot;postcss-aspect-ratio-mini&quot;: {},
+    &quot;postcss-px-to-viewport&quot;: {
+      viewportWidth: 750, // (Number) 视口的宽度
+      viewportHeight: 1334, // (Number) 视口的高度
+      unitPrecision: 3, // (Number) 单位精度
+      viewportUnit: &quot;vw&quot;, // (String) 单位
+      selectorBlackList: [&quot;.ignore&quot;, &quot;.hairlines&quot;], // (Array) 忽略文件
+      minPixelValue: 1, // (Number) 设置要替换的最小像素值。
+      mediaQuery: false, // (Boolean) 允许在媒体查询中转换px。
+    },
+    &quot;postcss-viewport-units&quot;: {},
+  },
+};
+</code></pre>
+<h2>方案四 postcss-px-to-viewport</h2>
+<p>在之前我们用的是 rem 根据 HTML font-size 去做缩放<br /><br>
+现在有了更好用的 vw vh<br /><br>
+vw 视口的最大宽度，1vw 等于视口宽度的百分之一<br /><br>
+vh 视口的最大高度，1vh 等于视口高度的百分之一<br /></p>
+<h3>1. 安装依赖</h3>
+<pre><code class="language-ts">npm install postcss-px-to-viewport -D
+或者
+yarn add postcss-px-to-viewport -D
+</code></pre>
+<h3>2. 配置</h3>
+<p>因为 vite 中已经内联了 postcss，所以并不需要额外的创建 postcss.config.js 文件<br /><br>
+vite.config.ts</p>
+<pre><code class="language-ts">import { fileURLToPath, URL } from &quot;url&quot;;
+
+import { defineConfig } from &quot;vite&quot;;
+import vue from &quot;@vitejs/plugin-vue&quot;;
+import vueJsx from &quot;@vitejs/plugin-vue-jsx&quot;;
+import postcsspxtoviewport from &quot;postcss-px-to-viewport&quot;; //插件
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+  css: {
+    postcss: {
+      plugins: [
+        postcsspxtoviewport({
+          unitToConvert: &quot;px&quot;, // 要转化的单位
+          viewportWidth: 750, // UI设计稿的宽度
+          unitPrecision: 6, // 转换后的精度，即小数点位数
+          propList: [&quot;*&quot;], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
+          viewportUnit: &quot;vw&quot;, // 指定需要转换成的视窗单位，默认vw
+          fontViewportUnit: &quot;vw&quot;, // 指定字体需要转换成的视窗单位，默认vw
+          selectorBlackList: [&quot;ignore-&quot;], // 指定不转换为视窗单位的类名，
+          minPixelValue: 1, // 默认值1，小于或等于1px则不进行转换
+          mediaQuery: true, // 是否在媒体查询的css代码中也进行转换，默认false
+          replace: true, // 是否转换后直接更换属性值
+          landscape: false, // 是否处理横屏情况
+        }),
+      ],
+    },
+  },
+  resolve: {
+    alias: {
+      &quot;@&quot;: fileURLToPath(new URL(&quot;./src&quot;, import.meta.url)),
+    },
+  },
+});
+</code></pre>
+<h4>如果你用的 vite 是 ts 他这个插件并没有提供声明文件可以新建个 postcss-px-to-viewport.d.ts 文件，跟 vite.ts 同级</h4>
+<pre><code class="language-ts">declare module &quot;postcss-px-to-viewport&quot; {
+  type Options = {
+    unitToConvert: &quot;px&quot; | &quot;rem&quot; | &quot;cm&quot; | &quot;em&quot;;
+    viewportWidth: number;
+    viewportHeight: number; // not now used; TODO: need for different units and math for different properties
+    unitPrecision: number;
+    viewportUnit: string;
+    fontViewportUnit: string; // vmin is more suitable.
+    selectorBlackList: string[];
+    propList: string[];
+    minPixelValue: number;
+    mediaQuery: boolean;
+    replace: boolean;
+    landscape: boolean;
+    landscapeUnit: string;
+    landscapeWidth: number;
+  };
+
+  export default function (options: Partial&lt;Options&gt;): any;
+}
+</code></pre>
+<p>在 tsconfig.config.json 引入声明文件 postcss-px-to-viewport.d.ts</p>
+<pre><code class="language-ts">{
+  &quot;extends&quot;: &quot;@vue/tsconfig/tsconfig.node.json&quot;,
+  &quot;include&quot;: [&quot;vite.config.&quot;, &quot;vitest.config.&quot;, &quot;cypress.config.&quot;, &quot;postcss-px-to-viewport.*&quot;],
+  &quot;compilerOptions&quot;: {
+    &quot;composite&quot;: true,
+    &quot;types&quot;: [&quot;node&quot;]
+  }
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
         <item>
             <title><![CDATA[Vue 核心原理之 AST 抽象语法树理解及算法]]></title>
             <link>https://clark-cui.top/posts/Vue核心原理之 AST 抽象语法树理解及算法.html</link>
