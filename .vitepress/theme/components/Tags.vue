@@ -55,7 +55,7 @@ import { initTags } from "../utils";
 
 const { theme } = useData();
 const data = computed(() => initTags(theme.value.posts));
-let selectTag = ref("");
+let selectTag = ref(Object.keys(data.value)[0]); // 设置默认选中的标签为第一个标签
 const toggleTag = (tag: any) => {
   selectTag.value = tag;
 };

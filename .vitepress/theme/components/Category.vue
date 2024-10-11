@@ -5,9 +5,9 @@
         <a :href="`#${item.slug}`" class="header-h1" v-if="item.level === 2">{{
           item.title
         }}</a>
-        <ul v-if="item.level === 3">
-          <li>
-            <a :href="`#${item.slug}`" class="header-h2">{{ item.title }}</a>
+        <ul>
+          <li v-for="(oitem, oindex) in item.children" :key="oindex">
+            <a :href="`#${oitem.slug}`" class="header-h2" v-if="oitem.level === 3">{{ oitem.title }}</a>
           </li>
         </ul>
       </li>
@@ -37,7 +37,8 @@ const headers = pageData.page.value.headers;
   box-sizing: border-box;
 }
 .header-h2 {
-  text-indent: 2;
+  display: inline-block;
+  text-indent: 2em;
 }
 ul {
   list-style-type: none;
