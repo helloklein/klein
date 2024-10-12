@@ -1,0 +1,5316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Clark Cui</title>
+        <link>https://clark-cui.top/</link>
+        <description>Clark Cui' Blog</description>
+        <lastBuildDate>Sat, 12 Oct 2024 01:30:37 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Clark Cui</title>
+            <url>https://clark-cui.top/horse.svg</url>
+            <link>https://clark-cui.top/</link>
+        </image>
+        <copyright>MIT License</copyright>
+        <atom:link href="https://clark-cui.top/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[python基础]]></title>
+            <link>https://clark-cui.top/posts/python基础.html</link>
+            <guid>https://clark-cui.top/posts/python基础.html</guid>
+            <pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[python基础]]></description>
+            <content:encoded><![CDATA[<h2>一、基础知识</h2>
+<p>在用Python写代码的之前，对Python的基础知识是必须要会的，不然你可能会寸步难行。基础知识包括输入输出、变量、数据类型、表达式、运算符这5个方面。</p>
+<h3>1. 输入输出</h3>
+<p>Python有很多函数，后面我们会细讲，但这里先将两个最基本的函数：输入和输出。<br>
+输出函数print()，在前面我们已经用过了，语法就是：</p>
+<pre><code class="language-python">print(要输出的内容)
+</code></pre>
+<p>输入函数是 input()，功能是接收用户输入的内容，语法是：</p>
+<pre><code class="language-python">input(输出的内容)
+</code></pre>
+<p>举例：接收用户输入的密码并打印</p>
+<pre><code class="language-python">n = input(&quot;请输入密码：&quot;)	#把输入内容赋给n，用 n 接收一下
+print(n)	#打印n
+</code></pre>
+<p>在Python里，“#” 表示注释，“#”后面的东西不会被执行。代码运行之后首先出现了“请输入密码：”，然后随意输入，比如输入123，执行结果：</p>
+<pre><code class="language-python">提示信息
+请输入密码：123
+123
+</code></pre>
+<p>成功接收用户输入的内容并打印出来。</p>
+<hr>
+<h3>2.变量</h3>
+<p>变量就是一个名字，需要先赋值在使用，变量要符合标识符(名字)的命名规范，这是硬性要求，标识符相当于名字，包括变量名、函数名、类名等等，</p>
+<ul>
+<li>标识符的命名规范</li>
+</ul>
+<ol>
+<li>合法的标识符:字母，数字(不能开头),下划线，py3可以用中文（不建议），py2不可以。</li>
+<li>大小写敏感。</li>
+<li>不能使用关键字和保留字。</li>
+</ol>
+<blockquote>
+<p>关键字： if while for as import</p>
+<p>保留字：input，print range</p>
+</blockquote>
+<ol start="4">
+<li>没有长度限制。</li>
+<li>望文生义，看到名字就知道要表达的意思。</li>
+<li>大小写：</li>
+</ol>
+<pre><code class="language-python">1. 包名：全小写，例如 time ;
+2. 类名：每个单词的首字母大写，其他的小写，简称大驼峰命名，例如 HelloWorld ；
+3. 变量名/函数名：第一个单词的首字母小写，后面的单词的首字母大写，简称小驼峰命名，例如 helloWorld ；
+4. 常量：全大写，例如 HELLO 。
+</code></pre>
+<ol start="7">
+<li>其他命名方式，比如 hello_world 。</li>
+</ol>
+<hr>
+<h3>3. 数据类型</h3>
+<ul>
+<li>数据类型分类<br>
+数据类型可分为以下6类：</li>
+</ul>
+<pre><code class="language-python">（1） 整型：整数，英文名 int ，例如 5 的数据类型就是整型。
+</code></pre>
+<pre><code class="language-python">（2） 浮点型：小数，英文名 float ，例如 0.5 就是1个浮点型数据。
+科学计数法，e表示乘以10几次方，例如 b=1e10 表示1*10的10次方。
+</code></pre>
+<pre><code class="language-python">（3） 字符串：英文str
+表现形式有4种：'xs' 、 &quot;xs&quot; 、 &quot;&quot;&quot;xsxs&quot;&quot;&quot; 、 ''''xxx'''  
+三引号有个特殊功能，表示注释，跟 # 一样的功能，例如：
+</code></pre>
+<pre><code class="language-python">&quot;&quot;&quot;
+xsx
+xs
+这里面的都是注释内容
+&quot;&quot;&quot;
+</code></pre>
+<pre><code class="language-python">（4）布尔类型：英文bool，True为真，False为假；1表示真，0表示假。
+</code></pre>
+<pre><code class="language-python">（5）None 是一个单独的数据类型。
+</code></pre>
+<pre><code class="language-python">（6）列表、元组、字典、集合也是常见的数据类型。
+</code></pre>
+<ul>
+<li>类型转换</li>
+</ul>
+<p>在写代码的时候我们经常需要将不同的数据类型进行转换，主要的数据类型转换方法如下：</p>
+<p>（1）字符串转整型<br>
+方法是 int(str) ，字符串必须是数字，例如：</p>
+<pre><code class="language-python">user = int('304200780')	
+print(user)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">304200780
+</code></pre>
+<p>（2）浮点型转整型<br>
+方法是 int(float) ，例如：</p>
+<pre><code class="language-python">f = 20.1
+ff = int(f) #直接抹去小数部分
+print(ff)
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">20
+</code></pre>
+<p>（3）字符串转浮点型<br>
+方法是 float(str) ，字符串必须是数字和，例如：</p>
+<pre><code class="language-python">f = &quot;203.4&quot;
+ff = float(f)
+print(ff)
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">203.4
+</code></pre>
+<p>（4）整型转浮点型<br>
+方法是 float(int) ，例如：</p>
+<pre><code class="language-python">f = 30
+ff = float(f)  # 30.0
+print(ff)
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">30.0
+</code></pre>
+<p>（5）浮点型转字符串<br>
+方法是 str(float) ，例如：</p>
+<pre><code class="language-python">f = 30.5
+ff = str(f)
+print(type(ff).__name__)    #type()是获取数据类型函数
+</code></pre>
+<p>这里先不管print()和type（）函数的嵌套，后面会将，只要知道它们是在输出 ff 的数据类型，运行结果：</p>
+<pre><code class="language-python">str
+</code></pre>
+<p>（6）整型转字符串<br>
+方法是 str(int) ，例如：</p>
+<pre><code class="language-python">f = 30
+ff = str(f)
+print(type(ff).__name__)    #type()是获取数据类型函数
+</code></pre>
+<ul>
+<li>获取类型信息</li>
+</ul>
+<p>常用的获取数据类型信息的函数有type()和isinstance()两个。</p>
+<p>（1）type()</p>
+<p>语法是 type(对象) ，返回的是对象的类型，前面我们也有用过，但是它是在内部返回的，如果你不输出它你是看不到的，所以经常会和输出函数print()嵌套使用。</p>
+<p>例子：获取数据类型并输出。</p>
+<pre><code class="language-python">f = 30
+print(type(f))
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">&lt;class 'int'&gt;
+</code></pre>
+<p>class的意思是种类，可以看出 f 是 int 型的数据。</p>
+<p>（2）isinstance()</p>
+<p>isinstance() 常用来判断数据类型，它返回的是布尔值（True或False），语法是 isinstance(对象,class) 。</p>
+<p>例子：判断30.5是不是整型。</p>
+<pre><code class="language-python">f = 30.5
+n = isinstance(f,int)   #用n来接收一下结果
+print(n)
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">False
+</code></pre>
+<hr>
+<h3>4. 表达式</h3>
+<p>在Python当中，表达式是由数字、算符、数字分组符号（括号）、变量等对象的组合叫做表达式，表达式均有固定字面值，例如 “10+20”这个表达式的值为30，表达式 “10&gt;30” 的值为 False 。</p>
+<hr>
+<h3>5. 运算符</h3>
+<p>运算符可以分为很多4类。</p>
+<p>（1）一般运算符</p>
+<blockquote>
+<p>+，-，*，/（真除法）,//（地板除，舍去小数部分）,%（取余数）,**（幂运算）</p>
+</blockquote>
+<p>（2） 赋值运算符</p>
+<blockquote>
+<p>常用赋值运算符是 = ，等号右边的值赋值等号左边</p>
+</blockquote>
+<blockquote>
+<p>增强赋值运算符：+=，-=，*=，/=,%=,**=</p>
+</blockquote>
+<p>例子：</p>
+<pre><code class="language-python">a = 30
+a+=10
+print(a)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">40
+</code></pre>
+<blockquote>
+<p>连续赋值：a=b=c=d=10</p>
+</blockquote>
+<p>（3）布尔运算法</p>
+<blockquote>
+<p>== （等于），！=（不等于） &gt;= &lt;= &gt; &lt;</p>
+</blockquote>
+<p>（4） 逻辑运算符</p>
+<blockquote>
+<p>主要有not、and和or三类，又称非、与和或</p>
+<p>and：前后都为真则为真</p>
+<p>or：有一个为真则为真</p>
+<p>not:非真，非假</p>
+</blockquote>
+<p>例子：</p>
+<pre><code class="language-python">a = 10
+b = 20
+c = 30
+d = 40
+n1 = a &gt; b and a &lt; c    #a&gt;b为假，a&lt;c为真，假与真为假
+n2 = not a &lt; c   #a&lt;c为真，非真则为假
+n3 = a &gt; b or a &lt; c     #a&gt;b为假，a&lt;c为真，假或真为真
+print(n1,n2,n3)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">False False True
+</code></pre>
+<hr>
+<h2>二、流程控制</h2>
+<p>流程控制常用的是条件分支流程的if/else语句和循环控制的while语句。</p>
+<ol>
+<li>条件分支流程<br>
+当达到某种条件的时候才会触发的代码。</li>
+</ol>
+<p>（1）语法1</p>
+<pre><code class="language-python">if 布尔表达式: #如果为真则执行内部的代码块
+	代码块
+</code></pre>
+<p>布尔表达式的结果只有两个，要么真，要么假，如果是真的，那么就执行if语句里面的代码块，否则就跳过不执行。</p>
+<p>例子：</p>
+<pre><code class="language-python">a = 10
+b = 20
+if a &lt; b:
+    print(&quot;真的&quot;)
+if a &gt; b:
+    print(&quot;假的&quot;)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">真的
+</code></pre>
+<p>从这里可以看出第一个if语句里面的布尔表达式（a&lt;b）为真，所以执行了里面的代码块print(“真的”)，而第二个if语句里面的布尔表达式（a&gt;b）是假的，所以里面的代码块没有被执行，所以不输出“假的”两字。</p>
+<p>（2）语法2<br>
+常用的if/else语句，语法如下：</p>
+<pre><code class="language-python">if 布尔表达式：
+	代码块
+else:
+	代码块
+</code></pre>
+<p>判断的逻辑是如果布尔表达式为真，则执行if内部的代码块,如果为假则执行else内部的代码。</p>
+<p>例子：</p>
+<pre><code class="language-python">a = 10
+b = 20
+if a &gt; b:
+    a = 30
+    print(a)
+
+else:
+    print(1111)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">1111
+</code></pre>
+<p>（3）语法3</p>
+<pre><code class="language-python">if 布尔表达式1：
+	代码块
+elif 布尔表达式2：
+	代码块
+elif 布尔表达式3：
+	代码块
+....
+else:
+	代码块
+</code></pre>
+<p>逻辑是如果布尔表达式为真，则执行if内部的代码块,如果为假则执行else内部的代码，这个语法适用于多个连续条件判断。</p>
+<p>例子：</p>
+<pre><code class="language-python">s = int(input(&quot;请输入分数:&quot;))
+
+if 80 &gt;= s &gt;= 60:
+    print(&quot;及格&quot;)
+elif 80 &lt; s &lt;= 90:
+    print(&quot;优秀&quot;)
+
+elif 90 &lt; s &lt;= 100:
+    print(&quot;非常优秀&quot;)
+
+else:
+    print(&quot;不及格&quot;)
+</code></pre>
+<p>随意输入100以内的数字，不同区间内的数字结果是不一样的，例如92，执行结果为：</p>
+<pre><code class="language-python">请输入分数:92
+非常优秀
+</code></pre>
+<p>（4）语法4</p>
+<p>这里可以将前面所讲的if/elif/else进行嵌套使用，来达到我们想要的目的。</p>
+<p>例子</p>
+<pre><code class="language-python">s = int(input(&quot;请输入分数:&quot;))
+if 80 &gt;= s &gt;= 60:
+    print(&quot;及格&quot;)
+elif 80 &lt; s &lt;= 90:
+    print(&quot;优秀&quot;)
+elif 90 &lt; s &lt;= 100:
+    print(&quot;非常优秀&quot;)
+else:
+    print(&quot;不及格&quot;)
+    if s &gt; 50:
+        print(&quot;你的分数在60分左右&quot;)
+    else:
+        print(&quot;你的分数低于50分&quot;)
+</code></pre>
+<p>随意输入数字，比如说55，执行结果：</p>
+<pre><code class="language-python">请输入分数:55
+不及格
+你的分数在60分左右
+</code></pre>
+<hr>
+<ol start="2">
+<li>循环流程<br>
+在前面我们讲过的流程控制语句的功能还是比较有限，比如说只能执行1次，要执行多次就得多写几个，有点麻烦，所以我们需要学习循环流程里面的循环语句，它的作用就是重复运行某些代码。</li>
+</ol>
+<p>（1）while循环</p>
+<p>语法：</p>
+<pre><code class="language-python">while 布尔表达式: 
+	代码块
+</code></pre>
+<p>只要条件(布尔表达式)为真就执行里面的代码块。</p>
+<p>举例：</p>
+<pre><code class="language-python">while 4 &lt; 5:
+    s = int(input(&quot;请输入分数:&quot;))
+    if 80 &gt;= s &gt;= 60:
+        print(&quot;及格&quot;)
+    elif 80 &lt; s &lt;= 90:
+        print(&quot;优秀&quot;)
+    elif 90 &lt; s &lt;= 100:
+        print(&quot;非常优秀&quot;)
+    else:
+        print(&quot;不及格&quot;)
+        if s &gt; 50:
+            print(&quot;你的分数在60分左右&quot;)
+        else:
+            print(&quot;你的分数低于50分&quot;)
+</code></pre>
+<p>运行之后可以多次输入分数，并且永不停息：</p>
+<pre><code class="language-python">请输入分数:56
+不及格
+你的分数在60分左右
+请输入分数:70
+及格
+请输入分数:
+</code></pre>
+<p>当然这里有1个弊端，代码执行后陷入了死循环,while里面的代码被一直执行，因为4&lt;5永远为真</p>
+<p>所以这里我们可以改善一下代码，不让它永远执行，让它循环执行几次就可以了，这里可以用个变量来作为条件判断，把4&lt;5改成a&lt;5，同时让在while里面实现自加的功能，在while里面代码每执行1次，执行到它那行的时候它加1，这样执行2次while就会跳出来。</p>
+<pre><code class="language-python">a = 3
+while a &lt; 5:
+    s = int(input(&quot;请输入分数:&quot;))
+
+    if 80 &gt;= s &gt;= 60:
+        print(&quot;及格&quot;)
+    elif 80 &lt; s &lt;= 90:
+        print(&quot;优秀&quot;)
+    elif 90 &lt; s &lt;= 100:
+        print(&quot;非常优秀&quot;)
+    else:
+        print(&quot;不及格&quot;)
+        if s &gt; 50:
+            print(&quot;你的分数在60分左右&quot;)
+        else:
+            print(&quot;你的分数低于50分&quot;)
+    a += 1
+print(a)
+print(&quot;while执行结束了&quot;)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">请输入分数:55
+不及格
+你的分数在60分左右
+请输入分数:65
+及格
+5
+while执行结束了
+</code></pre>
+<p>这里我再给大家举个例子来理解while循环的运用。比如说输入一个整数并计算各个位和，例如输入321，那么各个位之和则为6。</p>
+<pre><code class="language-python"># 请输入一个整数，并计算各个位和 如：321=6
+
+n = int(input(&quot;请输入一个整数:&quot;))  # 将字符串转为整型
+
+# sums累加器：m=10 m=10+5
+
+sums = 0
+
+while n != 0:  # 32 #3
+    sums = sums + n % 10  # sums=1+2=3+3=6
+    n = n // 10  # 32
+print(sums)
+</code></pre>
+<p>我输入的2345，执行结果：</p>
+<pre><code class="language-python">请输入一个整数:2345
+14
+</code></pre>
+<p>（2）for循环</p>
+<p>for循环和while循环都是循环语句，但不一样的点在于for循环是技术循环。</p>
+<p>语法：</p>
+<pre><code class="language-python">l=[3,2,1]
+for 变量 in 可迭代对象:
+	代码块
+</code></pre>
+<p>例子：</p>
+<pre><code class="language-python">l=[3,2,1]
+for n in l:
+	print(&quot;1&quot;)
+</code></pre>
+<p>执行：</p>
+<pre><code class="language-python">1
+1
+1
+</code></pre>
+<p><code>l</code>是个列表，列表里面有3个元素，每执行一次for循环，列表里面的元素就会被赋值给n，直到列表里面没有了元素可赋值，则n就跳出了列表，此时的for循环就不成立了，不执行for里面的代码块。</p>
+<p>（3）range</p>
+<p>for循环经常会搭配range来使用，range是一个可迭代对象，range的语法如下：</p>
+<pre><code class="language-python">range(start=0,stop,step=1)
+</code></pre>
+<p>start值的是开始下标。range序列里面的所有元素都有下标，第一个元素的下标是0，所以，默认是从0开始。</p>
+<p>stop是结束位置。结束的位置下标为（元素个数-1），例如range里面有4个元素，那么结束下标最大为3,大于3则跳出range。</p>
+<p>step是步长，如果step是2，那么每次会隔开1个元素，默认步长为1，即每个元素都会取到。</p>
+<p>举例：</p>
+<pre><code class="language-python">for i in range(8):	#可以不写star和step，但结束位置一定要写的
+    print(i)
+print(&quot;---------&quot;)
+for i in range(10, 2, -2):
+    print(i)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">0
+1
+2
+3
+4
+5
+6
+7
+---------
+10
+8
+6
+4
+</code></pre>
+<p>通过第一个for循环可以看出，range()的第一个元素的下标是从0开始，而不是从1开始；range()可以不写开始下标和步长，但一定得有结束位置；第二个for循环可以看出步长可以为负数，用于递减。</p>
+<p>（4）continue</p>
+<p>continue的作用是跳过本次循环，后面的循环继续执行，例如：</p>
+<pre><code class="language-python">for i in range(1, 10):
+    if i == 5:
+        continue
+    print(i)
+</code></pre>
+<p>执行结果：</p>
+<pre><code class="language-python">1
+2
+3
+4
+6
+7
+8
+9
+</code></pre>
+<p>很明显，i等于5的时候，for循环就跳过去了，本次不再执行里面的代码，重新回到了新的循环。</p>
+<p>同样的，还有终止所有循环的功能，就是break，和continue是一样的用法，但效果是不一样的，我这里就不做举例了，大家可以去试一下就知道了。</p>
+<hr>
+<h2>三、列表(List)</h2>
+<p>列表是可以存放任何数据，包括整型，浮点型，字符串，布尔型等等，是常用的数据类型之一。</p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[web前端面试题]]></title>
+            <link>https://clark-cui.top/posts/web前端面试题.html</link>
+            <guid>https://clark-cui.top/posts/web前端面试题.html</guid>
+            <pubDate>Tue, 08 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[web前端面试题]]></description>
+            <content:encoded><![CDATA[<h2>Vue系列</h2>
+<h3>说说你对vue的理解</h3>
+<p><img src="https://clark-cui.top/mianshi1.png" alt=""></p>
+<h1>一、从历史说起</h1>
+<hr>
+<p>Web是World Wide Web的简称，中文译为万维网我们可以将它规划成如下的几个时代来进行理解</p>
+<ul>
+<li>石器时代</li>
+<li>文明时代</li>
+<li>工业革命时代</li>
+<li>百花齐放时代</li>
+</ul>
+<h4>石器时代</h4>
+<p>石器时代指的就是我们的静态网页，可以欣赏一下1997的Apple官网<br>
+<img src="/mianshi2.png" alt=""><br>
+最早的网页是没有数据库的，可以理解成就是一张可以在网络上浏览的报纸，直到CGI技术的出现通过 CGI Perl 运行一小段代码与数据库或文件系统进行交互，如当时的Google（1998年）<br>
+<img src="/mianshi3.png" alt=""></p>
+<h4>文明时代</h4>
+<p>ASP，JSP大家应该都不会太陌生，最早出现于 2005 年左右，先后出现了微软的 ASP 和 Java Server Pages [JSP] 等技术,取代了 CGI ，增强了 WEB 与服务端的交互的安全性，类似于下面这样，其实就是Java + HTML</p>
+<p><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=utf-8&quot;     pageEncoding=&quot;utf-8&quot;%&gt; &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt;   &lt;meta charset=&quot;utf-8&quot;&gt;   &lt;title&gt;JSP demo&lt;/title&gt; &lt;/head&gt; &lt;body&gt;   &lt;img src=&quot;http://localhost:8080/web05_session/1.jpg&quot; width=200 height=100 /&gt; &lt;/body&gt; &lt;/html&gt;</code></p>
+<p>JSP有一个很大的缺点，就是不太灵活，因为JSP是在服务器端执行的，通常返回该客户端的就是一个HTML文本。我们每次的请求：获取的数据、内容的加载，都是服务器为我们返回渲染完成之后的 DOM，这也就使得我们开发网站的灵活度大打折扣在这种情况下，同年：Ajax火了(小细节，这里为什么说火了，因为 Ajax 技术并不是 2005 年出现的，他的雏形是 1999 年)，现在看来很常见的技术手段，在当时可是珍贵无比</p>
+<h4>工业革命时代</h4>
+<p>到这里大家就更熟悉了，移动设备的普及，Jquery的出现，以及SPA（Single Page Application 单页面应用）的雏形，Backbone EmberJS AngularJS 这样一批前端框架随之出现，但当时SPA的路不好走，例如SEO问题，SPA 过多的页面、复杂场景下 View 的绑定等，都没有很好的处理经过这几年的飞速发展，节约了开发人员大量的精力、降低了开发者和开发过程的门槛，极大提升了开发效率和迭代速度，我们可以称之其为工业时代</p>
+<h4>百花齐放时代</h4>
+<p>这里没有文字，放一张图感受一下<br>
+<img src="/mianshi4.png" alt=""><br>
+PS：这里为什么要说这么多Web的历史，我们可以看到Web技术的变化之大与快，每一种新的技术出现都是一些特定场景的解决方案，那我们今天的主角Vue又是为了解决什么呢？我们接着往下看</p>
+<h1>二、vue是什么</h1>
+<hr>
+<p>Vue.js（/vjuː/，或简称为Vue）是一个用于创建用户界面的开源JavaScript框架，也是一个创建单页应用的Web应用框架。2016年一项针对JavaScript的调查表明，Vue有着89%的开发者满意度。在GitHub上，该项目平均每天能收获95颗星，为Github有史以来星标数第3多的项目同时也是一款流行的JavaScript前端框架，旨在更好地组织与简化Web开发。Vue所关注的核心是MVC模式中的视图层，同时，它也能方便地获取数据更新，并通过组件内部特定的方法实现视图与模型的交互PS: Vue作者尤雨溪是在为AngularJS工作之后开发出了这一框架。他声称自己的思路是提取Angular中为自己所喜欢的部分，构建出一款相当轻量的框架最早发布于2014年2月</p>
+<h1>三、Vue核心特性</h1>
+<hr>
+<h4>数据驱动（MVVM)</h4>
+<p><code>MVVM</code>表示的是 <code>Model-View-ViewModel</code></p>
+<ul>
+<li>Model：模型层，负责处理业务逻辑以及和服务器端进行交互</li>
+<li>View：视图层：负责将数据模型转化为UI展示出来，可以简单的理解为HTML页面</li>
+<li>ViewModel：视图模型层，用来连接Model和View，是Model和View之间的通信桥梁<br>
+<img src="/mianshi5.png" alt=""></li>
+</ul>
+<h4>组件化</h4>
+<ol>
+<li>什么是组件化一句话来说就是把图形、非图形的各种逻辑均抽象为一个统一的概念（组件）来实现开发的模式，在Vue中每一个.vue文件都可以视为一个组件2.组件化的优势</li>
+</ol>
+<ul>
+<li>降低整个系统的耦合度，在保持接口不变的情况下，我们可以替换不同的组件快速完成需求，例如输入框，可以替换为日历、时间、范围等组件作具体的实现</li>
+<li>调试方便，由于整个系统是通过组件组合起来的，在出现问题的时候，可以用排除法直接移除组件，或者根据报错的组件快速定位问题，之所以能够快速定位，是因为每个组件之间低耦合，职责单一，所以逻辑会比分析整个系统要简单</li>
+<li>提高可维护性，由于每个组件的职责单一，并且组件在系统中是被复用的，所以对代码进行优化可获得系统的整体升级</li>
+</ul>
+<h4>指令系统</h4>
+<p>解释：指令 (Directives) 是带有 v- 前缀的特殊属性作用：当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</p>
+<ul>
+<li>常用的指令
+<ul>
+<li>条件渲染指令 v-if</li>
+<li>列表渲染指令v-for</li>
+<li>属性绑定指令v-bind</li>
+<li>事件绑定指令v-on</li>
+<li>双向数据绑定指令v-model<br>
+没有指令之前我们是怎么做的？是不是先要获取到DOM然后在....干点啥</li>
+</ul>
+</li>
+</ul>
+<h1>四、Vue跟传统开发的区别</h1>
+<hr>
+<p>没有落地使用场景的革命不是好革命，就以一个高频的应用场景来示意吧注册账号这个需求大家应该很熟悉了，如下<br>
+<img src="/mianshi6.png" alt=""><br>
+用<code>jquery</code>来实现大概的思路就是选择流程dom对象，点击按钮隐藏当前活动流程dom对象，显示下一流程dom对象如下图(代码就不上了，上了就篇文章就没了..)<br>
+<img src="/mianshi7.png" alt=""><br>
+用<code>vue</code>来实现，我们知道<code>vue</code>基本不操作<code>dom</code>节点， 双向绑定使<code>dom</code>节点跟视图绑定后，通过修改变量的值控制<code>dom</code>节点的各类属性。所以其实现思路为：视图层使用一变量控制dom节点显示与否，点击按钮则改变该变量，如下图<br>
+<img src="/mianshi8.png" alt=""><br>
+总结就是：</p>
+<ul>
+<li>Vue所有的界面事件，都是只去操作数据的，Jquery操作DOM</li>
+<li>Vue所有界面的变动，都是根据数据自动绑定出来的，Jquery操作DOM</li>
+</ul>
+<h1>五、Vue和React对比</h1>
+<hr>
+<p>这里就做几个简单的类比吧，当然没有好坏之分，只是使用场景不同</p>
+<h4>相同点</h4>
+<ul>
+<li>都有组件化思想</li>
+<li>都支持服务器端渲染</li>
+<li>都有Virtual DOM（虚拟dom）</li>
+<li>数据驱动视图</li>
+<li>都有支持native的方案：<code>Vue</code>的<code>weex</code>、<code>React</code>的<code>React native</code></li>
+<li>都有自己的构建工具：<code>Vue</code>的<code>vue-cli</code>、<code>React</code>的<code>Create React App</code></li>
+</ul>
+<h4>区别</h4>
+<ul>
+<li>数据流向的不同。<code>react</code>从诞生开始就推崇单向数据流，而<code>Vue</code>是双向数据流</li>
+<li>数据变化的实现原理不同。<code>react</code>使用的是不可变数据，而<code>Vue</code>使用的是可变的数据</li>
+<li>组件化通信的不同。<code>react</code>中我们通过使用回调函数来进行通信的，而<code>Vue</code>中子组件向父组件传递消息有两种方式：事件和回调函数</li>
+<li>diff算法不同。<code>react</code>主要使用diff队列保存需要更新哪些DOM，得到patch树，再统一操作批量更新DOM。<code>Vue</code> 使用双向指针，边对比，边更新DOM</li>
+</ul>
+<hr>
+<h3>说说你对SPA（单页应用）的理解?</h3>
+<p><img src="/mianshi9.png" alt=""></p>
+<h1>一、什么是SPA</h1>
+<hr>
+<p>SPA（single-page application），翻译过来就是单页应用SPA是一种网络应用程序或网站的模型，它通过动态重写当前页面来与用户交互，这种方法避免了页面之间切换打断用户体验在单页应用中，所有必要的代码（<code>HTML</code>、<code>JavaScript</code>和<code>CSS</code>）都通过单个页面的加载而检索，或者根据需要（通常是为响应用户操作）动态装载适当的资源并添加到页面页面在任何时间点都不会重新加载，也不会将控制转移到其他页面举个例子来讲就是一个杯子，早上装的牛奶，中午装的是开水，晚上装的是茶，我们发现，变的始终是杯子里的内容，而杯子始终是那个杯子结构如下图<br>
+<img src="/mianshi10.png" alt=""><br>
+我们熟知的JS框架如<code>react</code>,<code>vue</code>,<code>angular</code>,<code>ember</code>都属于<code>SPA</code></p>
+<h1>二、SPA和MPA的区别</h1>
+<hr>
+<p>上面大家已经对单页面有所了解了，下面来讲讲多页应用MPA（MultiPage-page application），翻译过来就是多页应用在<code>MPA</code>中，每个页面都是一个主页面，都是独立的当我们在访问另一个页面的时候，都需要重新加载<code>html</code>、<code>css</code>、<code>js</code>文件，公共文件则根据需求按需加载如下图<br>
+<img src="/mianshi11.png" alt=""></p>
+<p><strong>单页应用与多页应用的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">单页面应用（SPA）</th>
+<th style="text-align:left">多页面应用（MPA）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">组成</td>
+<td style="text-align:left">一个主页面和多个页面片段</td>
+<td style="text-align:left">多个主页面</td>
+</tr>
+<tr>
+<td style="text-align:left">刷新方式</td>
+<td style="text-align:left">局部刷新</td>
+<td style="text-align:left">整页刷新</td>
+</tr>
+<tr>
+<td style="text-align:left">url模式</td>
+<td style="text-align:left">哈希模式</td>
+<td style="text-align:left">历史模式</td>
+</tr>
+<tr>
+<td style="text-align:left">SEO搜索引擎优化</td>
+<td style="text-align:left">难实现，可使用SSR方式改善</td>
+<td style="text-align:left">容易实现</td>
+</tr>
+<tr>
+<td style="text-align:left">数据传递</td>
+<td style="text-align:left">容易</td>
+<td style="text-align:left">通过url、cookie、localStorage等传递</td>
+</tr>
+<tr>
+<td style="text-align:left">页面切换</td>
+<td style="text-align:left">速度快，用户体验良好</td>
+<td style="text-align:left">切换加载资源，速度慢，用户体验差</td>
+</tr>
+<tr>
+<td style="text-align:left">维护成本</td>
+<td style="text-align:left">相对容易</td>
+<td style="text-align:left">相对复杂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>单页应用优缺点</strong></p>
+<p>优点：</p>
+<ul>
+<li>具有桌面应用的即时性、网站的可移植性和可访问性</li>
+<li>用户体验好、快，内容的改变不需要重新加载整个页面</li>
+<li>良好的前后端分离，分工更明确</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>不利于搜索引擎的抓取</li>
+<li>首次渲染速度相对较慢</li>
+</ul>
+<h1>三、实现一个SPA</h1>
+<hr>
+<p><strong>原理</strong></p>
+<ol>
+<li>监听地址栏中hash变化驱动界面变化</li>
+<li>用pushsate记录浏览器的历史，驱动界面发送变化</li>
+</ol>
+<p><img src="/mianshi12.png" alt=""></p>
+<p><strong>实现</strong><br>
+<code>hash</code> 模式<br>
+核心通过监听<code>url</code>中的<code>hash</code>来进行路由跳转</p>
+<pre><code class="language-js">// 定义 Router  
+class Router {  
+    constructor () {  
+        this.routes = {}; // 存放路由path及callback  
+        this.currentUrl = '';  
+          
+        // 监听路由change调用相对应的路由回调  
+        window.addEventListener('load', this.refresh, false);  
+        window.addEventListener('hashchange', this.refresh, false);  
+    }  
+      
+    route(path, callback){  
+        this.routes[path] = callback;  
+    }  
+      
+    push(path) {  
+        this.routes[path] &amp;&amp; this.routes[path]()  
+    }  
+}  
+  
+// 使用 router  
+window.miniRouter = new Router();  
+miniRouter.route('/', () =&gt; console.log('page1'))  
+miniRouter.route('/page2', () =&gt; console.log('page2'))  
+  
+miniRouter.push('/') // page1  
+miniRouter.push('/page2') // page2 
+</code></pre>
+<p><code>history</code>模式<br>
+<code>history</code> 模式核心借用 <code>HTML5 history api</code>，<code>api</code> 提供了丰富的 <code>router</code> 相关属性先了解一个几个相关的api</p>
+<ul>
+<li><code>history.pushState</code> 浏览器历史纪录添加记录</li>
+<li><code>history.replaceState</code>修改浏览器历史纪录中当前纪录</li>
+<li><code>history.popState</code> 当 <code>history</code> 发生变化时触发</li>
+</ul>
+<pre><code class="language-js">// 定义 Router  
+class Router {  
+    constructor () {  
+        this.routes = {};  
+        this.listerPopState()  
+    }  
+      
+    init(path) {  
+        history.replaceState({path: path}, null, path);  
+        this.routes[path] &amp;&amp; this.routes[path]();  
+    }  
+      
+    route(path, callback){  
+        this.routes[path] = callback;  
+    }  
+      
+    push(path) {  
+        history.pushState({path: path}, null, path);  
+        this.routes[path] &amp;&amp; this.routes[path]();  
+    }  
+      
+    listerPopState () {  
+        window.addEventListener('popstate' , e =&gt; {  
+            const path = e.state &amp;&amp; e.state.path;  
+            this.routers[path] &amp;&amp; this.routers[path]()  
+        })  
+    }  
+}  
+  
+// 使用 Router  
+  
+window.miniRouter = new Router();  
+miniRouter.route('/', ()=&gt; console.log('page1'))  
+miniRouter.route('/page2', ()=&gt; console.log('page2'))  
+  
+// 跳转  
+miniRouter.push('/page2')  // page2  
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue3搭建项目]]></title>
+            <link>https://clark-cui.top/posts/Vue3搭建项目.html</link>
+            <guid>https://clark-cui.top/posts/Vue3搭建项目.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue3搭建项目]]></description>
+            <content:encoded><![CDATA[<h2>使用 vite 快速创建脚手架</h2>
+<ol>
+<li>在需要创建项目文件目录下打开 cmd 运行以下命令</li>
+</ol>
+<pre><code class="language-ts">yarn create vite 项目名
+pnpm create vite 项目名
+
+# 使用的模板
+yarn create vite 项目名 --template vue
+pnpm create vite 项目名 --template vue
+</code></pre>
+<blockquote>
+<p>我这里选择 yarn</p>
+<ul>
+<li>yarn create vite 项目名 --template vue</li>
+<li>选择 vue =&gt; vue-ts 回车</li>
+<li>cd 进入项目</li>
+<li>code ./ vscode 打开项目 然后打开终端</li>
+<li>yarn install 安装依赖</li>
+<li>yarn dev 运行</li>
+</ul>
+</blockquote>
+<h2>代码约束风格</h2>
+<pre><code class="language-ts"># 创建文件.prettierrc
+{
+  &quot;printWidth&quot;: 80,
+  &quot;tabWidth&quot;: 2,
+  &quot;useTabs&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: false,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: false,
+  &quot;arrowParens&quot;: &quot;avoid&quot;
+}
+</code></pre>
+<pre><code class="language-ts">yarn add eslint -D
+# 初始化eslint
+yarn  eslint --init
+</code></pre>
+<pre><code class="language-ts"># 文件.eslintrc.cjs
+module.exports = {
+  &quot;env&quot;: {
+      &quot;browser&quot;: true,
+      &quot;es2021&quot;: true,
+      &quot;node&quot;: true
+  },
+  &quot;extends&quot;: [
+      &quot;eslint:recommended&quot;,
+      &quot;plugin:vue/vue3-essential&quot;,
+      &quot;plugin:@typescript-eslint/recommended&quot;
+  ],
+  &quot;parser&quot;: &quot;vue-eslint-parser&quot;,  //👈解析template
+  &quot;parserOptions&quot;: {
+      &quot;ecmaVersion&quot;: &quot;latest&quot;,
+      &quot;parser&quot;: &quot;@typescript-eslint/parser&quot;,//👈解析script
+      &quot;sourceType&quot;: &quot;module&quot;
+  },
+  &quot;plugins&quot;: [
+      &quot;vue&quot;,
+      &quot;@typescript-eslint&quot;
+  ],
+  &quot;rules&quot;: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;],//👈
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;],//👈允许使用any
+    '@typescript-eslint/no-unused-vars': 'off'
+  }
+};
+</code></pre>
+<pre><code class="language-ts">yarn add prettier -D
+# 文件package.json
+&quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;,
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;
+},
+</code></pre>
+<pre><code class="language-ts"># 创建文件.vscode/settings.json
+{
+  &quot;editor.codeActionsOnSave&quot;: {
+    &quot;source.fixAll&quot;: false,
+    &quot;source.fixAll.eslint&quot;: true
+  },
+  &quot;editor.guides.bracketPairs&quot;: &quot;active&quot;
+}
+</code></pre>
+<pre><code class="language-ts"># 在文件.eslintignore
+public
+dist
+*.d.ts
+package.json
+</code></pre>
+<h2>配置环境 env</h2>
+<pre><code class="language-ts">公共的 .env
+开发环境 .env.development
+生产环境 .env.production
+预发布环境 .env.staging
+
+# 端口
+VITE_PORT= 3100
+
+# 开发环境读取配置文件路径
+VITE_PUBLIC_PATH = /
+
+# 开发环境代理
+VITE_PROXY_DOMAIN = /api
+
+# 开发环境路由历史模式
+VITE_ROUTER_HISTORY = &quot;hash&quot;
+
+# 开发环境后端地址
+VITE_PROXY_DOMAIN_REAL = &quot;http://127.0.0.1:3000&quot;
+</code></pre>
+<h2>配置 scss|less</h2>
+<pre><code class="language-ts">// 安装scss
+yarn add sass-loader sass -D
+// 安装node/type
+yarn add @node/type
+</code></pre>
+<pre><code class="language-ts">创建全局样式文件 src/styles/main.scss
+</code></pre>
+<pre><code class="language-ts"># vite.config.ts
+import  { UserConfig, ConfigEnv,loadEnv } from 'vite';
+import vue from '@vitejs/plugin-vue'
+import { resolve } from &quot;path&quot;;
+
+const root :string = process.cwd();
+
+export default ({ command, mode }: ConfigEnv): UserConfig =&gt; {
+  // 获取当前环境的配置
+  const {VITE_PORT,VITE_PUBLIC_PATH}: any =  loadEnv(mode, root)
+  return {
+    base:VITE_PUBLIC_PATH,
+
+    // 服务相关
+    server:{
+      https:false,
+      port:VITE_PORT
+    },
+    plugins: [vue()],
+
+    // 解析相关 【别名】
+    resolve: {
+      alias: [
+        {
+          find: '@',  //字符串｜正则
+          replacement: resolve(__dirname, 'src')
+        },
+        {
+          find: '@asset',  //字符串｜正则
+          replacement: resolve(__dirname, 'src/assets')
+        }
+      ],
+    },
+
+    // css相关
+    css: {
+      // 引入全局scss |less 指定传递给 CSS 预处理器的选项。
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import &quot;./src/styles/main.scss&quot;;'
+        }
+      },
+    },
+
+    // .构建相关【打包相关】
+    build: {
+      sourcemap: false,
+      // 消除打包大小超过500kb警告
+      chunkSizeWarningLimit: 4000
+    },
+
+    // 常量
+    define: {
+      //是否开发环境 可供业务代码中直接使用 const dev = __IS_DEV__ 判断当前是否开发环境
+      __IS_DEV__: mode === 'development',
+    }
+  }
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue国际化]]></title>
+            <link>https://clark-cui.top/posts/Vue国际化.html</link>
+            <guid>https://clark-cui.top/posts/Vue国际化.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue国际化]]></description>
+            <content:encoded><![CDATA[<p><a href="https://kazupon.github.io/vue-i18n/zh/installation.html">Vue-I18n官网</a></p>
+<h2>安装I18n</h2>
+<pre><code class="language-ts">yarn add vue-i18n@next
+OR
+pnpm add vue-i18n@next
+</code></pre>
+<h2>1.创建文件</h2>
+<pre><code class="language-ts">src
+  └─ I18n
+  |   └──language
+  |   |   └──zh.ts //中文
+  |   |   └──en.ts //英文
+  |   └──index.ts
+</code></pre>
+<h4>文件内容</h4>
+<ul>
+<li>/src/I18n/index.ts</li>
+</ul>
+<pre><code class="language-ts">//index.js
+import {createI18n,I18n} from 'vue-i18n'
+import zh from './language/zh'
+import en from './language/en'
+const i18n:I18n = createI18n({
+	locale:  'zh',//默认中文
+	messages:{
+      zh,en
+  },
+  fallbackLocale: &quot;en&quot;, //备用设置
+})
+
+// 此函数只是配合i18n Ally插件来进行国际化智能提示，并无实际意义（只对提示起作用），如果不需要国际化可删除
+export const $t = (key: string) =&gt; key;
+
+export default i18n
+</code></pre>
+<ul>
+<li>zh.ts</li>
+</ul>
+<pre><code class="language-ts">export default{
+	title:{
+		home:'首页',
+    login: '登录'
+	},
+	btn:{
+		login:&quot;登录&quot;
+	}
+}
+</code></pre>
+<ul>
+<li>en.ts</li>
+</ul>
+<pre><code class="language-ts">export default{
+	title:{
+		home:'home',
+    login: 'login'
+	},
+	btn:{
+		login:&quot;login&quot;
+	}
+}
+</code></pre>
+<h2>2.修改src/main.ts</h2>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import App from './App.vue'
+import i18n from '@/I18n' // 引入刚才创建的I18文件
+const app  = createApp(App)
+app.use(i18n) // 引入刚才创建的I18文件
+app.mount('#app')
+</code></pre>
+<h2>3.可以简单使用了</h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div @click=&quot;seleLanguage('zh')&quot;&gt;zh&lt;/div&gt;
+  &lt;div @click=&quot;seleLanguage('en')&quot;&gt;en&lt;/div&gt;
+  {{$t('title.home')}}
+  {{$t('title.login')}}
+  {{$t('btn.login')}}
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot; name=&quot;HomeView&quot;&gt;
+import i18n from &quot;@/I18n&quot;;
+import loginApi  from &quot;@/api/modules/loginApi&quot;;
+
+function seleLanguage(indexValue:string) {
+    i18n.global.locale = indexValue;
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;&lt;/style&gt;
+</code></pre>
+<h2>4.vscodeI18插件</h2>
+<p>建议安装 【i18n Ally】 配置vscode文件 .vscode/settings</p>
+<pre><code class="language-ts">{
+  // ...其他配置项
+  // I18n插件提示 start
+  &quot;i18n-ally.localesPaths&quot;: [&quot;src/I18n/language&quot;], //这里写放zh.ts的路径
+  &quot;i18n-ally.keystyle&quot;: &quot;nested&quot;,
+  &quot;i18n-ally.sortKeys&quot;: true,
+  &quot;i18n-ally.namespace&quot;: true,
+  &quot;i18n-ally.enabledParsers&quot;: [&quot;yaml&quot;, &quot;js&quot;,&quot;ts&quot;], // zh en文件的后缀 
+  &quot;i18n-ally.sourceLanguage&quot;: &quot;en&quot;, //翻译源语言
+  &quot;i18n-ally.displayLanguage&quot;: &quot;zh&quot;, //翻译语言
+  &quot;i18n-ally.enabledFrameworks&quot;: [&quot;vue&quot;]
+  // I18n插件提示 end
+  // ...其他配置项
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[代码风格约束]]></title>
+            <link>https://clark-cui.top/posts/代码风格约束.html</link>
+            <guid>https://clark-cui.top/posts/代码风格约束.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[代码风格约束]]></description>
+            <content:encoded><![CDATA[<h2>约束插件</h2>
+<ol>
+<li>
+<p>eslint<br>
+主要作用：解决代码质量问题。校验代码是否存在质量问题<br>
+次要作用：可以配置代码风格【代码格式】，但是 eslint 并没有完善代码风格</p>
+</li>
+<li>
+<p>prettier<br>
+主要作用：接管了 eslint 的代码风格问题。<br>
+而使用 Prettier + ESLint 就完完全全解决了两个问题。<br>
+建议先配置代码风格【Prettier】再配置【eslint】【styleling】</p>
+</li>
+</ol>
+<h4><font color="ff0000">【配置前先看这里】</font></h4>
+<ul>
+<li>如果只需要保存时候就自动格式化，可只配置 Prettier 的【.prettierrc】文件，然后设置一下 vscode</li>
+<li>想要上传提交代码前也自动格式化文件，还要配置 husky</li>
+<li>eslint 建议都配置</li>
+</ul>
+<h2>配置 Prettier</h2>
+<ol>
+<li><font color="#002fa7">【下载插件】</font>vsCode 下载格式化插件 👉 【Prettier - Code formatter】</li>
+<li><font color="#002fa7">【修改 vscode 配置】</font>实现保存文件代码时候，自动格式化代码</li>
+</ol>
+<ul>
+<li>进入【设置】 ，可快捷键 ctrl + 逗号</li>
+<li>搜索 save 找到 Format On Save (保存时格式化文件) 勾选上即可</li>
+</ul>
+<ol start="3">
+<li><font color="#002fa7">【配置自定义格式】</font>再根目录新建配置文件 .prettierrc.js | .prettierrc 一般是这两种【推荐选择 js 方式】</li>
+</ol>
+<ul>
+<li>一般 js 结尾的 是需要在 package.json 里面配置调用 prettier 进行格式化的命令<br>
+<font color="ff0000">【用于配合 husky 使用，在代码提交之前进行格式化，确保存入仓库的代码都是格式化后的良好的代码。】</font></li>
+</ul>
+<ul>
+<li>.prettierrc 用于配合 vscode 保存时候立即进行格式化。<font color="ff0000">【注意：这个文件不要写注释等其他内容，不然不生效】</font></li>
+</ul>
+<pre><code class="language-ts">// 多种命名方式
+&quot;package.json&quot;, &quot;.prettierrc&quot;, &quot;.prettierrc.json&quot;, &quot;.prettierrc.yaml&quot;, &quot;.prettierrc.yml&quot;,&quot;.prettierrc.json5&quot;,
+&quot;.prettierrc.js&quot;, &quot;.prettierrc.cjs&quot;, &quot;prettier.config.js&quot;, &quot;prettier.config.cjs&quot;, &quot;.prettierrc.toml&quot;]
+</code></pre>
+<p>.prettierrc<font color="ff0000">【注意：这个文件不要写注释等其他内容，不然不生效】</font></p>
+<pre><code class="language-ts">{
+  &quot;printWidth&quot;: 80,
+  &quot;tabWidth&quot;: 2,
+  &quot;useTabs&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: true,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: false,
+  &quot;arrowParens&quot;: &quot;avoid&quot;
+  // ...
+}
+</code></pre>
+<p>.prettierrc.js</p>
+<pre><code class="language-ts">module.exports = {
+  printWidth: 80, // 每行代码长度（默认80）
+  tabWidth: 2, // 每个tab相当于多少个空格（默认2）
+  useTabs: false, // 是否使用tab进行缩进（默认false）
+  semi: true, // 声明结尾使用分号(默认true)
+  singleQuote: true, // 使用单引号（默认false）
+  trailingComma: &quot;all&quot;, // 多行使用拖尾逗号（默认none）
+  bracketSpacing: true, // 对象字面量的大括号间使用空格（默认true）
+  jsxBracketSameLine: false, // 多行JSX中的&gt;放置在最后一行的结尾，而不是另起一行（默认false）
+  arrowParens: &quot;avoid&quot;, // 只有一个参数的箭头函数的参数是否带圆括号（默认avoid）
+  // ...
+};
+</code></pre>
+<ol start="4">
+<li><font color="#002fa7">【忽略检查】</font> .eslintignore</li>
+</ol>
+<pre><code class="language-ts"># eslint 忽略检查 (根据项目需要自行添加)
+node_modules
+dist
+</code></pre>
+<ol start="5">
+<li>【命令方式格式化】</li>
+</ol>
+<pre><code class="language-ts"># 安装 prettier
+yarn add prettier -D
+pnpm add prettier -D
+</code></pre>
+<pre><code class="language-ts"># package.json 配置命令
+{
+  &quot;script&quot;: {
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;
+  }
+}
+</code></pre>
+<pre><code class="language-ts"># prettier 自动格式化命令
+yarn prettier
+
+# 如果报错
+Invalid configuration file `src\App.vue`: require() of ES Module
+# 可以将package.json中的 &quot;type&quot;: &quot;module&quot;, 删除了再运行
+</code></pre>
+<blockquote>
+<p>到这步就已经配置好 Prettier 了<br>
+husky + lint-staged</p>
+</blockquote>
+<h2>配置 Eslint</h2>
+<ol>
+<li><font color="#002fa7">【下载插件】</font>vsCode 下载格式化插件 👉 【Eslint】</li>
+<li>在项目中新建.vscode/settings.json 文件，然后在其中加入以下配置</li>
+</ol>
+<pre><code class="language-ts">{
+  // 开启自动修复
+  &quot;editor.codeActionsOnSave&quot;: {
+    &quot;source.fixAll&quot;: false,
+    &quot;source.fixAll.eslint&quot;: true
+  },
+  // 括号之间的连接
+  &quot;editor.guides.bracketPairs&quot;: &quot;active&quot;,
+}
+</code></pre>
+<ol start="3">
+<li>执行安装命令</li>
+</ol>
+<pre><code class="language-ts">yarn add eslint -D
+# 初始化eslint
+yarn  eslint --init
+</code></pre>
+<p>依次初始化选项(可根据实际情况自行选择)</p>
+<pre><code class="language-ts">(1) How would you like to use ESLint?
+选择：To check syntax and find problems
+
+(2) What type of modules does your project use?
+选择：JavaScript modules (import/export)
+
+(3) Which framework does your project use?
+选择：Vue.js
+
+(4) Does your project use TypeScript?
+选择：Yes
+
+(5) Where does your code run? //空格勾选
+选择：Browser &amp; node
+
+(6) What format do you want your config file to be in?
+选择：JavaScript
+
+(7) Would you like to install them now?
+选择：Yes
+
+(8) Which package manager do you want to use?
+选择：pnpm
+</code></pre>
+<ol start="4">
+<li>在 package.json 文件中的 script 中添加 lint 命令</li>
+</ol>
+<pre><code class="language-ts">{
+    &quot;scripts&quot;: {
+        // eslint . 为指定lint当前项目中的文件
+        // --ext 为指定lint哪些后缀的文件
+        // --fix 开启自动修复
+        &quot;eslint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;
+    }
+}
+</code></pre>
+<ol start="5">
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-ts">yarn add @typescript-eslint/eslint-plugin -D
+yarn add @typescript-eslint/parser -D
+yarn add eslint-plugin-vue -D
+
+==============我这里安装了下面几个版本==========
+
+&quot;@typescript-eslint/eslint-plugin&quot;: &quot;^5.36.1&quot;,
+&quot;@typescript-eslint/parser&quot;: &quot;^5.36.1&quot;,
+&quot;eslint-plugin-vue&quot;: &quot;^9.4.0&quot;,
+</code></pre>
+<ol start="6">
+<li>执行 lint 命令</li>
+</ol>
+<pre><code class="language-ts">yarn lint
+</code></pre>
+<p><img src="https://clark-cui.top/eslint.b8cc06d2.png" alt=""></p>
+<blockquote>
+<p>这时候命令行中会显示出上图中的报错，意思就是在解析.vue 后缀的文件时候出现解析错误 parsing error。<br /><br>
+eslint 默认是不会解析.vue 后缀文件的。因此，需要一个额外的解析器来解析.vue 后缀文件。<br /><br>
+按照.eslintrc.js 文件中的 extends 配置的顺序可知，最终导致报错的原因就是@typescript-eslint/parser 把 vue-eslint-parser 覆盖了。</p>
+</blockquote>
+<ul>
+<li>如果已经使用了另外的解析器（例如&quot;parser&quot;: &quot;@typescript-eslint/parser&quot;），则需要将其移至 parseOptions，这样才不会与 vue-eslint-parser 冲突。</li>
+</ul>
+<blockquote>
+<p>两个 parser 的区别在于，外面的 parser 用来解析.vue 后缀文件，使得 eslint 能解析<strong>template 标签中的内容.<br /><br>
+而 parserOptions 中的 parser，即@typescript-eslint/parser 用来解析 vue 文件中 script</strong>标签中的代码。</p>
+</blockquote>
+<p>初始化出来的文件使用了@typescript-eslint/parser 解 template 里面的内容, vue-eslint-parser 解析 script 里面的内容 所以会报错</p>
+<pre><code class="language-ts">修改.eslintrc.js文件;
+</code></pre>
+<pre><code class="language-ts">module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:vue/vue3-essential&quot;,
+    &quot;plugin:@typescript-eslint/recommended&quot;,
+  ],
+  parser: &quot;vue-eslint-parser&quot;, //👈解析template
+  parserOptions: {
+    ecmaVersion: &quot;latest&quot;,
+    parser: &quot;@typescript-eslint/parser&quot;, //👈解析script
+    sourceType: &quot;module&quot;,
+  },
+  plugins: [&quot;vue&quot;, &quot;@typescript-eslint&quot;],
+  rules: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;], //👈
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;], //👈允许使用any
+    &quot;@typescript-eslint/no-unused-vars&quot;: &quot;off&quot;, // 允许使用未使用变量
+    &quot;vue/multi-word-component-names&quot;: [
+      &quot;error&quot;,
+      {
+        ignores: [&quot;index&quot;], //需要忽略的组件名
+      },
+    ],
+  },
+};
+</code></pre>
+<h4>此时，再执行pnpm lint，就会发现校验通过了。</h4>
+<h4>给rules添加一些规则 然后检验一下是否已经配置好</h4>
+<pre><code class="language-ts">&quot;rules&quot;: {
+    &quot;@typescript-eslint/ban-types&quot;: [&quot;off&quot;],
+    &quot;@typescript-eslint/no-explicit-any&quot;: [&quot;off&quot;],
+    'no-console': 'warn', //出现console.log();就会警告
+}
+</code></pre>
+<h2>解决冲突</h2>
+<p>解决 ESLint 中的样式规范和 prettier 中样式规范的冲突，以 prettier 的样式规范为准，使 ESLint 中的样式规范自动失效</p>
+<ul>
+<li>解决方式一：要么修改 eslintrc，要么修改 prettierrc 配置，让它们配置保持一致；</li>
+<li>解决方式二：社区已经为我们提供了一个非常成熟的方案，即eslint-config-prettier + eslint-plugin-prettier;</li>
+</ul>
+<pre><code class="language-ts">yarn add eslint-config-prettier eslint-plugin-prettier -D
+</code></pre>
+<p>在 .eslintrc.json中extends的最后添加一个配置</p>
+<pre><code class="language-ts">{ 
+   extends: [
+   // 'eslint:recommended',
+   // 'plugin:vue/vue3-essential',
+   // 'plugin:@typescript-eslint/recommended',
+   // 新增，必须放在最后面
+   'plugin:prettier/recommended' 
+ ],
+}
+</code></pre>
+<h4>最后重启vscode，你会发现冲突消失了，eslint与prettier也按照我们预想的各司其职了。</h4>
+<h2>配置styleling</h2>
+<ol>
+<li><font color="#002fa7">【安装依赖】</font> stylelint 是运行工具，stylelint-config-standard 是stylelint的推荐配置，stylelint-order是CSS属性排序插件,stylelint-scss引入了特定于SCSS语法的规则</li>
+</ol>
+<pre><code class="language-ts">npm install stylelint stylelint-config-standard stylelint-scss stylelint-order -D
+OR
+yarn add stylelint stylelint-config-standard stylelint-scss stylelint-order -D
+</code></pre>
+<h4>Stylelint是14版本不兼容vue3，Stylelint降级到13版本</h4>
+<pre><code class="language-ts">&quot;stylelint&quot;: &quot;^13.13.1&quot;,
+&quot;stylelint-config-standard&quot;: &quot;^22.0.0&quot;,
+&quot;stylelint-order&quot;: &quot;^4.1.0&quot;,
+&quot;stylelint-scss&quot;: &quot;^3.19.0&quot;,
+</code></pre>
+<ol start="2">
+<li><font color="#002fa7">【配置 stylelint】</font>在项目根目录建立stylelint配置文件 .stylelintrc.js(json格式也行，推荐使用js可以添加注释) ：</li>
+</ol>
+<pre><code class="language-ts">module.exports = {
+  root: true,
+  extends: [&quot;stylelint-config-standard&quot;],
+  plugins: [&quot;stylelint-order&quot;, &quot;stylelint-scss&quot;],
+  ignoreFiles: [&quot;src/assets/icon/*.css&quot;],
+  rules: {
+    &quot;at-rule-no-unknown&quot;: null,
+    &quot;scss/at-rule-no-unknown&quot;: true,
+  }
+}
+</code></pre>
+<ol start="3">
+<li><font color="#002fa7">【添加忽略配置】</font>根目录添加.stylelintignore文件，添加需要忽略的文件夹或文件地址</li>
+</ol>
+<pre><code class="language-ts">/dist/*
+/public/*
+public/*
+</code></pre>
+<ol start="4">
+<li><font color="#002fa7">【添加命令 】</font>stylelint 检测 stylefix 修复 有些不能自动修改的 需要手动修复</li>
+</ol>
+<pre><code class="language-ts">&quot;scripts&quot;: {
+  &quot;stylelint&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot;&quot;,
+  &quot;stylefix&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot; --fix&quot;
+}
+</code></pre>
+<h2>配置husky</h2>
+<p>作用：在代码提交之前进行格式化（对个人要提交的代码的一个规范和约束） 防止vscode没有自动格式化等配置 所以在提交代码前 要给代码进行一些校验以及格式化<br>
+<font color="#002fa7">【请确保在此之前安装（npm install --save-dev）并配置所有代码质量工具，如Prettier和ESlint。并配置好以下命令】</font></p>
+<pre><code class="language-ts">// package.json
+&quot;scripts&quot;: {
+    &quot;eslint&quot;: &quot;eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix&quot;,
+    &quot;prettier&quot;: &quot;prettier --write  \&quot;src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\&quot;&quot;,
+    &quot;stylelint&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot;&quot;,
+    &quot;stylefix&quot;: &quot;stylelint \&quot;src/**/*.{css,scss,vue}\&quot; --fix&quot;
+},
+</code></pre>
+<ol start="2">
+<li><font color="#002fa7">【安装 lint-staged】</font>mrm 安装 lint-staged 会自动把 husky 一起安装下来</li>
+</ol>
+<pre><code class="language-ts">npx mrm lint-staged
+</code></pre>
+<ol start="3">
+<li>安装成功后会发现 package.json 中多了一下几个配置:<br>
+<img src="/rule2.6c3204d1.jpg" alt=""></li>
+</ol>
+<h4>到这里代码格式化配置基本大功告成了 可以试试git commit 看看代码会不会格式化</h4>
+<h2>规则列表</h2>
+<ul>
+<li>prettier</li>
+</ul>
+<pre><code class="language-ts">// 超过最大值换行
+printWidth: 100, 
+ // 缩进字节数
+tabWidth: 4,
+ // 缩进不使用tab, 使用空格
+useTabs: false,
+ // 句尾添加分号
+semi: true,
+// 使用单引号代替双引号
+singleQuote: true, 
+// 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
+proseWrap: &quot;preserve&quot;, 
+//  (x) =&gt; {} 箭头函数参数只有一个时是否要有小括号。avoid: 省略括号
+arrowParens: &quot;avoid&quot;, 
+ // 在对象，数组括号与文字之间加空格 &quot;{ foo: bar }&quot;
+bracketSpacing: true,
+ // 不格式化vue文件，vue文件的格式化单独设置
+disableLanguages: [&quot;vue&quot;],
+// 结尾是 \n \r \n\r auto
+endOfLine: &quot;auto&quot;, 
+//不让prettier使用eslint的代码格式进行校验
+eslintIntegration: false, 
+htmlWhitespaceSensitivity: &quot;ignore&quot;,
+ // 不使用prettier格式化的文件填写在项目的.prettierignore文件中
+ignorePath: &quot;.prettierignore&quot;,
+// 在jsx中把'&gt;' 是否单独放一行
+jsxBracketSameLine: false, 
+// 在jsx中使用单引号代替双引号
+jsxSingleQuote: false, 
+ // 格式化的解析器，默认是babylon
+parser: &quot;babylon&quot;,
+// Require a 'prettierconfig' to format prettier
+requireConfig: false, 
+ //不让prettier使用stylelint的代码格式进行校验
+stylelintIntegration: false,
+ // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）
+trailingComma: &quot;es5&quot;,
+ // 不让prettier使用tslint的代码格式进行校验
+tslintIntegration: false
+</code></pre>
+<ul>
+<li>eslint</li>
+</ul>
+<pre><code class="language-ts"> rules: {
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-var': 'error',
+    'prettier/prettier': 'error',
+    // 禁止出现console
+    'no-console': 'warn',
+    // 禁用debugger
+    'no-debugger': 'warn',
+    // 禁止出现重复的 case 标签
+    'no-duplicate-case': 'warn',
+    // 禁止出现空语句块
+    'no-empty': 'warn',
+    // 禁止不必要的括号
+    'no-extra-parens': 'off',
+    // 禁止对 function 声明重新赋值
+    'no-func-assign': 'warn',
+    // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
+    'no-unreachable': 'warn',
+    // 强制所有控制语句使用一致的括号风格
+    curly: 'warn',
+    // 要求 switch 语句中有 default 分支
+    'default-case': 'warn',
+    // 强制尽可能地使用点号
+    'dot-notation': 'warn',
+    // 要求使用 === 和 !==
+    eqeqeq: 'warn',
+    // 禁止 if 语句中 return 语句之后有 else 块
+    'no-else-return': 'warn',
+    // 禁止出现空函数
+    'no-empty-function': 'warn',
+    // 禁用不必要的嵌套块
+    'no-lone-blocks': 'warn',
+    // 禁止使用多个空格
+    'no-multi-spaces': 'warn',
+    // 禁止多次声明同一变量
+    'no-redeclare': 'warn',
+    // 禁止在 return 语句中使用赋值语句
+    'no-return-assign': 'warn',
+    // 禁用不必要的 return await
+    'no-return-await': 'warn',
+    // 禁止自我赋值
+    'no-self-assign': 'warn',
+    // 禁止自身比较
+    'no-self-compare': 'warn',
+    // 禁止不必要的 catch 子句
+    'no-useless-catch': 'warn',
+    // 禁止多余的 return 语句
+    'no-useless-return': 'warn',
+    // 禁止变量声明与外层作用域的变量同名
+    'no-shadow': 'off',
+    // 允许delete变量
+    'no-delete-var': 'off',
+    // 强制数组方括号中使用一致的空格
+    'array-bracket-spacing': 'warn',
+    // 强制在代码块中使用一致的大括号风格
+    'brace-style': 'warn',
+    // 强制使用骆驼拼写法命名约定
+    camelcase: 'warn',
+    // 强制使用一致的缩进
+    indent: 'off',
+    // 强制在 JSX 属性中一致地使用双引号或单引号
+    // 'jsx-quotes': 'warn',
+    // 强制可嵌套的块的最大深度4
+    'max-depth': 'warn',
+    // 强制最大行数 300
+    // &quot;max-lines&quot;: [&quot;warn&quot;, { &quot;max&quot;: 1200 }],
+    // 强制函数最大代码行数 50
+    // 'max-lines-per-function': ['warn', { max: 70 }],
+    // 强制函数块最多允许的的语句数量20
+    'max-statements': ['warn', 100],
+    // 强制回调函数最大嵌套深度
+    'max-nested-callbacks': ['warn', 3],
+    // 强制函数定义中最多允许的参数数量
+    'max-params': ['warn', 3],
+    // 强制每一行中所允许的最大语句数量
+    'max-statements-per-line': ['warn', { max: 1 }],
+    // 要求方法链中每个调用都有一个换行符
+    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
+    // 禁止 if 作为唯一的语句出现在 else 语句中
+    'no-lonely-if': 'warn',
+    // 禁止空格和 tab 的混合缩进
+    'no-mixed-spaces-and-tabs': 'warn',
+    // 禁止出现多行空行
+    'no-multiple-empty-lines': 'warn',
+    // 禁止出现;
+    semi: ['warn', 'never'],
+    // 强制在块之前使用一致的空格
+    'space-before-blocks': 'warn',
+    // 强制在 function的左括号之前使用一致的空格
+    // 'space-before-function-paren': ['warn', 'never'],
+    // 强制在圆括号内使用一致的空格
+    'space-in-parens': 'warn',
+    // 要求操作符周围有空格
+    'space-infix-ops': 'warn',
+    // 强制在一元操作符前后使用一致的空格
+    'space-unary-ops': 'warn',
+    // 强制在注释中 // 或 /* 使用一致的空格
+    // &quot;spaced-comment&quot;: &quot;warn&quot;,
+    // 强制在 switch 的冒号左右有空格
+    'switch-colon-spacing': 'warn',
+    // 强制箭头函数的箭头前后使用一致的空格
+    'arrow-spacing': 'warn',
+    'no-var': 'warn',
+    'prefer-const': 'warn',
+    'prefer-rest-params': 'warn',
+    'no-useless-escape': 'warn',
+    'no-irregular-whitespace': 'warn',
+    'no-prototype-builtins': 'warn',
+    'no-fallthrough': 'warn',
+    'no-extra-boolean-cast': 'warn',
+    'no-case-declarations': 'warn',
+    'no-async-promise-executor': 'warn',
+}
+</code></pre>
+<ul>
+<li>stylelint</li>
+</ul>
+<pre><code class="language-ts">Color
+color-hex-case: 指定大写或小写十六进制的颜色。
+color-hex-length: 指定十六进制颜色长或短的符号。
+color-named: 需要（如果可能）或不允许命名的颜色。
+color-no-hex: 不允许十六进制的颜色。
+color-no-invalid-hex: 禁止无效的十六进制颜色。
+
+font-family
+font-family-name-quotes:指定是否引号应该围绕字体系列名称中使用。
+
+function
+function-blacklist:指定不允许的功能黑名单
+function-calc-no-unspaced-operator:计算的函数中禁止的unspaced执行
+function-comma-newline-after:要求一个新行或函数的逗号后禁止空白。
+function-comma-newline-before: 要求一个新行或函数的逗号之前不允许空白。
+function-comma-space-after: 要求一个空格或函数的逗号后禁止空白。
+function-comma-space-before:要求一个空格或函数的逗号前禁止空白。
+function-linear-gradient-no-nonstandard-direction:禁止在线性梯度方向值（），根据标准语法是无效的呼叫。
+function-max-empty-lines: 限制方法中相邻的空行数
+function-name-case: 指定大写或小写的函数名。
+function-parentheses-newline-inside:要求一个新行或函数的括号内不允许空白。
+function-parentheses-space-inside: 要求一个空格或函数的括号内不允许空白。
+function-url-data-uris: 要求或禁止数据的URI的URL
+function-url-no-scheme-relative:不允许文档相对的URL。
+function-url-quotes: 要求或禁止对于网址报价
+function-url-scheme-whitelist: 指定允许URL方案的白名单。
+function-whitelist: 指定允许的功能的白名单。
+function-whitespace-after: 要求方法后不允许空白。
+
+Number
+number-leading-zero:要求或分数低于1的数字禁止前导零。
+number-max-precision:限制允许的小数位数的数目。
+number-no-trailing-zeros: 禁止在数量尾随零。
+String
+string-no-newline: 禁止在字符串（转义）换行。
+string-quotes: 指定字串，单或双引号。
+Length
+length-zero-no-unit: 禁止单位零长度。
+Time
+time-no-imperceptible: 禁止动画和过渡小于或等于100毫秒。
+Unit
+unit-blacklist: 指定不允许使用单位的黑名单。
+unit-case: 指定大写或小写的单位。
+unit-no-unknown: 禁止未知的单位。
+unit-whitelist: 指定允许单位的白名单&gt;
+Value
+value-keyword-case: 指定大写或小写关键字的值。
+value-no-vendor-prefix: 不允许供应商前缀值。
+Value list
+value-list-comma-newline-after: 逗号后需要一个换行符或不允许空白值列表。
+value-list-comma-newline-before: 逗号前需要一个换行符或不允许空白值列表。
+value-list-comma-space-after: 需要一个空格或者逗号后不允许空白值列表。
+value-list-comma-space-before:需要一个空格或者逗号前不允许空白值列表。
+value-list-max-empty-lines: 限制相邻的数量值列表内空行。
+Custom property
+custom-property-empty-line-before: 自定义属性之前equire或不允许空行。
+custom-property-no-outside-root: 不允许自定义属性以外的:根规则。
+custom-property-pattern: 为自定义属性指定一个模式。
+Shorthand property
+shorthand-property-no-redundant-values:不允许在简写属性冗余值。
+Property
+property-blacklist: 指定一个不允许属性的黑名单。
+property-case: 为属性指定小写或大写。
+property-no-unknown: 不允许未知属性。
+property-no-vendor-prefix: 不允许前缀的属性。
+property-whitelist: 指定一个白名单允许属性。
+Keyframe declaration
+keyframe-declaration-no-important: 不允许!important在关键帧声明。
+Declaration
+declaration-bang-space-after: bang声明之后需要一个空格或者不允许空白
+declaration-bang-space-before: bang声明之前需要一个空格或者不允许空白
+declaration-colon-newline-after: 冒号后的声明需要一个换行符或不允许空白。
+declaration-colon-space-after: 冒号后的声明需要一个空格或不允许空白。
+declaration-colon-space-before: 冒号之前的声明需要一个空格或不允许空白。
+declaration-empty-line-before: 要求声明前不允许空一行。
+declaration-no-important: 不允许!important声明。
+declaration-property-unit-blacklist: 指定一个黑名单内不允许声明属性。
+declaration-property-unit-whitelist: 指定一个白名单内允许声明属性。
+declaration-property-value-blacklist: 指定一个黑名单,不允许在声明属性和值对。
+declaration-property-value-whitelist: 指定一个允许属性和值对声明的白名单。
+Declaration block
+declaration-block-no-duplicate-properties: 不允许复制属性块中声明
+declaration-block-no-ignored-properties:不允许被忽略是因为另一个属性值的属性值相同的规则。
+declaration-block-no-redundant-longhand-properties: 不允许手写属性,可以组合成一个简写属性。
+declaration-block-no-shorthand-property-overrides: 不允许简写属性覆盖相关手写属性声明块。
+declaration-block-properties-order: 声明块中指定的顺序属性。
+declaration-block-semicolon-newline-after: 要求一个换行符或不允许空白块分号后。
+declaration-block-semicolon-newline-before: 要求一个换行符或不允许空白块分号之前的声明。
+declaration-block-semicolon-space-after: 要求一个空间或不允许空白块分号后的声明。
+declaration-block-semicolon-space-before: 要求一个空间或不允许空白块分号之前的声明
+declaration-block-single-line-max-declarations: 限制声明在一行声明块的数量
+declaration-block-trailing-semicolon: 要求或不允许在声明块后面的分号。
+Block
+block-closing-brace-empty-line-before: 要求或不允许关闭括号前空一行。
+block-closing-brace-newline-after: 需要一个换行符或不允许关闭括号后的空白。
+block-closing-brace-newline-before: 需要一个换行符或不允许空白关闭括号前的块。
+block-closing-brace-space-after: 需要一个空间或不允许关闭括号后的空白块。
+block-closing-brace-space-before: 在关闭括号前的块需要一个空格或者不允许空白。
+block-no-empty: 不允许空块
+block-no-single-line: 不允许单行块
+block-opening-brace-newline-after: 开括号的块之后需要新的一行。
+block-opening-brace-newline-before: 开括号的块之后需要一个换行符或不允许空白
+block-opening-brace-space-after: 开括号的块之后需要一个空格或不允许空白。
+block-opening-brace-space-before: 开括号的块之前需要一个空格或不允许空白。
+Selector
+selector-attribute-brackets-space-inside: 在括号里的属性选择器需要一个空格或者不允许空白。
+selector-attribute-operator-blacklist: 指定一个黑名单不允许属性的操作符。
+selector-attribute-operator-space-after: 需要一个空间或不允许空格后运营商在属性选择器。
+selector-attribute-operator-space-before: 需要一个空间或不允许空格内运营商之前属性选择器。
+selector-attribute-operator-whitelist: 指定一个属性允许运营商的白名单。
+selector-attribute-quotes: 需要或不允许引用属性值。
+selector-class-pattern: 指定一个模式类选择符。
+selector-combinator-space-after: 需要一个空间或不允许空格后的组合子选择器。
+selector-combinator-space-before: 需要一个空间或不允许空格前的组合子选择器。
+selector-descendant-combinator-no-non-space: 不允许的字符的后代组合子选择器进行技术改造。
+selector-id-pattern: 指定一个模式,id选择器。
+selector-max-compound-selectors: 在一个选择器里面限制复合选择器的数量。
+selector-max-specificity: 限制的特异性选择器。
+selector-nested-pattern: 指定一个模式选择器的规则嵌套规则。
+selector-no-attribute: 不允许属性选择器。
+selector-no-combinator: 不允许在选择器组合。
+selector-no-id: 不允许id选择器。
+selector-no-qualifying-type: 不允许符合条件的选择器的类型。
+selector-no-type: 不允许类型选择器。
+selector-no-universal: Disallow the universal selector.
+selector-no-vendor-prefix: 不允许选择器的前缀。
+selector-pseudo-class-blacklist: 指定一个黑名单禁止伪类选择器。
+selector-pseudo-class-case: 为伪类选择器指定小写或大写。
+selector-pseudo-class-no-unknown: 不允许未知的伪类选择器。
+selector-pseudo-class-parentheses-space-inside: 需要一个空格或不允许空格在括号里面的伪类选择器。
+selector-pseudo-class-whitelist: 伪类选择器允许指定一个白名单。
+selector-pseudo-element-case: 为伪元素选择器指定小写或大写。
+selector-pseudo-element-colon-notation: 为适用的伪元素指定单引号或双冒号符号。
+selector-pseudo-element-no-unknown: 不允许未知的伪元素选择器。
+selector-root-no-composition: 在选择器不允许根的构成。
+selector-type-case: 指定小写或大写类型选择器。
+selector-type-no-unknown: 不允许未知类型选择器。
+selector-max-empty-lines: 限制内相邻的空行选择器的数量。
+Selector list
+selector-list-comma-newline-after: 需要一个换行符或不允许空白选择逗号后的列表。
+selector-list-comma-newline-before: 逗号前需要一个换行符或不允许空白选择器列表。
+selector-list-comma-space-after: 需要一个空格或者逗号后不允许空格选择器列表。
+selector-list-comma-space-before: 需要一个空格或者逗号前不允许空格选择器列表。
+Root rule
+root-no-standard-properties: 根规则内不允许标准属性。
+Rule
+rule-nested-empty-line-before: 需要或不允许嵌套规则前空一行。
+rule-non-nested-empty-line-before: 需要或不允许non-nested规则前空一行。
+Media feature
+media-feature-colon-space-after: 需要一个空间或不允许空格在冒号之后媒体的特性。
+media-feature-colon-space-before: 需要一个空间或不允许空格在冒号之前媒体的特性。
+media-feature-name-case: 为媒体特性名称指定小写或大写。
+media-feature-name-no-unknown: 不允许未知的媒体功能的名字。
+media-feature-name-no-vendor-prefix: 不允许媒体特性名称的前缀。
+media-feature-no-missing-punctuation: 不允许标点non-boolean媒体功能
+media-feature-parentheses-space-inside: 需要一个空间或不允许空格在括号里面的媒体功能。
+media-feature-range-operator-space-after: 需要一个空间或不允许空白范围运算符后媒体的特性。
+media-feature-range-operator-space-before: 之前需要一个空间或不允许空格符范围在媒体功能。
+Custom media
+custom-media-pattern: 为定制媒体查询名称指定一个模式。
+Media query list
+media-query-list-comma-newline-after: 需要一个换行符或不允许空格后媒体查询的逗号分隔列表。
+media-query-list-comma-newline-before: 需要一个换行符或不允许空格之前媒体查询的逗号分隔列表
+media-query-list-comma-space-after: 需要一个空间或不允许空格后媒体查询的逗号分隔列表。
+media-query-list-comma-space-before:需要一个空间或不允许空格之前媒体查询的逗号分隔列表。
+At-rule
+at-rule-blacklist: 不允许at-rules指定一个黑名单。
+at-rule-empty-line-before: 需要或不允许at-rules前空一行。
+at-rule-name-case: 指定at-rules小写或大写的名字。
+at-rule-name-newline-after: at-rule名称后需要一个换行符。
+at-rule-name-space-after: 需要一个空格后at-rule名称。
+at-rule-no-unknown: 不允许at-rules不明。
+at-rule-no-vendor-prefix: 不允许at-rules前缀。
+at-rule-semicolon-newline-after: 需要一个换行符之后at-rules的分号。
+at-rule-whitelist: 指定允许at-rules的白名单。
+stylelint-disable comment
+stylelint-disable-reason: 需要一个理由stylelint-disable之前或之后的评论发表评论。
+Comment
+comment-empty-line-before: 需要或不允许评论之前一个空行。
+comment-no-empty: 不允许空的评论。
+comment-whitespace-inside:需要或不允许空格里面的注释标记。
+comment-word-blacklist: 指定一个黑名单内不允许的话评论。
+General / Sheet
+indentation: 指定缩进。
+max-empty-lines: 限制数量的相邻的空行。
+max-line-length: 限制线的长度。
+max-nesting-depth: 限制的深度嵌套。
+no-browser-hacks: 不允许浏览器黑客,无关你目标的浏览器。
+no-descending-specificity: 不允许选择器之后覆盖选择器的低特异性更高的特异性。
+no-duplicate-selectors: 不允许重复的选择器。
+no-empty-source: 不允许空的来源。
+no-eol-whitespace: 不允许行尾空白。
+no-extra-semicolons: 不允许额外的分号。
+no-indistinguishable-colors: 不允许产品极其接近的颜色相同。
+no-invalid-double-slash-comments: 不允许双斜杠注释(/ /…)不支持CSS。
+no-missing-end-of-source-newline: 不允许丢失end-of-source换行。
+no-unknown-animations: 不允许动画名称不对应@keyframes声明。
+no-unsupported-browser-features: 不允许功能的浏览器不支持的目标
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[全局样式css]]></title>
+            <link>https://clark-cui.top/posts/全局样式css.html</link>
+            <guid>https://clark-cui.top/posts/全局样式css.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[全局样式css]]></description>
+            <content:encoded><![CDATA[<h2>方法一、windicss</h2>
+<p><a href="https://windicss.org/">windicss 官网</a></p>
+<h3>使用 windicss</h3>
+<ol>
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-ts">npm i -D vite-plugin-windicss windicss
+或者
+yarn add -D vite-plugin-windicss windicss
+</code></pre>
+<ol start="2">
+<li>vite 安装插件</li>
+</ol>
+<ul>
+<li>vite.config.js 文件</li>
+</ul>
+<pre><code class="language-ts">import WindiCSS from &quot;vite-plugin-windicss&quot;;
+export default {
+  plugins: [
+    WindiCSS({
+      scan: {
+        dirs: [&quot;.&quot;], // all files in the cwd   cwd里的所有文件
+        fileExtensions: [&quot;vue&quot;, &quot;js&quot;, &quot;ts&quot;], // also enabled scanning for js/ts   扫描什么文件
+      },
+    }),
+  ],
+};
+</code></pre>
+<ul>
+<li>main.js 文件</li>
+</ul>
+<pre><code class="language-ts">import &quot;virtual:windi.css&quot;;
+</code></pre>
+<ul>
+<li>根目录创建 windi.config.js|ts 文件</li>
+</ul>
+<pre><code class="language-ts">import { defineConfig } from &quot;vite-plugin-windicss&quot;;
+
+export default defineConfig({
+  darkMode: &quot;class&quot;, // or 'media'
+  plugins: [createEnterPlugin()],
+  theme: {
+    extend: {
+      zIndex: {
+        &quot;-1&quot;: &quot;-1&quot;,
+      },
+      colors: {
+        pink: 400,
+      },
+      screens: {
+        sm: &quot;576px&quot;,
+        md: &quot;768px&quot;,
+        lg: &quot;992px&quot;,
+        xl: &quot;1200px&quot;,
+        &quot;2xl&quot;: &quot;1600px&quot;,
+      },
+    },
+  },
+});
+
+/**
+ * 自定义插件
+ * 用于显示元素时的动画。
+ * @param maxOutput maxOutput输出越大，生成的css卷就越大。
+ */
+function createEnterPlugin(maxOutput = 6) {
+  const createCss = (index: number, d = &quot;x&quot;) =&gt; {
+    const upd = d.toUpperCase();
+    return {
+      [`*&gt; .enter-${d}:nth-child(${index})`]: {
+        transform: `translate${upd}(50px)`,
+      },
+      [`*&gt; .-enter-${d}:nth-child(${index})`]: {
+        transform: `translate${upd}(-50px)`,
+      },
+      [`* &gt; .enter-${d}:nth-child(${index}),* &gt; .-enter-${d}:nth-child(${index})`]:
+        {
+          &quot;z-index&quot;: `${10 - index}`,
+          opacity: &quot;0&quot;,
+          animation: `enter-${d}-animation 0.4s ease-in-out 0.3s`,
+          &quot;animation-fill-mode&quot;: &quot;forwards&quot;,
+          &quot;animation-delay&quot;: `${(index * 1) / 10}s`,
+        },
+    };
+  };
+  const handler = ({ addBase }) =&gt; {
+    const addRawCss = {};
+    for (let index = 1; index &lt; maxOutput; index++) {
+      Object.assign(addRawCss, {
+        ...createCss(index, &quot;x&quot;),
+        ...createCss(index, &quot;y&quot;),
+      });
+    }
+    addBase({
+      ...addRawCss,
+      [`@keyframes enter-x-animation`]: {
+        to: {
+          opacity: &quot;1&quot;,
+          transform: &quot;translateX(0)&quot;,
+        },
+      },
+      [`@keyframes enter-y-animation`]: {
+        to: {
+          opacity: &quot;1&quot;,
+          transform: &quot;translateY(0)&quot;,
+        },
+      },
+    });
+  };
+  return { handler };
+}
+</code></pre>
+<h2>方法二、Tailwind CSS</h2>
+<p>Tailwind CSS 是一个由 js 编写的 CSS 框架 他是基于 postCss 去解析的<br /><br>
+<a href="https://www.tailwindcss.cn/">Tailwind CSS 官网</a></p>
+<p>对于 PostCSS 的插件使用，我们再使用的过程中一般都需要如下步骤：</p>
+<ol>
+<li>PostCSS 配置文件 postcss.config.js，新增 tailwindcss 插件。</li>
+<li>TaiWindCss 插件需要一份配置文件，比如:tailwind.config.js。<br /></li>
+</ol>
+<p><a href="https://www.postcss.com.cn/">PostCSS 官网</a></p>
+<h4>postCss 功能介绍</h4>
+<p>1.增强代码的可读性 （利用从 Can I Use 网站获取的数据为 CSS 规则添加特定厂商的前缀。 Autoprefixer 自动获取浏览器的流行度和能够支持的属性，并根据这些数据帮你自动为 CSS 规则添加前缀。）</p>
+<p>2.将未来的 CSS 特性带到今天！（PostCSS Preset Env 帮你将最新的 CSS 语法转换成大多数浏览器都能理解的语法，并根据你的目标浏览器或运行时环境来确定你需要的 polyfills，此功能基于 cssdb 实现。）</p>
+<p>3.终结全局 CSS（CSS 模块 能让你你永远不用担心命名太大众化而造成冲突，只要用最有意义的名字就行了。）</p>
+<p>4.避免 CSS 代码中的错误（通过使用 stylelint 强化一致性约束并避免样式表中的错误。stylelint 是一个现代化 CSS 代码检查工具。它支持最新的 CSS 语法，也包括类似 CSS 的语法，例如 SCSS 。）</p>
+<p>postCss 处理 tailWind Css 大致流程</p>
+<ul>
+<li>将 CSS 解析成抽象语法树(AST 树)</li>
+<li>读取插件配置，根据配置文件，生成新的抽象语法树</li>
+<li>将 AST 树”传递”给一系列数据转换操作处理（变量数据循环生成，切套类名循环等）</li>
+<li>清除一系列操作留下的数据痕迹</li>
+<li>将处理完毕的 AST 树重新转换成字符串</li>
+</ul>
+<ol>
+<li>安装 Tailwind 以及其它依赖项</li>
+</ol>
+<pre><code class="language-ts">npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+或者
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+</code></pre>
+<ol start="2">
+<li>生成配置文件</li>
+</ol>
+<pre><code class="language-ts">npx tailwindcss init -p
+</code></pre>
+<ol start="3">
+<li>修改配置文件 tailwind.config.js</li>
+</ol>
+<p>2.6 版本</p>
+<pre><code class="language-ts">module.exports = {
+  purge: [&quot;./index.html&quot;, &quot;./src/**/*.{vue,js,ts,jsx,tsx}&quot;],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+</code></pre>
+<p>3.0 版本</p>
+<pre><code class="language-ts">module.exports = {
+  content: [&quot;./index.html&quot;, &quot;./src/**/*.{vue,js,ts,jsx,tsx}&quot;],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+</code></pre>
+<ol start="4">
+<li>创建一个index.css</li>
+</ol>
+<pre><code class="language-ts">@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre>
+<ul>
+<li>在main.ts 引入</li>
+</ul>
+<p><img src="https://clark-cui.top/f1c25cd3a4e64dcfac2039b59d2f0748.png" alt=""></p>
+<p><img src="/82e4bef02496472d8d2edf6262d29b8b.png" alt=""></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[移动端自适应]]></title>
+            <link>https://clark-cui.top/posts/移动端自适应.html</link>
+            <guid>https://clark-cui.top/posts/移动端自适应.html</guid>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[移动端自适应]]></description>
+            <content:encoded><![CDATA[<h2>方案一 js 方式</h2>
+<pre><code class="language-ts">// h5-rem.js
+detectOrient();
+window.onresize = function () {
+  detectOrient();
+};
+// 判断横屏竖屏  相当于媒体查询
+function detectOrient() {
+  const width = document.documentElement.clientWidth; //视窗宽
+  const height = document.documentElement.clientHeight; //视窗高
+  // const width = window.screen.width //显示屏宽
+  // const height = window.screen.height //显示屏高
+  const deviceWidth = width &lt; 320 ? 320 : width; // &gt; 750 ? 750 : width
+  const deviceHeight = height &lt; 320 ? 320 : height; // &gt; 750 ? 750 : width
+
+  if (width &lt;= height) {
+    x;
+    // 7.5 显示屏分辨率
+    // 竖屏
+    document.documentElement.style.fontSize = deviceWidth / 7.5 + &quot;px&quot;;
+  } else {
+    // 横屏
+    document.documentElement.style.fontSize = deviceHeight / 7.5 + &quot;px&quot;;
+  }
+}
+// 使用时候 直接在首页引入即可
+// main.js
+import &quot;@/utils/h5-rem&quot;;
+</code></pre>
+<h2>方案二 px2rem-loader</h2>
+<p><code>px2rem-loader</code><br>
+<code>lib-flexible</code><br>
+一般而言，lib-flexible 并不独立出现，而是搭配 px2rem-loader 一起做适配方案，目的是自动将 css 中的 px 转换成 rem。以下为它在 vue 中的使用。</p>
+<ol>
+<li>安装 lib-flexible</li>
+</ol>
+<pre><code class="language-ts">npm install lib-flexible --save-dev
+或者
+yarn add lib-flexible --save-dev
+</code></pre>
+<ol start="2">
+<li>引入 lib-flexible 在 main.ts 中引入 lib-flexible</li>
+</ol>
+<pre><code class="language-ts">// px2rem 自适应
+import &quot;lib-flexible&quot;;
+</code></pre>
+<ol start="3">
+<li>安装 px2rem-loader</li>
+</ol>
+<pre><code class="language-ts">npm install px2rem-loader --save-dev
+或者
+yarn add px2rem-loader --save-dev
+</code></pre>
+<ol start="4">
+<li>配置 px2rem-loader</li>
+</ol>
+<ul>
+<li>vue-cli 2.x 这里就不介绍了 基本上不会遇到了</li>
+<li>vue-cli 3.x <br /></li>
+</ul>
+<p>找到 vue.config.js 文件</p>
+<pre><code class="language-ts">module.exports = {
+  css: {
+    loaderOptions: {
+      css: {},
+      postcss: {
+        plugins: [
+          require(&quot;postcss-px2rem&quot;)({
+            // 以设计稿750为例， 750 / 10 = 75
+            remUnit: 75,
+          }),
+        ],
+      },
+    },
+  },
+};
+</code></pre>
+<ol start="5">
+<li>如果是大屏 打开./node_modules/lib-flexible/flexible.js，找到如下片段源码：</li>
+</ol>
+<pre><code class="language-ts">function refreshRem() {
+  var width = docEl.getBoundingClientRect().width;
+  if (width / dpr &gt; 540) {
+    width = 540 * dpr;
+  }
+  var rem = width / 10;
+  docEl.style.fontSize = rem + &quot;px&quot;;
+  flexible.rem = win.rem = rem;
+}
+</code></pre>
+<p>在上述源码中，进行修改。例如我要适配的大屏幕尺寸是基于 3840 的设计稿，而要求最小范围是 1980，最大为 5760，那么我们要修改的则变为：</p>
+<pre><code class="language-ts">function refreshRem() {
+  var width = docEl.getBoundingClientRect().width;
+  if (width / dpr &lt; 1980) {
+    width = 1980 * dpr;
+  } else if (width / dpr &gt; 5760) {
+    width = 5760 * dpr;
+  }
+  var rem = width / 10;
+  docEl.style.fontSize = rem + &quot;px&quot;;
+  flexible.rem = win.rem = rem;
+}
+</code></pre>
+<p><code>修改源码要注意当前的项目重新安装依赖包的之后 就要重新修改一次源码</code></p>
+<h2>方案三 vw-layout</h2>
+<pre><code class="language-ts">npm i vw-layout --save
+或者
+yarn add vw-layout --save
+</code></pre>
+<p>项目根目录新建.postcssrc.js</p>
+<pre><code class="language-ts">module.exports = {
+  plugins: {
+    &quot;postcss-aspect-ratio-mini&quot;: {},
+    &quot;postcss-px-to-viewport&quot;: {
+      viewportWidth: 750, // (Number) 视口的宽度
+      viewportHeight: 1334, // (Number) 视口的高度
+      unitPrecision: 3, // (Number) 单位精度
+      viewportUnit: &quot;vw&quot;, // (String) 单位
+      selectorBlackList: [&quot;.ignore&quot;, &quot;.hairlines&quot;], // (Array) 忽略文件
+      minPixelValue: 1, // (Number) 设置要替换的最小像素值。
+      mediaQuery: false, // (Boolean) 允许在媒体查询中转换px。
+    },
+    &quot;postcss-viewport-units&quot;: {},
+  },
+};
+</code></pre>
+<h2>方案四 postcss-px-to-viewport</h2>
+<p>在之前我们用的是 rem 根据 HTML font-size 去做缩放<br /><br>
+现在有了更好用的 vw vh<br /><br>
+vw 视口的最大宽度，1vw 等于视口宽度的百分之一<br /><br>
+vh 视口的最大高度，1vh 等于视口高度的百分之一<br /></p>
+<h3>1. 安装依赖</h3>
+<pre><code class="language-ts">npm install postcss-px-to-viewport -D
+或者
+yarn add postcss-px-to-viewport -D
+</code></pre>
+<h3>2. 配置</h3>
+<p>因为 vite 中已经内联了 postcss，所以并不需要额外的创建 postcss.config.js 文件<br /><br>
+vite.config.ts</p>
+<pre><code class="language-ts">import { fileURLToPath, URL } from &quot;url&quot;;
+
+import { defineConfig } from &quot;vite&quot;;
+import vue from &quot;@vitejs/plugin-vue&quot;;
+import vueJsx from &quot;@vitejs/plugin-vue-jsx&quot;;
+import postcsspxtoviewport from &quot;postcss-px-to-viewport&quot;; //插件
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+  css: {
+    postcss: {
+      plugins: [
+        postcsspxtoviewport({
+          unitToConvert: &quot;px&quot;, // 要转化的单位
+          viewportWidth: 750, // UI设计稿的宽度
+          unitPrecision: 6, // 转换后的精度，即小数点位数
+          propList: [&quot;*&quot;], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
+          viewportUnit: &quot;vw&quot;, // 指定需要转换成的视窗单位，默认vw
+          fontViewportUnit: &quot;vw&quot;, // 指定字体需要转换成的视窗单位，默认vw
+          selectorBlackList: [&quot;ignore-&quot;], // 指定不转换为视窗单位的类名，
+          minPixelValue: 1, // 默认值1，小于或等于1px则不进行转换
+          mediaQuery: true, // 是否在媒体查询的css代码中也进行转换，默认false
+          replace: true, // 是否转换后直接更换属性值
+          landscape: false, // 是否处理横屏情况
+        }),
+      ],
+    },
+  },
+  resolve: {
+    alias: {
+      &quot;@&quot;: fileURLToPath(new URL(&quot;./src&quot;, import.meta.url)),
+    },
+  },
+});
+</code></pre>
+<h4>如果你用的 vite 是 ts 他这个插件并没有提供声明文件可以新建个 postcss-px-to-viewport.d.ts 文件，跟 vite.ts 同级</h4>
+<pre><code class="language-ts">declare module &quot;postcss-px-to-viewport&quot; {
+  type Options = {
+    unitToConvert: &quot;px&quot; | &quot;rem&quot; | &quot;cm&quot; | &quot;em&quot;;
+    viewportWidth: number;
+    viewportHeight: number; // not now used; TODO: need for different units and math for different properties
+    unitPrecision: number;
+    viewportUnit: string;
+    fontViewportUnit: string; // vmin is more suitable.
+    selectorBlackList: string[];
+    propList: string[];
+    minPixelValue: number;
+    mediaQuery: boolean;
+    replace: boolean;
+    landscape: boolean;
+    landscapeUnit: string;
+    landscapeWidth: number;
+  };
+
+  export default function (options: Partial&lt;Options&gt;): any;
+}
+</code></pre>
+<p>在 tsconfig.config.json 引入声明文件 postcss-px-to-viewport.d.ts</p>
+<pre><code class="language-ts">{
+  &quot;extends&quot;: &quot;@vue/tsconfig/tsconfig.node.json&quot;,
+  &quot;include&quot;: [&quot;vite.config.&quot;, &quot;vitest.config.&quot;, &quot;cypress.config.&quot;, &quot;postcss-px-to-viewport.*&quot;],
+  &quot;compilerOptions&quot;: {
+    &quot;composite&quot;: true,
+    &quot;types&quot;: [&quot;node&quot;]
+  }
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue 核心原理之 AST 抽象语法树理解及算法]]></title>
+            <link>https://clark-cui.top/posts/Vue核心原理之 AST 抽象语法树理解及算法.html</link>
+            <guid>https://clark-cui.top/posts/Vue核心原理之 AST 抽象语法树理解及算法.html</guid>
+            <pubDate>Mon, 06 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue 核心原理之 AST 抽象语法树理解及算法]]></description>
+            <content:encoded><![CDATA[<h2>AST 抽象语法树理解</h2>
+<ol>
+<li>模版语法，通过抽象语法树 AST 进行过渡让编译工作变得简单，变成正常的 HTML 语法。</li>
+<li>抽象语法树本质上就是一个 JS 对象。</li>
+<li>抽象语法树和虚拟节点的关系，模版语法到抽象语法树 AST，渲染函数（h 函数），虚拟节点，界面。</li>
+<li>指针就是下标，不是 C 语言中的指针，C 语言中的指针可以操作内存。JS 中的指针就是一个下标位置。</li>
+<li>栈，如下所示：</li>
+</ol>
+<ul>
+<li>栈（stack）又名堆栈，它是一种运算受限的线性表，仅在表尾能进行插入和删除操作。这一端被称为栈顶，相对地，把另一端称为栈底。</li>
+<li>向一个栈插入新元素又称作进栈、入栈或压栈；从一个栈删除元素又称作出栈或退栈。</li>
+<li>后进先出（LIFO）特点：栈中的元素，最先进栈的必定是最后出栈，后进栈的一定会先出栈。</li>
+<li>JavaScript 中，栈可以用数组模拟。需要限制只能使用 push()和 pop()，不能使用 unshift()和 shift()。即，数组尾是栈顶。</li>
+<li>当然，可以用面向对象等手段，将栈封装的更好。</li>
+</ul>
+<h2>算法理解</h2>
+<ol>
+<li>试输出斐波那契数列的前 10 项，即 1、1、2、3、5、8、13、21、34、55，代码如下所示：</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;script&gt;
+      var cache = {};
+
+      function fib(n) {
+        if (cache.hasOwnProperty(n)) {
+          return cache[n];
+        }
+        var v = n == 0 || n == 1 ? 1 : fib(n - 1) + fib(n - 2);
+        cache[n] = v;
+        return v;
+      }
+
+      for (let i = 0; i &lt;= 9; i++) {
+        console.log(fib(i));
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="2">
+<li>转换数组的形式[1, 2, 3, [4, 5]]要变为这样的对象，代码如下所示：</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;script&gt;
+      var arr = [1, 2, 3, [4, 5], [[[6], 7, 8], 9], 10];
+
+      function convert(item) {
+        if (typeof item == &quot;number&quot;) {
+          return {
+            value: item,
+          };
+        } else if (Array.isArray(item)) {
+          return {
+            children: item.map((_item) =&gt; convert(_item)),
+          };
+        }
+      }
+
+      var o = convert(arr);
+      console.log(o);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="3">
+<li>试编写“智能重复”smartRepeat 函数，代码如下所示：</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;script&gt;
+      function smartRepeat(templateStr) {
+        var index = 0;
+        var stack1 = [];
+        var stack2 = [];
+        var rest = templateStr;
+
+        while (index &lt; templateStr.length - 1) {
+          rest = templateStr.substring(index);
+          if (/^\d+\[/.test(rest)) {
+            let times = Number(rest.match(/^(\d+)\[/)[1]);
+            stack1.push(times);
+            stack2.push(&quot;&quot;);
+            index += times.toString().length + 1;
+          } else if (/^\w+\]/.test(rest)) {
+            let word = rest.match(/^(\w+)\]/)[1];
+            stack2[stack2.length - 1] = word;
+            index += word.length;
+          } else if (rest[0] == &quot;]&quot;) {
+            let times = stack1.pop();
+            let word = stack2.pop();
+            stack2[stack2.length - 1] += word.repeat(times);
+            index++;
+          }
+          console.log(index, stack1, stack2);
+        }
+
+        return stack2[0].repeat(stack1[0]);
+      }
+
+      var result = smartRepeat(&quot;3[2[3[a]1[b]]4[d]]&quot;);
+      console.log(result);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="4">
+<li>试寻找字符串中，连续重复次数最多的字符，代码如下所示：</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;script&gt;
+      var str = &quot;abbbccc&quot;;
+
+      var i = 0;
+      var j = 1;
+      var maxRepeatCount = 0;
+      var maxRepeatChar = &quot;&quot;;
+
+      while (i &lt;= str.length - 1) {
+        if (str[i] != str[j]) {
+          if (j - i &gt; maxRepeatCount) {
+            maxRepeatCount = j - i;
+            maxRepeatChar = str[i];
+          }
+          i = j;
+        }
+        j++;
+      }
+
+      console.log(
+        maxRepeatChar + &quot;重复了&quot; + maxRepeatCount + &quot;次，是最多的连续重复字符&quot;
+      );
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[TS 中 type 和 interface 的区别]]></title>
+            <link>https://clark-cui.top/posts/TS中type和interface的区别.html</link>
+            <guid>https://clark-cui.top/posts/TS中type和interface的区别.html</guid>
+            <pubDate>Fri, 03 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[TS 中 type 和 interface 的区别]]></description>
+            <content:encoded><![CDATA[<h2>概念</h2>
+<h3>1、interface 接口</h3>
+<blockquote>
+<p>接口主要用于类型检查，它只是一个结构契约，定义了具有相似的名称和类型的对象结构。除此之外，接口还可以定义方法和事件。</p>
+</blockquote>
+<h3>2、type (alias)类型别名</h3>
+<blockquote>
+<p>不同于 interface 只能定义对象类型，type 声明还可以定义基础类型、联合类型或交叉类型。</p>
+</blockquote>
+<h2>差异点</h2>
+<h3>1. 定义类型的范围</h3>
+<blockquote>
+<p>interface 只能定义对象类型, 而 type 声明可以声明任何类型，包括基础类型、联合类型或交叉类型。</p>
+</blockquote>
+<ul>
+<li>基本类型</li>
+</ul>
+<pre><code class="language-typescript">type Person = string;
+</code></pre>
+<ul>
+<li>联合类型</li>
+</ul>
+<pre><code class="language-typescript">interface Dog {
+  name: string;
+}
+interface Cat {
+  age: number;
+}
+type animal = Dog | Cat;
+</code></pre>
+<ul>
+<li>元组</li>
+</ul>
+<pre><code class="language-typescript">interface Dog {
+  name: string;
+}
+interface Cat {
+  age: number;
+}
+type animal = [Dog, Cat];
+</code></pre>
+<h3>2. 扩展性</h3>
+<blockquote>
+<p>接口可以 extends、implements,从而扩展多个接口或类。类型没有扩展功能，只能交叉合并。</p>
+</blockquote>
+<ul>
+<li>interface extends interface</li>
+</ul>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+}
+interface User extends Person {
+  age: number;
+}
+</code></pre>
+<ul>
+<li>interface extends type</li>
+</ul>
+<pre><code class="language-typescript">type Person = { name: string };
+interface User extends Person {
+  age: number;
+}
+</code></pre>
+<h4>type 使用交叉类型&amp;来合并不同成员的类型</h4>
+<ul>
+<li>type &amp; type</li>
+</ul>
+<pre><code class="language-typescript">type Person = { name: string };
+type User = Person &amp; { age: number };
+</code></pre>
+<ul>
+<li>type &amp; interface</li>
+</ul>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+}
+type User = { age: number } &amp; Person;
+</code></pre>
+<h3>3. 合并声明</h3>
+<blockquote>
+<p>定义两个相同名称的接口会合并声明，定义两个同名的 type 会出现异常。</p>
+</blockquote>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+}
+interface Person {
+  age: number;
+}
+// 合并为:interface Person { name: string age: number}
+
+type User = {
+  name: string;
+};
+type User = {
+  age: number;
+};
+// 声明重复报错：标识符“User”重复。
+</code></pre>
+<h3>4. type 可以获取 typeof 返回的值作为类型</h3>
+<pre><code class="language-typescript">let div = document.createElement(&quot;div&quot;);
+type B = typeof div; // HTMLDivElement
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue3中TSX和h函数的用法]]></title>
+            <link>https://clark-cui.top/posts/Vue3中TSX和h函数的用法.html</link>
+            <guid>https://clark-cui.top/posts/Vue3中TSX和h函数的用法.html</guid>
+            <pubDate>Thu, 02 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue3中TSX和h函数的用法]]></description>
+            <content:encoded><![CDATA[<h2>Vue3中TSX的用法</h2>
+<p>安装插件</p>
+<pre><code class="language-vue">npm i @vitejs/plugin-vue-jsx -D
+</code></pre>
+<h3><code>vite.config.ts</code>配置</h3>
+<pre><code class="language-tsx">import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(), vueJsx()],
+})
+</code></pre>
+<p>注意：如果遇到项目启动报错问题TypeError: vite.createFilter is not a function的话，说明vite插件与vite版本不一致。解决npm install -D vite@^3。</p>
+<h2>使用方式</h2>
+<p>1、返回一个渲染函数<br /><br>
+App.tsx</p>
+<pre><code class="language-tsx">export default function () {
+  return (&lt;div&gt;我是返回一个渲染函数的jsx写法&lt;/div&gt;)
+}
+</code></pre>
+<p>App.vue</p>
+<pre><code class="language-vue">&lt;script setup lang=&quot;ts&quot;&gt;
+import TestJsx from './App'
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;test-jsx /&gt;
+&lt;/template&gt;
+</code></pre>
+<p>2、optionsApi<br>
+App.tsx</p>
+<pre><code class="language-tsx">import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      name: '渲染函数'
+    }
+  },
+  render() {
+    return (&lt;h1&gt;{this.name}&lt;/h1&gt;)
+  }
+})
+</code></pre>
+<p>3、setup函数模式<br>
+App.tsx</p>
+<pre><code class="language-tsx">import { defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    return () =&gt; &lt;div&gt;setup模式&lt;/div&gt;
+  }
+})
+</code></pre>
+<h2>基本用法</h2>
+<p>主要是介绍setup函数模式中 tsx 的用法<br /><br>
+在App.tsx中演示示例代码</p>
+<h3>1、插值</h3>
+<p>使用{}单括号，ref在template模式下会自动解包，tsx下不会</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref('插值')
+    return () =&gt; &lt;div&gt;{flag.value}&lt;/div&gt;
+  }
+})
+</code></pre>
+<p>多个根节点Fragment</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref('插值')
+    return () =&gt; (
+      &lt;&gt;
+        &lt;span&gt;哈喽&lt;/span&gt;
+        &lt;div&gt;{flag.value}&lt;/div&gt;
+      &lt;/&gt;
+    )
+  }
+})
+</code></pre>
+<h3>2、动态属性绑定</h3>
+<p>如果需要绑定多个属性，使用…操作符</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref('插值')
+    return () =&gt; &lt;div name={flag.value}&gt;{flag.value}&lt;/div&gt;
+  }
+})
+</code></pre>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref('插值')
+    const properties = {
+        a: '属性1',
+        b: '属性2'
+    }
+    return () =&gt; &lt;div {...properties}&gt;{flag.value}&lt;/div&gt;
+  }
+})
+</code></pre>
+<h3>3、指令</h3>
+<ul>
+<li>v-show</li>
+</ul>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref(false)
+    return () =&gt; &lt;input v-show={flag.value} /&gt;
+  }
+})
+</code></pre>
+<ul>
+<li>v-model</li>
+</ul>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref&lt;string&gt;('')
+    return () =&gt; (
+      &lt;&gt;
+        &lt;input v-model={flag.value} /&gt;
+        &lt;p&gt;{flag.value}&lt;/p&gt;
+      &lt;/&gt;
+    )
+  }
+})
+</code></pre>
+<h3>4、插槽slot</h3>
+<pre><code class="language-tsx">const otherComp = (props, { slots }) =&gt; (
+  &lt;&gt;
+    &lt;h1&gt;{ slots.default ? slots.default() : '我是默认插槽' }&lt;/h1&gt;
+    &lt;h2&gt;{ slots.bar?.() }&lt;/h2&gt;
+  &lt;/&gt;
+)
+
+export default defineComponent({
+  setup() {
+    const slots = {
+      bar: () =&gt; &lt;span&gt;bar 插槽内容&lt;/span&gt;
+    }
+    return () =&gt; (
+      &lt;otherComp v-slots={slots}&gt;
+        &lt;div&gt;新添加的默认内容&lt;/div&gt;
+      &lt;/otherComp&gt;
+    )
+  }
+})
+</code></pre>
+<p>或者</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const slots = {
+      default: () =&gt; &lt;div&gt;新添加的默认内容&lt;/div&gt;,
+      bar: () =&gt; &lt;span&gt;bar 插槽内容&lt;/span&gt;
+    }
+    return () =&gt; &lt;otherComp v-slots={slots}&gt;&lt;/otherComp&gt;
+  }
+})
+</code></pre>
+<h3>5、条件渲染</h3>
+<p>使用if/else，三目运算符，不能使用v-if</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref(false)
+    return () =&gt; &lt;div&gt;{ flag.value ? '我是真的' : '我是假的' }&lt;/div&gt;
+  }
+})
+</code></pre>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const flag = ref(false)
+    return () =&gt; {
+      const divInfo = () =&gt; {
+        if (flag.value) {
+          return (
+            &lt;&gt;
+              &lt;p&gt;哈哈&lt;/p&gt;
+              &lt;div&gt;我是真的&lt;/div&gt;
+            &lt;/&gt;
+          )
+        } else {
+          return &lt;div&gt;我是假的&lt;/div&gt;
+        }
+      }
+      return [divInfo()]
+    }
+  }
+})
+</code></pre>
+<h3>6、循环</h3>
+<p>使用map函数</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const list = ['哈喽', '小马', '小羊']
+    return () =&gt; (
+      &lt;&gt;
+        { list.map(i =&gt; &lt;div&gt;{i}&lt;/div&gt;) }
+      &lt;/&gt;
+    )
+  }
+})
+</code></pre>
+<h3>7、事件绑定</h3>
+<p>事件绑定需要在事件名前面加上on前缀，onClick与模板中的@click等价</p>
+<pre><code class="language-tsx">export default defineComponent({
+  setup() {
+    const list = ['哈喽', '小马', '小羊']
+    const fn = () =&gt; {
+      console.log('我被点击了')
+    }
+    return () =&gt; (
+      &lt;&gt;
+        { list.map(i =&gt; &lt;div onClick={() =&gt; fn()}&gt;{i}&lt;/div&gt;) }
+      &lt;/&gt;
+    )
+  }
+})
+</code></pre>
+<h3>8、传值prop和emit</h3>
+<p>App.tsx</p>
+<pre><code class="language-tsx">import { defineComponent, ref } from 'vue'
+
+interface Props {
+  name?: string
+}
+export default defineComponent({
+  props: {
+    name: String
+  },
+  emits: ['change-param'],
+  setup(props: Props, { emit }) {
+    const fn = ((para: string) =&gt; {
+      console.log('触发了', para)
+      emit('change-param', para)
+    })
+    return () =&gt; (
+      &lt;&gt;
+        &lt;div&gt;props: {props?.name}&lt;/div&gt;
+      &lt;/&gt;
+    )
+  }
+})
+</code></pre>
+<p>App.vue</p>
+<pre><code class="language-tsx">&lt;script setup lang=&quot;ts&quot;&gt;
+import { ref } from &quot;vue&quot;
+import TestJsx from './App'
+
+const getParam = (v: string) =&gt; {
+  console.log(&quot;父组件收到了子组件的数据&quot;, v)
+}
+&lt;/script&gt;
+&lt;template&gt;
+    &lt;test-jsx name=&quot;哈喽&quot; @change-param=&quot;getParam&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+<h2>Vue3自动引入插件</h2>
+<p>插件：unplugin-auto-import/vite<br /><br>
+vite.config.ts配置</p>
+<pre><code class="language-ts">import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import AutoImport from 'unplugin-auto-import/vite'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(), vueJsx(), AutoImport({
+    imports: ['vue'],
+    dts: 'src/auto-import.d.ts'
+  })]
+  }
+})
+</code></pre>
+<p>配置完成之后，使用ref，reactive等无须import 导入，可以直接使用。</p>
+<h2>Vue3中函数式编程：h函数</h2>
+<p>vue的编写风格主要有template模板方式、JSX/TSX方式、还有函数式编程，用到的是 h 函数。<br /><br>
+h函数接收三个参数</p>
+<ul>
+<li>type：元素的类型</li>
+<li>propsOrChildren：数据对象，主要表示props，attrs，dom props，class，style，onClick等</li>
+<li>children：子节点<br /><br>
+h函数有多种组合方式</li>
+</ul>
+<pre><code class="language-tsx">// 除了类型必填以外，其他的参数都是可选的
+h('div')
+h('div', { id: 'foo' })
+
+// attribute 和 property 都能在 prop 中书写
+// Vue 会自动将它们分配到正确的位置
+h('div', { class: 'bar', innerHTML: 'hello' })
+
+// props modifiers such as .prop and .attr can be added
+// with '.' and `^' prefixes respectively
+h('div', { '.name': 'some-name', '^width': '100' })
+
+// 类与样式可以像在模板中一样
+// 用数组或对象的形式书写
+h('div', { class: [foo, { bar }], style: { color: 'red' } })
+
+// 事件监听器应以 onXxx 的形式书写
+h('div', { onClick: () =&gt; {} })
+
+// children 可以是一个字符串
+h('div', { id: 'foo' }, 'hello')
+
+// 没有 props 时可以省略不写
+h('div', 'hello')
+h('div', [h('span', 'hello')])
+
+// children 数组可以同时包含 vnodes 与字符串
+h('div', ['hello', h('span', 'hello')])
+</code></pre>
+<p>示例：包含props、emit传递参数，插槽的使用方法</p>
+<pre><code class="language-tsx">&lt;template&gt;
+  &lt;div&gt;
+    &lt;Btn title=&quot;我是传递过来的标题&quot; @on-emit-click=&quot;getBtn&quot;&gt;
+      &lt;template #default&gt;default&lt;/template&gt;
+      &lt;template #footer&gt;footer&lt;/template&gt;
+    &lt;/Btn&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+import { h } from 'vue'
+type Prop = {
+  title: string
+}
+
+const Btn = (props: Prop, ctx: any) =&gt; {
+  return h(
+    'div',
+    {
+      style: {
+        background: 'red',
+        width: '200px',
+        height: '100px',
+        display: 'flex',
+        'flex-direction': 'column',
+        'align-items': 'center',
+        'justify-content': 'center',
+      },
+      onClick: () =&gt; {
+        ctx.emit('on-emit-click', '哈哈哈哈')
+      }
+    },
+    [
+      props?.title,
+      h(
+        'div',
+        {
+          style: {
+            color: 'blue'
+          },
+        },
+        ctx.slots.default(),
+      ),
+      h(
+        'div',
+        {
+          style: {
+            color: 'green'
+          },
+        },
+        ctx.slots.footer(),
+      ),
+    ],
+  )
+}
+const getBtn = (str: string) =&gt; {
+  console.log(str)
+}
+&lt;/script&gt;
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue3的EventBus库(mitt)与mitt的使用方式]]></title>
+            <link>https://clark-cui.top/posts/Vue3的EventBus库(mitt)与mitt的使用方式.html</link>
+            <guid>https://clark-cui.top/posts/Vue3的EventBus库(mitt)与mitt的使用方式.html</guid>
+            <pubDate>Thu, 02 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue3的EventBus库(mitt)与mitt的使用方式]]></description>
+            <content:encoded><![CDATA[<p>1、 在vue3中$on, $once, $off实例方法已经被移除，组件实例不再实现事件触发接口，所以我们熟悉的EventBus无法再使用了，但是，不要慌，有一个新的插件库（Mitt）（原理采用了发布订阅者模式实现）<br /><br>
+①安装</p>
+<pre><code class="language-vue"> npm install mitt -S
+</code></pre>
+<p>②main.ts初始化<br /><br>
+事件全局总线，vue3的入口文件main,ts中挂载全局属性：</p>
+<pre><code class="language-vue">import { createApp } from 'vue'
+import App from './App.vue'
+import router from &quot;./router&quot;
+import mitt from 'mitt'
+
+//创建Mitt实例
+const Mit = mitt();
+//Typescript 注册
+//由于必须要扩展ComponentCustomProperties类型才能获取类型提示
+declare module 'vue'{
+    export interface ComponentCustomProperties{
+        $Bus:typeof Mit
+    }
+}
+
+const app = createApp(App);
+//vue挂载全局api                                                
+app.config.globalProperties.$Bus = Mit
+// 挂载到 Vue 根实例
+app.use(router)
+    .mount('#app');
+</code></pre>
+<p>父组件home组件引入A、B组件</p>
+<pre><code class="language-vue">&lt;template&gt;
+	&lt;div class=&quot;home_main&quot;&gt;
+		&lt;A&gt;&lt;/A&gt;
+		&lt;B&gt;&lt;/B&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>A组件使用emit传值</p>
+<pre><code class="language-vue">&lt;template&gt;
+    &lt;div class=&quot;a_main&quot;&gt;
+        我是A组件
+        &lt;button @click=&quot;changeEmit&quot;&gt;修改值&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script lang='ts' setup&gt;
+import { getCurrentInstance } from 'vue'
+const instance = getCurrentInstance()
+const changeEmit = () =&gt; {
+    instance?.proxy?.$Bus.emit('on-xin', true);
+    instance?.proxy?.$Bus.emit('on-xin2', true);
+    instance?.proxy?.$Bus.emit('on-xin3', true);
+}
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.a_main {
+    width: 100%;
+    height: 200px;
+    background: red;
+    color: #fff;
+}
+&lt;/style&gt;
+</code></pre>
+<p>B组件使用on接收，也可用off阻止某一组件的值传递，也可以使用all.clear阻止全部emit的传递，如下</p>
+<pre><code class="language-vue">&lt;template&gt;
+    &lt;div class=&quot;b_main&quot;&gt;
+        我是B组件
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script lang='ts' setup&gt;
+import { ref, getCurrentInstance } from 'vue'
+type Cb = () =&gt; void
+const instance = getCurrentInstance()
+let Flag = ref(false)
+
+const Bus = (str: any) =&gt; {
+}
+// *代表所有的事件监听
+instance?.proxy?.$Bus.on('on-xin', Bus)
+instance?.proxy?.$Bus.off('on-xin', Bus)  //清楚on-xin事件的emit
+instance?.proxy?.$Bus.all.clear()  //清除所有的emit
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.b_main {
+    width: 300px;
+    height: 300px;
+    background: blue;
+}
+&lt;/style&gt;
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[CSS图片预加载的几种方式]]></title>
+            <link>https://clark-cui.top/posts/css图片预加载的几种方式.html</link>
+            <guid>https://clark-cui.top/posts/css图片预加载的几种方式.html</guid>
+            <pubDate>Sat, 28 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[CSS图片预加载的几种方式]]></description>
+            <content:encoded><![CDATA[<p><img src="https://clark-cui.top/20230128113108.png" alt=""></p>
+<p>在开发的过程，我们经常会遇到这样的要求，当鼠标hover上去的时候，更改菜单的背景。如果没有进行图片预加载的话，会出现闪烁。那么拥有1px的眼睛的设计师们不会放过你的。为什么会出现这张情况？因为hover的时候，图片才会去加载。</p>
+<p>首先我们要知道一点：如果图片在使用之前就已经请求过了，那么再次使用的时候，就不会再去请求（ps：图片路径一样）。下面讲实现方式</p>
+<h2>1.使用纯的css进行图片预加载</h2>
+<pre><code class="language-js">body:after {
+    content: &quot;&quot;;
+    display: block;
+    position: absolute;
+    background: url(&quot;../image/manage/help/help_item2_01.png?v=201707241359&quot;) no-repeat -10000px -1000px,url(&quot;../image/manage/help/help_item2_02.png?v=201707241359&quot;) no-repeat -10000px -1000px
+    width: 0;
+    height: 0
+}
+</code></pre>
+<p>原理是加载了该图片，但是我们不显示在可视范围内。这种方式极其简单。但是也有一个致命的弱点，图片跟随文档一同加载，有时候我们为了提高文档的加载速度，那么这种方式方式就不适合了。</p>
+<h2>2.使用纯javascript进行图片预加载</h2>
+<pre><code class="language-js">//存放图片路径的数组
+var imgSrcArr = [
+    'imgsrc1',
+    'imgsrc2',
+    'imgsrc3',
+    'imgsrc4'
+];
+
+var imgWrap = [];
+
+function preloadImg(arr) {
+    for(var i =0; i&lt; arr.length ;i++) {
+        imgWrap[i] = new Image();
+        imgWrap[i].src = arr[i];
+    }
+}
+
+preloadImg(imgSrcArr);
+
+//或者延迟的文档加载完毕在加载图片
+
+$(function () {
+    preloadImg(imgSrcArr);
+})
+</code></pre>
+<h2>3.使用css+js方式进行图片预加载</h2>
+<pre><code class="language-js">.preload-img:after{
+    content:&quot;&quot;,
+    background: url(&quot;../image/manage/help/help_item2_01.png?v=201707241359&quot;) no-repeat -10000px -1000px,url(&quot;../image/manage/help/help_item2_02.png?v=201707241359&quot;) no-repeat -10000px -1000px
+}
+/*
+    比如我们写了上面的这样一个类，但是页面中没有用到，我们在文档加载完毕之后，给某个元素添加该类
+*/
+$(function(){
+    $(&quot;#target&quot;).addClass(&quot;preload-img&quot;)
+})
+</code></pre>
+<h2>4.使用ajax方式进行图片预加载</h2>
+<pre><code class="language-js">$(function(){
+    $.get('图片的路径');
+})
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[css控制单行或者多行文本超出显示省略号]]></title>
+            <link>https://clark-cui.top/posts/css控制单行或者多行文本超出显示省略号.html</link>
+            <guid>https://clark-cui.top/posts/css控制单行或者多行文本超出显示省略号.html</guid>
+            <pubDate>Sat, 28 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[css控制单行或者多行文本超出显示省略号]]></description>
+            <content:encoded><![CDATA[<h2>1.单行文本</h2>
+<p>使用text-overflow：ellipsis属性</p>
+<p>text-overflow: clip|ellipsis|string;</p>
+<p>clip：修剪文本。</p>
+<p>ellipsis：显示省略符号来代表被修剪的文本。</p>
+<p>string：使用给定的字符串来代表被修剪的文本。</p>
+<p>示例：<br>
+css:</p>
+<pre><code class="language-js">p{
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow:ellipsis;/* 超出部分显示省略号 */
+  white-space: nowrap;/*规定段落中的文本不进行换行 */
+  width: 250px;/*需要配合宽度来使用*/
+  border: 1px solid red;
+  font-size: 30px;
+}
+</code></pre>
+<p>html:</p>
+<pre><code class="language-js">&lt;p&gt;单行文本超出部分显示省略号我是mdzz&lt;/p&gt;
+</code></pre>
+<p>效果图：<br>
+<img src="https://clark-cui.top/1216172.png" alt=""></p>
+<h2>2.多行文本显示省略号，省略号在段尾</h2>
+<p>方法一：</p>
+<pre><code class="language-js">p{
+　display: -webkit-box;
+　-webkit-box-orient: vertical;
+　-webkit-line-clamp: 3;
+　overflow: hidden;
+　width: 250px;
+　border: 1px solid red;
+　font-size: 30px;
+}
+</code></pre>
+<p>因使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；</p>
+<p>注：<br /><br>
+1、-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：<br /><br>
+2、display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。<br /><br>
+3、-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</p>
+<p>效果图：<br>
+<img src="/1216173.png" alt=""></p>
+<p>方法二：省略号在中间，根据伪类来设置背景遮挡文字<br>
+适用范围：<br /><br>
+该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。<br>
+注：</p>
+<p>1.将height设置为line-height的整数倍，防止超出的文字露出。</p>
+<p>2.给p::after添加渐变背景可避免文字只显示一半。</p>
+<p>3.由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：<code>&lt;span&gt;…&lt;span/&gt;</code>）；兼容ie8需要将::after替换成:after。</p>
+<pre><code class="language-js">p{
+　position: relative;
+　line-height: 20px; //可变
+　max-height: 80px;//可变
+　overflow: hidden;
+　width: 240px;//可变
+　border: 1px solid red;
+}
+p::after{
+　content: &quot;...&quot;;
+　position: absolute;
+　bottom: 0;
+　font-size: 18px;
+　right: 7px; //可变
+　padding-right: 124px;//可变
+　　//兼容性处理
+　background: -webkit-linear-gradient(left, transparent, #fff 0%);
+　background: -o-linear-gradient(right, transparent, #fff 0%);
+　background: -moz-linear-gradient(right, transparent, #fff 0%);
+　background: linear-gradient(to right, transparent, #fff 0%);
+}
+</code></pre>
+<p>效果图：<br>
+<img src="/1216174.png" alt=""></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[js 字符串截取方法]]></title>
+            <link>https://clark-cui.top/posts/js 字符串截取方法.html</link>
+            <guid>https://clark-cui.top/posts/js 字符串截取方法.html</guid>
+            <pubDate>Sat, 28 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[js 字符串截取方法]]></description>
+            <content:encoded><![CDATA[<h2>一、使用 slice() 截取</h2>
+<h3>1，函数说明</h3>
+<p>slice() 方法可通过指定的开始和结束位置，提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<p>语法如下：</p>
+<pre><code class="language-js">string.slice(start, end);
+</code></pre>
+<p>start（必需）：规定从何处开始选取。如果是负数，那么它规定从字符串尾部开始算起的位置。也就是说，-1 指最后一个字符，-2 指倒数第二个字符，以此类推。参数说明：</p>
+<p>end（可选）：规定从何处结束选取，即结束处的字符下标。如果没有指定该参数，那么截取的字符串包含从 start 到结束的所有字符。如果这个参数是负数，那么它规定的是从数组尾部开始算起的字符。</p>
+<h3>2，使用样例</h3>
+<pre><code class="language-js">let str = &quot;0123456789&quot;;
+
+console.log(&quot;原始字符串：&quot;, str);
+
+console.log(&quot;从索引为3的字符起一直到结束：&quot;, str.slice(3));  //3456789
+
+console.log(&quot;从倒数第3个字符起一直到结束：&quot;, str.slice(-3));  //789
+
+console.log(&quot;从开始一直到索引为5的前一个字符：&quot;, str.slice(0,5));  //01234
+
+console.log(&quot;从开始一直到倒数第3个字符的前一个字符：&quot;, str.slice(0,-3));  //0123456
+
+console.log(&quot;从索引为3的字符起到索引为5的前一个字符：&quot;, str.slice(3,5));  //34
+
+console.log(&quot;从索引为3的字符起到倒数第3个字符的前一个字符：&quot;, str.slice(3,-3));  //3456
+</code></pre>
+<h2>二、使用 substring() 截取</h2>
+<h3>1，函数说明</h3>
+<p>（1）substring 方法用于提取字符串中介于两个指定下标之间的字符。<br>
+语法如下：</p>
+<pre><code class="language-js">string.substring(start, stop)
+</code></pre>
+<p>start（必需）：一个非负的整数，规定要提取的子串的第一个字符在 stringObject 中的位置。参数说明：</p>
+<p>stop（可选）：一个非负的整数，比要提取的子串的最后一个字符在 stringObject 中的位置多 1。</p>
+<p>返回值说明：<br>
+该方法返回一个新的字符串，该字符串值包含 stringObject 的一个子字符串，其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。</p>
+<p>（2）注意事项：<br>
+如果 start 与 end 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。<br>
+如果 start 比 end 大，那么该方法在提取子串之前会先交换这两个参数。<br>
+如果 start 或 end 为负数，那么它将被替换为 0。</p>
+<h3>2，使用样例</h3>
+<pre><code class="language-js">let str = &quot;0123456789&quot;;
+
+console.log(&quot;原始字符串：&quot;, str);
+
+console.log(&quot;从索引为3的字符起一直到结束：&quot;, str.substring(3));  //3456789
+
+console.log(&quot;从索引为20的字符起一直到结束：&quot;, str.substring(20));  //
+
+console.log(&quot;从索引为3的字符起到索引为5的前一个字符结束：&quot;, str.substring(3,5));  //34
+
+console.log(&quot;start比end大会自动交换，结果同上：&quot;, str.substring(5,3));  //34
+
+console.log(&quot;从索引为3的字符起到索引为20的前一个字符结束：&quot;, str.substring(3,20));  //3456789
+</code></pre>
+<h2>三、使用 substr() 截取</h2>
+<h3>1，函数说明</h3>
+<p>substr 方法用于返回一个从指定位置开始的指定长度的子字符串。</p>
+<p>语法如下：</p>
+<pre><code class="language-js">stringObject.substr(start, length)；
+</code></pre>
+<p>start（必需）：所需的子字符串的起始位置。字符串中的第一个字符的索引为 0。<br>
+length（可选）：在返回的子字符串中应包括的字符个数。</p>
+<p>（2）注意事项：</p>
+<p>如果 length 为 0 或负数，将返回一个空字符串。<br>
+如果没有指定 length，则子字符串将延续到 stringObject 的最后。<br>
+如果 start 或 length 为负数，那么它将被替换为 0。</p>
+<h3>2，使用样例</h3>
+<pre><code class="language-js">let str = &quot;0123456789&quot;;
+
+console.log(&quot;原始字符串：&quot;, str);
+
+console.log(&quot;从索引为3的字符起一直到结束：&quot;, str.substr(3));  //3456789
+
+console.log(&quot;从索引为20的字符起一直到结束：&quot;, str.substr(20));  //
+
+console.log(&quot;从索引为3的字符起截取长度为5的字符串：&quot;, str.substr(3,5));  //34567
+
+console.log(&quot;从索引为3的字符起截取长度为20的字符串：&quot;, str.substr(3,20));  //3456789
+</code></pre>
+<h2>四、其他常用方法</h2>
+<h3>1，indexOf()</h3>
+<p>返回字符串中匹配子串的第一个字符的下标。</p>
+<pre><code class="language-js">let str = &quot;JavaScript&quot;;
+
+let i1 = str.indexOf(&quot;a&quot;); //1
+
+let i2 = str.indexOf(&quot;S&quot;); //4
+
+let i3 = str.indexOf(&quot;Script&quot;); //4
+
+let i4 = str.indexOf(&quot;k&quot;); //-1
+
+console.log(&quot;原始字符串：&quot;, str);
+
+console.log(&quot;a的索引：&quot;, i1);
+
+console.log(&quot;S的索引：&quot;,i2);
+
+console.log(&quot;Script的索引：&quot;,i3);
+
+console.log(&quot;k的索引：&quot;,i4);
+</code></pre>
+<h3>2，lastIndexOf()</h3>
+<p>该方法返回从右向左出现某个字符或字符串的首个字符索引值（与 indexOf 相反）</p>
+<pre><code class="language-js">let str = &quot;JavaScript&quot;;
+
+let i1 = str.lastIndexOf(&quot;a&quot;); //3
+
+let i2 = str.lastIndexOf(&quot;S&quot;); //4
+
+let i3 = str.lastIndexOf(&quot;Script&quot;); //4
+
+let i4 = str.lastIndexOf(&quot;k&quot;); //-1
+</code></pre>
+<h3>3，split()</h3>
+<p>使用一个指定的分隔符把一个字符串分割存储到数组。</p>
+<pre><code class="language-js">let str = &quot;jpg|bmp|gif|ico|png&quot;;
+
+let arr= str.split(&quot;|&quot;);
+
+console.log(arr);
+</code></pre>
+<h3>4，join()</h3>
+<p>使用一个指定的分隔符将一个数组合并为一个字符串。</p>
+<pre><code class="language-js">let arr= new Array(&quot;jpg&quot;,&quot;bmp&quot;,&quot;gif&quot;,&quot;ico&quot;,&quot;png&quot;);
+
+let str = arr.join(&quot;|&quot;);
+
+console.log(str);
+</code></pre>
+<h3>5，concat()</h3>
+<p>将两个数组连接在一起。</p>
+<pre><code class="language-js">let arr1 = [1, 2, 3];
+
+let arr2 = [4, 5, 6];
+
+let arr3 = arr1.concat(arr2);
+
+console.log(arr3);
+</code></pre>
+<h3>6，charAt()</h3>
+<p>返回指定位置的字符。字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 string.length 之间，该方法将返回一个空字符串。</p>
+<pre><code class="language-js">let str = &quot;abcdefg&quot;;
+
+let char = str.charAt(2);  //c
+
+console.log(char);
+
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[js new Date() 获取时间]]></title>
+            <link>https://clark-cui.top/posts/new Date() 获取时间.html</link>
+            <guid>https://clark-cui.top/posts/new Date() 获取时间.html</guid>
+            <pubDate>Mon, 16 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[js new Date() 获取时间]]></description>
+            <content:encoded><![CDATA[<h2>1、Date付给初始值，并构造new Date()</h2>
+<pre><code class="language-js">Date 对象用于处理日期和时间。
+创建 Date 对象的语法：
+var myDate=new Date()
+Date 对象会自动把当前日期和时间保存为其初始值。
+参数形式有以下５种：
+
+new Date(&quot;month dd,yyyy hh:mm:ss&quot;);
+new Date(&quot;month dd,yyyy&quot;);
+new Date(yyyy,mth,dd,hh,mm,ss);
+new Date(yyyy,mth,dd);
+new Date(ms);
+
+注意最后一种形式，参数表示的是需要创建的时间和GMT时间1970年1月1日之间相差的毫秒数。各种函数的含义如下：
+
+month:用英文表示月份名称，从January到December
+
+mth:用整数表示月份，从（１月）到１１（１２月）
+
+dd:表示一个月中的第几天，从1到31
+
+yyyy:四位数表示的年份
+
+hh:小时数，从0（午夜）到23（晚11点）
+
+mm:分钟数，从0到59的整数
+
+ss:秒数，从0到59的整数
+
+ms:毫秒数，为大于等于0的整数
+</code></pre>
+<h2>2、Date() 返回当日的日期和时间</h2>
+<pre><code class="language-js">getDate() 从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+getDay() 从 Date 对象返回一周中的某一天 (0 ~ 6)。
+getMonth() 从 Date 对象返回月份 (0 ~ 11)。
+getFullYear() 从 Date 对象以四位数字返回年份。
+getYear() 请使用 getFullYear() 方法代替。
+getHours() 返回 Date 对象的小时 (0 ~ 23)。
+getMinutes() 返回 Date 对象的分钟 (0 ~ 59)。
+getSeconds() 返回 Date 对象的秒数 (0 ~ 59)。
+getMilliseconds() 返回 Date 对象的毫秒(0 ~ 999)。
+getTime() 返回 1970 年 1 月 1 日至今的毫秒数。
+getTimezoneOffset() 返回本地时间与格林威治标准时间 (GMT) 的分钟差。
+getUTCDate() 根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。
+getUTCDay() 根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。
+getUTCMonth() 根据世界时从 Date 对象返回月份 (0 ~ 11)。
+getUTCFullYear() 根据世界时从 Date 对象返回四位数的年份。
+getUTCHours() 根据世界时返回 Date 对象的小时 (0 ~ 23)。
+getUTCMinutes() 根据世界时返回 Date 对象的分钟 (0 ~ 59)。
+getUTCSeconds() 根据世界时返回 Date 对象的秒钟 (0 ~ 59)。
+getUTCMilliseconds() 根据世界时返回 Date 对象的毫秒(0 ~ 999)。
+parse() 返回1970年1月1日午夜到指定日期（字符串）的毫秒数。
+setDate() 设置 Date 对象中月的某一天 (1 ~ 31)。
+setMonth() 设置 Date 对象中月份 (0 ~ 11)。
+setFullYear() 设置 Date 对象中的年份（四位数字）。
+setYear() 请使用 setFullYear() 方法代替。
+setHours() 设置 Date 对象中的小时 (0 ~ 23)。
+setMinutes() 设置 Date 对象中的分钟 (0 ~ 59)。
+setSeconds() 设置 Date 对象中的秒钟 (0 ~ 59)。
+setMilliseconds() 设置 Date 对象中的毫秒 (0 ~ 999)。
+setTime() 以毫秒设置 Date 对象。
+setUTCDate() 根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。
+setUTCMonth() 根据世界时设置 Date 对象中的月份 (0 ~ 11)。
+setUTCFullYear() 根据世界时设置 Date 对象中的年份（四位数字）。
+setUTCHours() 根据世界时设置 Date 对象中的小时 (0 ~ 23)。
+setUTCMinutes() 根据世界时设置 Date 对象中的分钟 (0 ~ 59)。
+setUTCSeconds() 根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。
+setUTCMilliseconds() 根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。
+toSource() 返回该对象的源代码。
+toString() 把 Date 对象转换为字符串。
+toTimeString() 把 Date 对象的时间部分转换为字符串。
+toDateString() 把 Date 对象的日期部分转换为字符串。
+toGMTString() 请使用 toUTCString() 方法代替。 1 3
+toUTCString() 根据世界时，把 Date 对象转换为字符串。
+toLocaleString() 根据本地时间格式，把 Date 对象转换为字符串。
+toLocaleTimeString() 根据本地时间格式，把 Date 对象的时间部分转换为字符串。
+toLocaleDateString() 根据本地时间格式，把 Date 对象的日期部分转换为字符串。
+UTC() 根据世界时返回 1997 年 1 月 1 日 到指定日期的毫秒数。
+valueOf() 返回 Date 对象的原始值。
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[vue中如何获取当前路由地址]]></title>
+            <link>https://clark-cui.top/posts/vue中如何获取当前路由地址.html</link>
+            <guid>https://clark-cui.top/posts/vue中如何获取当前路由地址.html</guid>
+            <pubDate>Mon, 16 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[vue中如何获取当前路由地址]]></description>
+            <content:encoded><![CDATA[<h1>一、vue获取当前路由地址</h1>
+<h2>router和$route的区别</h2>
+<ul>
+<li>$router: 路由操作对象，只写。需要对路由进行操作时使用。如路由跳转</li>
+<li>$route: 路由信息对象，只读。获取路由相关信息时使用。如获取当前路由地址</li>
+</ul>
+<h2>获取当前路由地址</h2>
+<pre><code class="language-vue">this.$route.path
+</code></pre>
+<ul>
+<li>原生方法：</li>
+</ul>
+<pre><code class="language-vue">window.location.href
+</code></pre>
+<h2>获取路由参数（query/params传参）</h2>
+<h3>query传参时：</h3>
+<ul>
+<li>路由跳转：</li>
+</ul>
+<pre><code class="language-vue">this.$router.push({ name: 'name', query: { id: '123', data: '456' } })
+</code></pre>
+<ul>
+<li>获取参数：</li>
+</ul>
+<pre><code class="language-vue">this.$route.query
+</code></pre>
+<h3>params传参时：</h3>
+<ul>
+<li>路由跳转：</li>
+</ul>
+<pre><code class="language-vue">this.$router.push({ name: 'name', params: { id: '123', data: '456' } })
+</code></pre>
+<ul>
+<li>获取参数：</li>
+</ul>
+<pre><code class="language-vue">this.$route.params
+</code></pre>
+<hr />
+<h1>二、vue实时获取路由地址</h1>
+<h2>方式一：window.location</h2>
+<ul>
+<li>测试网址：<a href="https://sso-test.digitalblockland.com:8080/offcial/home?id=123&amp;username=xxx">https://sso-test.digitalblockland.com:8080/offcial/home?id=123&amp;username=xxx</a></li>
+</ul>
+<p>1.window.location.href（当前URL）</p>
+<pre><code class="language-vue">结果：https://sso-test.digitalblockland.com:8080/offcial/home?id=123&amp;username=xxx
+</code></pre>
+<p>2.window.location.protocol（协议）</p>
+<pre><code class="language-vue">结果：https
+</code></pre>
+<p>3.window.location.host（域名 + 端口）</p>
+<pre><code class="language-vue">结果：sso-test.digitalblockland.com:8080
+</code></pre>
+<p>4.window.location.hostname（域名）</p>
+<pre><code class="language-vue">结果：sso-test.digitalblockland.com
+</code></pre>
+<p>5.window.location.port（端口）</p>
+<pre><code class="language-vue">结果：8080
+</code></pre>
+<p>6.window.location.pathname（路径部分）</p>
+<pre><code class="language-vue">结果：/offcial/home
+</code></pre>
+<p>7.window.location.search（请求的参数）</p>
+<pre><code class="language-vue">结果：?id=123&amp;username=xxx
+</code></pre>
+<pre><code class="language-vue">let url=&quot;www.baidu.com?a=1&amp;b=2&amp;C=3&quot;;//测试地址
+/*分析：最前面是?或&amp;，紧跟着除 ?&amp;#以外的字符若干，然后再等号，最后再跟着除 ?&amp;#以外的字符，并且要分组捕获到【除?&amp;#以外的字符】*/
+let reg=/[?&amp;]([^?&amp;#]+)=([^?&amp;#]+)/g;
+let param={};
+let ret =  reg.exec(url);
+while(ret){//当ret为null时表示已经匹配到最后了，直接跳出
+  param[ret[1]]=ret[2];
+  ret = reg.exec(url);
+}
+console.log(param)
+</code></pre>
+<p>8.window.location.origin（'?'前边的URL）</p>
+<pre><code class="language-vue">结果：https://sso-test.digitalblockland.com:8080/offcial/home
+</code></pre>
+<p>9.window.location.hash（获取#之后的内容）</p>
+<pre><code class="language-vue">结果：null
+</code></pre>
+<h2>方式二：vue-router</h2>
+<h3>1.this.$route的内容：</h3>
+<p><img src="https://clark-cui.top/router.png" alt=""></p>
+<h4>（1）this.$route.fullPath:</h4>
+<ul>
+<li>完成解析后的 URL，包含查询参数和 hash 的完整路径，即 “端口号/#” 之后的内容。<br>
+<img src="/router1.png" alt=""></li>
+</ul>
+<h4>（2）this.$route.hash</h4>
+<ul>
+<li>当前路由的 hash 值 (带 #) ，如果没有 hash 值，则为空字符串。</li>
+</ul>
+<h4>（3）this.$route.matched</h4>
+<ul>
+<li>官网说明：一个数组，包含当前路由的所有嵌套路径片段的路由记录 。路由记录就是 routes 配置数组中的对象副本 (还有在 children 数组)。<br>
+<img src="/router2.png" alt=""></li>
+</ul>
+<h4>（4）this.$route.meta、<a href="http://this.$route.name">this.$route.name</a></h4>
+<p><img src="/router3.png" alt=""><br>
+<img src="/router4.png" alt=""></p>
+<h4>（5）<a href="http://this.$route.name">this.$route.name</a></h4>
+<ul>
+<li>当前路由的名称，如果有的话。</li>
+</ul>
+<h4>（6）this.$route.params</h4>
+<ul>
+<li>一个 key/value 对象，包含了动态片段和全匹配片段，如果没有路由参数，就是一个空对象。<br>
+<img src="/router5.png" alt=""><br>
+<img src="/router6.png" alt=""></li>
+</ul>
+<h4>（7）this.$route.query</h4>
+<ul>
+<li>一个 key/value 对象，表示 URL 查询参数。如果没有查询参数，则是个空对象。<br>
+<img src="/router7.png" alt=""><br>
+<img src="/router8.png" alt=""></li>
+</ul>
+<h3>2.实时获取route地址并根据地址做处理</h3>
+<pre><code class="language-vue">watch: {
+  $route(val) {
+    //val即是this.$route
+    //根据路由控制其他参数做不同处理
+    if (val.path == &quot;/xinyidai&quot;) {
+      this.isCur = 5;
+    } else if (val.path == &quot;/fiProduct&quot; || val.path == &quot;/fiProductDetail&quot;) {
+      this.isCur = 1;
+    } else if (val.path == &quot;/fiProductBx&quot; ||val.path == &quot;/fiProductBxDetail&quot;) {
+      this.isCur = 2;
+    } else if (val.path == &quot;/stock&quot; || val.path == &quot;/stockDetail&quot;) {
+      this.isCur = 4;
+    } else {
+      this.isCur = &quot;&quot;;
+    }
+  },
+},
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[pm2的介绍和使用]]></title>
+            <link>https://clark-cui.top/posts/pm2的介绍和使用.html</link>
+            <guid>https://clark-cui.top/posts/pm2的介绍和使用.html</guid>
+            <pubDate>Sun, 15 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[pm2的介绍和使用]]></description>
+            <content:encoded><![CDATA[<pre><code class="language-js">安装
+npm install -g pm2
+
+使用
+pm2 start app.js -i 4 
+# 后台运行pm2，启动4个app.js  
+# 也可以把'max' 参数传递给 start    
+# 正确的进程数目依赖于Cpu的核心数目
+常用命令
+ npm install pm2 -g # 命令行安装 pm2
+ pm2 start app.js -i 4 #后台运行pm2，启动4个app.js
+               # 也可以把&quot;max&quot; 参数传递给 start
+               # 正确的进程数目依赖于Cpu的核心数目
+ pm2 start app.js --name my-api # 命名进程
+ pm2 list # 显示所有进程状态
+ pm2 monit # 监视所有进程
+ pm2 logs # 显示所有进程日志
+ pm2 stop all # 停止所有进程
+ pm2 restart all # 重启所有进程
+ pm2 reload all # 0秒停机重载进程 (用于 NETWORKED 进程)
+ pm2 stop 0 # 停止指定的进程
+ pm2 restart 0 # 重启指定的进程
+ pm2 startup # 产生 init 脚本 保持进程活着
+ pm2 web # 运行健壮的 computer API endpoint (http://localhost:9615)
+ pm2 delete 0 # 杀死指定的进程
+ pm2 delete all # 杀死全部进程
+
+运行进程的不同方式
+ pm2 start app.js -i max # 根据有效CPU数目启动最大进程数目
+ pm2 start app.js -i 3 # 启动3个进程
+ pm2 start app.js -x #用fork模式启动 app.js 而不是使用 cluster
+ pm2 start app.js -x -- -a 23 # 用fork模式启动 app.js 并且传递参数 (-a 23)
+ pm2 start app.js --name serverone # 启动一个进程并把它命名为 serverone
+ pm2 stop serverone # 停止 serverone 进程
+ pm2 start app.json # 启动进程, 在 app.json里设置选项
+ pm2 start app.js -i max -- -a 23 #在--之后给 app.js 传递参数
+ pm2 start app.js -i max -e err.log -o out.log # 启动 并 生成一个配置文件
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue中的动态类名（:class）、动态样式(:style)]]></title>
+            <link>https://clark-cui.top/posts/Vue中的动态类名以及动态样式.html</link>
+            <guid>https://clark-cui.top/posts/Vue中的动态类名以及动态样式.html</guid>
+            <pubDate>Sun, 15 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue中的动态类名（:class）、动态样式(:style)]]></description>
+            <content:encoded><![CDATA[<h2>动态类名（:class）的一些用法</h2>
+<p>1、三元表达式判断</p>
+<pre><code class="language-vue">:class=&quot;address.length &gt; 0 ? 'city' : 'city-gray'&quot;
+
+:class=&quot;{ 'is-active': form.avatar == i }&quot;
+
+:class=&quot;[
+      sizeClass ? 'el-warning--' + sizeClass : '',
+      {
+        'is-no-spacing': this.noSpacingClass,
+      },
+    ]&quot;
+ 
+:class=&quot;[flexLeft ? 'expand-left' : 'expand-middle']&quot;
+</code></pre>
+<p>2、单独组件中</p>
+<pre><code class="language-vue">HTML中
+:class=&quot;[`startTheme-${themeConfig.label}`]&quot;
+
+Style中
+.startTheme-green { color: green; }
+.startTheme-red { color: red; }
+</code></pre>
+<h2>动态样式(:style)的一些用法</h2>
+<p>1、基础用法</p>
+<pre><code class="language-vue">:style=&quot;{
+      width: itemWidth + 'px',
+      height: itemHeight + 'px',
+      left: left + 'px',
+      top: top + 'px',
+    }&quot;
+</code></pre>
+<p>2、结合计算属性一起使用</p>
+<pre><code class="language-vue">:style=&quot;{
+      opacity,
+    }&quot;
+
+computed: {
+      opacity() {
+          if (this.loading) return 0.69;
+          return 1;
+      },
+},
+</code></pre>
+<p>3、三元表达式</p>
+<pre><code class="language-vue">:style=&quot;{ 'padding-top': search ? '44px' : '' }&quot;
+
+:style=&quot;$parent.value === id ? activeStyle : {}&quot;
+computed: {
+    activeStyle() {
+      return {
+        color: this.$parent.activeColor,
+      };
+    },
+},
+
+:style=&quot;'background: url(' + require(`./img/bgCheck_${tabCheck === index ? 1 : 0}.png`) +')no-repeat'&quot;
+</code></pre>
+<p>4、动态配置背景颜色、背景图片</p>
+<pre><code class="language-vue">&lt;div
+      class=&quot;main__header&quot;
+      :style=&quot;
+        'background: ' +
+        `${themeConfig.themeColor}` +
+        ' url(' +
+        require(`@/assets/themeCofing/${themeConfig.label}/personalInfo/header_bg.png`) +
+        ')no-repeat center / contain;'
+      &quot;
+&gt;&lt;/div&gt;
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vue实现验证码的60s倒计时]]></title>
+            <link>https://clark-cui.top/posts/Vue实现验证码的60s倒计时.html</link>
+            <guid>https://clark-cui.top/posts/Vue实现验证码的60s倒计时.html</guid>
+            <pubDate>Sun, 15 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vue实现验证码的60s倒计时]]></description>
+            <content:encoded><![CDATA[<p>:::demo</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-button
+      v-if=&quot;show&quot;
+      type=&quot;danger&quot;
+      style=&quot;background-color: #de8080;border-color: #de8080&quot;
+      @click=&quot;getPhoneCode&quot;
+      &gt;获取验证码&lt;/el-button
+    &gt;
+    &lt;span v-if=&quot;!show&quot; style=&quot;color: #707070;&quot;&gt;{{ count }}s后重新获取&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      show: true,
+      count: &quot;&quot;,
+      timer: null,
+    };
+  },
+  methods: {
+    getPhoneCode() {
+      let TIME_COUNT = 60;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.show = false;
+        this.timer = setInterval(() =&gt; {
+          if (this.count &gt; 0 &amp;&amp; this.count &lt;= TIME_COUNT) {
+            this.count--;
+          } else {
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, 1000);
+      }
+    },
+  },
+};
+&lt;/script&gt;
+</code></pre>
+<p>:::</p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[nuxt发布部署]]></title>
+            <link>https://clark-cui.top/posts/nuxt发布部署.html</link>
+            <guid>https://clark-cui.top/posts/nuxt发布部署.html</guid>
+            <pubDate>Sat, 14 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[nuxt发布部署]]></description>
+            <content:encoded><![CDATA[<p>nuxt.js 提供三种部署方式，服务端渲染部署，静态应用部署，单页面应用部署。</p>
+<p>部署前远程服务器需要安装 node，pm2，nginx</p>
+<h2>服务端渲染部署<hr></h2>
+<p>nuxt.config.js 配置</p>
+<pre><code class="language-js">target: 'server', // 服务端渲染需要将target设置为server 默认是server
+</code></pre>
+<ul>
+<li>首先执行 build 打包</li>
+</ul>
+<pre><code class="language-js">npm run build
+</code></pre>
+<ul>
+<li>将&quot;.nuxt(隐藏项目)，static，nuxt.config.js, package.json&quot;这四个文件放在服务器中</li>
+</ul>
+<pre><code class="language-js">npm run install, // 在服务器项目目录下执行安装依赖
+npm run start, // 可以执行测试一下项目是否能正常启动
+// 注意这边不要使用 npm run dev（开发模式）
+</code></pre>
+<p>如果测试没有问题就可以使用 pm2 启动项目</p>
+<ul>
+<li>在项目根目录使用 pm2 启动项目</li>
+</ul>
+<pre><code class="language-js">pm2 start npm --name &quot;project name&quot; -- run start
+</code></pre>
+<p>启动起来之后执行 pm2 list 可以查看到正在守护的 pm2 进程。</p>
+<h2>静态应用部署<hr></h2>
+<p>nuxt.js 可以依据路由配置将应用静态化，使得我们可以将应用部署到任何一个服务器静态站点。</p>
+<p>nuxt.config.js 配置</p>
+<pre><code class="language-js">target: 'static',
+</code></pre>
+<ul>
+<li>打包生成 dist 文件</li>
+</ul>
+<pre><code class="language-js">npm run generate
+</code></pre>
+<p>最后将生成的 dist 文件放到服务器中</p>
+<h2>单页面应用程序部署（SPA）<hr></h2>
+<p>nuxt generate 在 build、generate 时间内仍然需要 SSR 引擎，同时具有预渲染所有页面的优势，并具有较高的 SEO 优化和页面加载能力。内容在构建时生成。</p>
+<ul>
+<li>将 nuxt.config.js 中的 mode 更改为 spa</li>
+<li>运行 npm run build</li>
+<li>将生成的 dist 文件夹部署到服务器</li>
+</ul>
+<h2>nginx 配置<hr></h2>
+<pre><code class="language-js">upstream test {
+  server 0.0.0.0:3000; // 你的服务地址
+  keepalive 64;
+}
+
+server {
+  listen 80;
+  server_name baidu.com; //你的域名
+  location / {
+    proxy_pass http://test;
+  }
+}
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[React 简单优化]]></title>
+            <link>https://clark-cui.top/posts/react优化.html</link>
+            <guid>https://clark-cui.top/posts/react优化.html</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[React]]></description>
+            <content:encoded><![CDATA[<h3>优化的原因</h3>
+<p>react 里的一个基本常识是 re-render：当一个组件里的某个状态改变的时候，他会重新渲染，也就是重新执行所有组件代码，包括它的子组件。</p>
+<p>所以会带来很多不必要的重新渲染。</p>
+<h3>useMemo</h3>
+<p>useMemo 的基本理念是，它允许我们在渲染之间 &quot;记住 &quot;一个计算值</p>
+<h4>使用的场景举例</h4>
+<pre><code class="language-tsx">function App() {
+  const [selectedNum, setSelectedNum] = React.useState(100);
+  const time = useTime();
+
+  const allPrimes = React.useMemo(() =&gt; {
+    const result = [];
+
+    for (let counter = 2; counter &lt; selectedNum; counter++) {
+      if (isPrime(counter)) {
+        result.push(counter);
+      }
+    }
+
+    return result;
+  }, [selectedNum]);
+
+   return (
+    &lt;-省略dom-&gt;
+   )
+</code></pre>
+<p>这里 App 组件里有一个状态 selectedNum,还有一个自定义 hook 导出的状态 time。假如不使用 useMemo 包裹 allPrimes，那么每当 time 变化的时候，就会重新执行 allPrimses 里面的代码，造成浪费；然而我们的 allPrimes 其实只跟 selectedNum 相关，所以我们这里用 useMemo 缓存函数包裹后，里面的代码就只会在 selectedNum 变化时执行，而不受 App 组件的 re-render 影响。</p>
+<p>当然，这里也可以有其他的写法，我们可以把 allPrimes 和 selectedNum 包括它的 dom 合并成一个子组件，time 和它的 dom 也合并成一个子组件</p>
+<pre><code class="language-tsx">function App(){
+
+  return(
+  	&lt;Time /&gt;
+    &lt;AllPrimes /&gt;
+  )
+}
+</code></pre>
+<p>这样，他们的状态隔离开，也可以实现当 time 里面的状态改变的时候，不会影响别的代码去 re-render。</p>
+<p>但是，有时候，我们反而是需要把状态放到外部组件的，因为可能有别的组件也同样依赖这个状态。</p>
+<pre><code class="language-tsx">function App(){
+  const time = useTime();
+  return(
+  	&lt;Time time={time} /&gt;
+    &lt;AllPrimes /&gt;
+  )
+}
+</code></pre>
+<p>这样的话，当 App 组件的 time 状态变化的时候，其实同样会使 Time 组件和 AllPrimes 组件 re-render。这个时候，就可以使用 React.memo 来优化</p>
+<pre><code class="language-tsx">const PureAllPrimes = React.memo(AllPrimes);
+function App(){
+  const time = useTime();
+  return(
+  	&lt;Time time={time} /&gt;
+    &lt;PureAllPrimes /&gt;
+  )
+}
+</code></pre>
+<p>React.memo 可以把一个组件变成 pure component，pure component 只有在 props 变化的时候，才会 re-render；</p>
+<p>当然，也可以在 AllPrimes 组件里，导出的时候去使用 React.memo</p>
+<pre><code class="language-tsx">export default React.memo(AllPrimes);
+</code></pre>
+<p>我们来举另外一个例子</p>
+<p>Boxes 是一个 pure component,只有 boxes 变化的时候，才会 re-render;</p>
+<pre><code class="language-tsx">function Boxes({ boxes }) {
+  return (
+    &lt;div className=&quot;boxes-wrapper&quot;&gt;
+      {boxes.map((boxStyles, index) =&gt; (
+        &lt;div key={index} className=&quot;box&quot; style={boxStyles} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+export default React.memo(Boxes);
+</code></pre>
+<p>App 组件里引用了 Boxes,并声明常量 boxes 传入 Boxes 组件里</p>
+<pre><code class="language-tsx">import Boxes from './Boxes';
+
+function App() {
+  const [name, setName] = React.useState('');
+  const [boxWidth, setBoxWidth] = React.useState(1);
+  const boxes = [
+    { flex: boxWidth, background: 'hsl(345deg 100% 50%)' },
+    { flex: 3, background: 'hsl(260deg 100% 40%)' },
+    { flex: 1, background: 'hsl(50deg 100% 60%)' },
+  ];
+
+  return (
+    &lt;&gt;
+      &lt;Boxes boxes={boxes} /&gt;
+      &lt;-省略dom-&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+<p>当状态 name 变化的时候，我们期望只是 re-render App 组件，Boxes 组件不 re-render，然而 Boxes 组件仍然 re-render 了。这是因为，App 组件 re-render 的时候，重新生成了 boxes 变量，尽管是同样的值，但不是一个引用，所以导致了 Boxes 组件的 re-render</p>
+<p>要解决这个问题，只需要使用 useMemo 包裹一下即可</p>
+<pre><code class="language-tsx">const boxes = React.useMemo(() =&gt; {
+  return [
+    { flex: boxWidth, background: &quot;hsl(345deg 100% 50%)&quot; },
+    { flex: 3, background: &quot;hsl(260deg 100% 40%)&quot; },
+    { flex: 1, background: &quot;hsl(50deg 100% 60%)&quot; },
+  ];
+}, [boxWidth]);
+</code></pre>
+<h3>UseCallback</h3>
+<p>它跟 useMemo 是一样的，都是缓存函数，但是他缓存的不是值，而是函数；</p>
+<h4>使用场景举例</h4>
+<p>MegaBoost 是一个 pure component,接受一个 callback 回调函数，只有当 callback 变化的时候才会 re-render</p>
+<pre><code class="language-tsx">function MegaBoost({ handleClick }) {
+  console.log(&quot;Render MegaBoost&quot;);
+
+  return (
+    &lt;button className=&quot;mega-boost-button&quot; onClick={handleClick}&gt;
+      MEGA BOOST!
+    &lt;/button&gt;
+  );
+}
+
+export default React.memo(MegaBoost);
+</code></pre>
+<p>App 组件里引用了 MegaBoost</p>
+<pre><code class="language-tsx">function App() {
+  const [count, setCount] = React.useState(0);
+  function handleMegaBoost() {
+    setCount((currentValue) =&gt; currentValue + 1234);
+  }
+
+  return (
+    &lt;&gt;
+      Count: {count}
+      &lt;button
+        onClick={() =&gt; {
+          setCount(count + 1);
+        }}
+      &gt;
+        Click me!
+      &lt;/button&gt;
+      &lt;MegaBoost handleClick={handleMegaBoost} /&gt;
+    &lt;/&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p>App 里声明了一个状态 count，一个函数 handleMegaBoost 并传入 MegaBoost 组件。</p>
+<p>当状态 count 变化的时候，会触发 App 组件的 re-render，并且重新生成一个新的 handleMegaBoost 传入 MegaBoost 组件，导致 MegaBoost 组件的 re-render。</p>
+<p>怎么解决这个问题呢？很简单，使用缓存函数即可</p>
+<pre><code class="language-tsx">const handleMegaBoost = React.useMemo(() =&gt; {
+  return function () {
+    setCount((currentValue) =&gt; currentValue + 1234);
+  };
+}, []);
+</code></pre>
+<p>但是，一般我们更倾向于使用 useCallback</p>
+<pre><code class="language-tsx">const handleMegaBoost = React.useCallback(() =&gt; {
+  setCount((currentValue) =&gt; currentValue + 1234);
+}, []);
+</code></pre>
+<h3>总结</h3>
+<ol>
+<li>组件里一些”经过复杂的逻辑计算而得到某个值“需要使用 Usememo 包裹，保证组件在 re-render 的时候不去重复计算</li>
+<li>父子组件的场景，子组件尽量用 React.memo 包裹成 pure component，避免父组件的 re-render 导致子组件跟着一起 re-render</li>
+<li>父子组件的场景，父组件声明变量传入子组件的时候，尽量用 useMemo 包裹，避免父组件 re-render 导致重新生成变量，而进一步导致子组件的 re-render</li>
+<li>父子组件的场景，副组件声明 callback 传入子组件的时候，尽量使用 useCallback 包裹，避免父组件 re-render 导致重新生成 callback，而进一步导致子组件的 re-render</li>
+</ol>
+<h3>引用链接</h3>
+<p><a href="https://www.joshwcomeau.com/react/usememo-and-usecallback/#use-case-2-preserved-references">引用链接</a></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[Cosmos 详解]]></title>
+            <link>https://clark-cui.top/posts/Cosmos详解.html</link>
+            <guid>https://clark-cui.top/posts/Cosmos详解.html</guid>
+            <pubDate>Tue, 05 Jul 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[cosmos]]></description>
+            <content:encoded><![CDATA[<h2>区块链现阶段的问题</h2>
+<blockquote>
+<p>本文内容主要来自《区块链架构与实现：Cosmos 详解》</p>
+</blockquote>
+<h3>开发周期长、技术门槛高</h3>
+<p>比特币网络面临这样的问题，以太坊的出现解决了这一类问题，主要是用 evm 虚拟机和智能合约开发 dapp 的形式来实现去中心化应用</p>
+<h3>资源消耗大、交易体验差</h3>
+<p>比特币和以太坊都面临这样的问题，主要是工作量证明（pow）、中本聪共识协议造成的。</p>
+<p>解决办法：可以用权益证明(pos)来替代 pow，用拜占庭容错共识协议(bft)或者实用拜占庭容错（practical Byzantine fault tolerance，PBFT）共识协议来代替中本聪共识协议。</p>
+<h3>链上扩容难与跨链通信难</h3>
+<p>比如 eth 链上部署了大量的 dapp 应用，都在争抢有限的计算资源。bch 通过增大每个区块的容量来提高链上交易处理速度的方式仅能带来有限的速度提高，eth2.0 的分片来实现链上交易并行处理的方式开发难度大，进展缓慢。所以构建多条链，并且多链通信是一种不错的解决方式。</p>
+<p>跨链通信的 3 种实现机制：散列锁、公证人和中继</p>
+<h2>Cosmos 的解决方案</h2>
+<p>为每一个区块链应用单独构建一条区块链，使用 IBC 协议来连接所有的区块链，通过 Tendermint Core、Cosmos-SDK 提供了区块链应用的开发框架，自动继承 Tendermint 共识协议以及 PoS 机制</p>
+<h3>Cosmos Hub</h3>
+<p>是第一个基于 Cosmos 构建的区块链，链上资产是 ATOM</p>
+<h3>Tendermint Core</h3>
+<p>将区块链系统自下而上拆解为 3 层：对等网络通信层、共识协议层以及上层应用层。</p>
+<ol>
+<li>
+<p>对等网络通信层：对等网络通信，确保交易、区块、共识协议的消息能够快速地在整个网络内广播。</p>
+</li>
+<li>
+<p>共识协议层：构建新的区块，并通过共识协议确保全网就区块内容（交易、上层应用状态等）达成共识。</p>
+</li>
+<li>
+<p>上层应用层：根据共识协议层构建的区块，通过 ABCI 与上层应用交互，执行区块中的交易并完成上层应用的状态更新</p>
+</li>
+</ol>
+<blockquote>
+<p>Tendermint Core 中提供了对等网络通信层与共识协议层的实现，并抽象出区块链应用接口（application blockchain interface，ABCI）来完成共识协议层与上层应用层的互动。</p>
+</blockquote>
+<p>使用的共识协议是 Tendermint 共识协议（pbft 共识协议改进而来）</p>
+<h3>Cosmos-SDK</h3>
+<p>Tendermint 团队构建了 Cosmos-SDK，实现了区块链场景中一系列的通用功能模块</p>
+<ul>
+<li>基础功能：账户管理与交易处理。</li>
+<li>auth 模块管理系统中的所有账户。</li>
+<li>bank 模块管理链上资产的转移。</li>
+<li>辅助功能：创世区块管理、链上状态一致性检查等。</li>
+<li>genutil 模块管理链的创世区块。</li>
+<li>supply 模块负责链上资产总量的管理。</li>
+<li>crisis 模块负责所有模块的不变量检查的管理。</li>
+<li>params 模块负责所有模块的参数管理。</li>
+<li>链上治理：基于提案的链上治理与网络升级。</li>
+<li>gov 模块负责链上治理机制。</li>
+<li>upgrade 模块负责链的升级。</li>
+<li>PoS：链上资产抵押、链上惩罚和奖励。</li>
+<li>staking 模块管理链上资产抵押。</li>
+<li>slashing 模块负责对验证者的被动作恶行为进行惩罚。</li>
+<li>evidence 模块负责对验证者的主动作恶行为进行惩罚。</li>
+<li>mint 模块负责链上资产的铸造。</li>
+<li>distribution 模块管理区块奖励的分发。</li>
+<li>IBC 协议：基于中继机制的跨链协议。</li>
+<li>ibc/core 模块负责跨链通信功能</li>
+</ul>
+<h3>基于 Tendermint Core 和 Cosmos-SDK 构建的区块链系统</h3>
+<p><img src="../public/WeChatf903a2cdf12631278f330b086b4b2fd8.png" alt=""></p>
+<h3>IBC 协议</h3>
+<p>IBC 协议是为了跨链而诞生的，是基于中继机制而实现的协议，原理是任意两个希望跨链通信的区块链可以依赖密码学证明技术向对方链证明自身链上发生了特定的事件。两条链之间的网络通信通过中继者（relayer）完成。</p>
+<p><img src="../public/WeChatd288ba57261eae3fef086b7f0abcff78.png" alt=""></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[智能合约开发]]></title>
+            <link>https://clark-cui.top/posts/智能合约开发.html</link>
+            <guid>https://clark-cui.top/posts/智能合约开发.html</guid>
+            <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[智能合约]]></description>
+            <content:encoded><![CDATA[<h2>代码地址</h2>
+<p><a href="https://github.com/xilibi2003/contract-training-code">dlsq</a></p>
+<h2>以太坊客户端</h2>
+<h3>EVM</h3>
+<p>智能合约的运行环境，是一个虚拟机</p>
+<h3>以太坊客户端</h3>
+<ol>
+<li>定义：也就是 EVM 的载体，也就是区块链网络中的节点的程序，只要符合网络规范，任何语言都可以实现客户端</li>
+<li>常见的客户端：Geth(Go 实现)、OpenEthereum(Rust 实现)，通过 RPC 提供服务</li>
+</ol>
+<h2>账户</h2>
+<p>本质都是一个 20 个字节表示的地址</p>
+<ol>
+<li>
+<p>外部账户（EOA）：由私钥控制（比如用户的地址）</p>
+</li>
+<li>
+<p>合约账户：代码控制（比如合约代码的部署地址）</p>
+</li>
+</ol>
+<blockquote>
+<p>注意：交易只能从外部账号发出，合约只能被动执行。合约之间的交互称为消息，所有的 gas 都由外部账号支付</p>
+</blockquote>
+<h2>Gas</h2>
+<p>GAS 是一个工作量单位，复杂度越大，所需 gas 越多。费用=gas 数量*gas 单价（以太币计价 gwei）</p>
+<h3>单位</h3>
+<ul>
+<li>最小单位：Wei</li>
+<li>10^9 Wei = 1 Gwei</li>
+<li>10^12 Wei = 1 Szabo</li>
+<li>10^15 Wei = 1 Finney</li>
+<li>10^18 Wei = 1 Ether</li>
+</ul>
+<h2>网络</h2>
+<ol>
+<li><a href="https://cn.etherscan.com/">主网（价值网络）</a></li>
+<li><a href="https://goerli.etherscan.io/">测试网</a></li>
+<li>开发模拟网（本地环境，一般就是借助工具起虚拟机）</li>
+</ol>
+<h2>合约的编译、部署、测试</h2>
+<h3>1. Remix</h3>
+<p><a href="https://remix.ethereum.org/">链接</a></p>
+<p>在contracts里添加Counter.sol</p>
+<pre><code class="language-solidity">// SPDX-License-Identifier:  MIT
+pragma solidity ^0.8.0;
+
+contract Counter{
+    uint public counter;
+    constructor(){
+        counter = 0;
+
+    }
+    function count() public{
+        counter+=1;
+    }
+}
+</code></pre>
+<p>编辑器左侧面板有文件夹区域、搜索区域、编译区域、部署区域。</p>
+<p>编译区域可选编译器版本。</p>
+<p>部署区域可选部署链，成功后会显示部署地址。部署合约也是一笔交易，需要在钱包确认，也需要gas费。部署成功后会显示交互面板，橙色是触发交易，蓝色仅读取。点击橙色触发交易，需要钱包确认，需要gas费。点击蓝色读就不需要。</p>
+<p>实际操作：environment 选择 injected web3，这里连接 metamusk 钱包，钱包啥网络，就是啥网络。推荐用 goerli（eth 测试网）,去<a href="https://goerlifaucet.com/">goerli faucet</a>申请一点测试币即可。部署前会连接钱包，然后就是用账号部署上去,部署完后可以去<a href="https://goerli.etherscan.io/">测试链查状态</a>。</p>
+<p>部署成功后，点两次橙色触发交易，再点蓝色可以读到此时counter值的状态，控制台打印：</p>
+<pre><code class="language-shell">{
+	&quot;0&quot;: &quot;uint256: 2&quot;
+}
+</code></pre>
+<blockquote>
+<p>注意 remix 中的 environment 如果是默认的，那就是虚拟网络，在区块链浏览器是查不到的，而且不需要钱包验证，也不需要gas费</p>
+</blockquote>
+<h3>2. Truffle</h3>
+<p>Truffle:编译、部署、测试合约的一整套开发工具</p>
+<p>ganache是开发区块链，提供本地模拟的链上环境</p>
+<p><a href="https://trufflesuite.com/docs/truffle/">官方文档</a></p>
+<p><a href="https://learnblockchain.cn/docs/truffle/">中文文档</a></p>
+<p><a href="https://github.com/clark-cui/truffle-demo">我的代码</a></p>
+<pre><code class="language-shell">Truffle 安装  npm install -g truffle
+创建工程 truffle init或者truffle unbox metacoin(我用的第二个，相当于使用metacoin这个模版，注意需要手动mkdir一个folder，再在里面执行创建，注意配置proxy)
+</code></pre>
+<p>truffle工程包含</p>
+<ul>
+<li>contracts:智能合约目录</li>
+<li>migrations:迁移文件，用来指示如何部署智能合约</li>
+<li>test:智能合约测试用例文件夹</li>
+<li>truffle-config.js:配置文件，配置truffle连接的网络及编译选项</li>
+<li>build:编译结果目录</li>
+</ul>
+<p>改造下folder</p>
+<ol>
+<li>
+<p>删除contracts、migrations、test下的文件</p>
+</li>
+<li>
+<p>contracts里添加Counter.sol</p>
+<pre><code class="language-solidity">// SPDX-License-Identifier:  MIT
+pragma solidity ^0.8.0;
+
+contract Counter{
+    uint public counter;
+    constructor(){
+        counter = 0;
+
+    }
+    function count() public{
+        counter+=1;
+    }
+}
+</code></pre>
+</li>
+</ol>
+<h4>合约编译</h4>
+<pre><code class="language-shell">//使用命令
+truffle compile
+</code></pre>
+<p>在那之前需要配置truffle-config.js，不配置就是默认的0.5.16版本</p>
+<pre><code class="language-js">module.exports={
+  compilers:{
+    solc:{
+      version:&quot;0.8.9&quot;
+    }
+  }
+}
+</code></pre>
+<p>编译完成会输出在build目录,同时也会在命令行输出编译使用的编译器</p>
+<pre><code class="language-shell">&gt; Compiled successfully using:
+   - solc: 0.8.9+commit.e5eed63a.Emscripten.clang
+</code></pre>
+<p>编译结果是json（与合约一一对应），里面abi是和前端交互的，bytecode就是最后部署在链上的东西</p>
+<h4>接下来是合约的部署</h4>
+<pre><code class="language-shell">//使用命令
+truffle migrate
+truffle migrate --network networkname //可以在后面加network参数和network名字，部署到指定network
+</code></pre>
+<p>在那之前，需要先写好配置文件</p>
+<ol>
+<li>
+<p>编写部署脚本</p>
+<p>migrations里添加1_counter.js</p>
+<pre><code class="language-js">const Counter = artifacts.require(&quot;Counter&quot;);
+
+module.exports = function (deployer) {
+  deployer.deploy(Counter);
+};
+</code></pre>
+</li>
+<li>
+<p>部署到本地节点（我没有搞）</p>
+<ol>
+<li>
+<p>先启动一个服务模拟链上环境<code>ganache-cli -p 7545</code>(ganache是开发区块链，提供本地模拟的链上环境)</p>
+</li>
+<li>
+<p>然后添加dev的network</p>
+<pre><code class="language-js">//truffle-config.js development网络配置
+
+module.exports={
+  networks:{
+    development:{
+      host:&quot;127.0.0.1&quot;,
+      port:7545,
+   		network_id:&quot;*&quot;
+    }
+  }
+}
+</code></pre>
+</li>
+<li>
+<p><code>truffle migrate — network development</code>部署，本地部署，不需要验证和gas费</p>
+</li>
+</ol>
+</li>
+<li>
+<p>部署到链上</p>
+<ol>
+<li>
+<p>需要部署到链上的节点，所以先去<a href="https://infura.io/">infura.io</a>创建一个project，然后copy project id（选择endpoints是goerli）</p>
+</li>
+<li>
+<p>当前目录新建两个隐藏文件，.api_key和.mnemonic，.gitignore要添加这两项，分别存储上一步的id和你的钱包账户助记词（主要为了防止外泄）</p>
+</li>
+<li>
+<p>初始化npm ，添加truffle-hdwallet-provider包</p>
+<pre><code class="language-shell">npm init
+npm i truffle-hdwallet-provider -s
+.gitignore 添加node_modules
+</code></pre>
+</li>
+<li>
+<p>config.js里的network里添加新的network goerli</p>
+<pre><code class="language-js">const HDWalletProvider = require(&quot;truffle-hdwallet-provider&quot;);
+
+const fs = require('fs');
+const api_key = fs.readFileSync('.api_key').toString().trim();
+const mnemonic = fs.readFileSync('.mnemonic').toString().trim();
+module.exports = {
+  networks: {
+    goerli: {
+      provider: () =&gt; {
+        return new HDWalletProvider(mnemonic, 'https://goerli.infura.io/v3/' + api_key)
+      },
+      network_id: '5',
+      gas: 4465030,
+      gasPrice: 10000000000,
+    },
+  }
+};
+</code></pre>
+</li>
+<li>
+<p>执行<code>truffle migrate — network goerli</code>部署到goerli，这里会消耗gas费，但没有metamusk弹窗确认的过程，因为我输入了助记词，他直接在钱包扣款了</p>
+<pre><code class="language-shell">//命令行输出
+Compiling your contracts...
+===========================
+&gt; Everything is up to date, there is nothing to compile.
+
+
+Migrations dry-run (simulation)
+===============================
+&gt; Network name:    'goerli-fork'
+&gt; Network id:      5
+&gt; Block gas limit: 30000000 (0x1c9c380)
+
+
+1_counter.js
+============
+
+   Deploying 'Counter'
+   -------------------
+   &gt; block number:        6818292
+   &gt; block timestamp:     1651505825
+   &gt; account:             0x736D76f4C2d4b4CCced0CCA92d3dF0F0e456F35D
+   &gt; balance:             0.04813429249775099
+   &gt; gas used:            135269 (0x21065)
+   &gt; gas price:           10 gwei
+   &gt; value sent:          0 ETH
+   &gt; total cost:          0.00135269 ETH
+
+   -------------------------------------
+   &gt; Total cost:          0.00135269 ETH
+
+Summary
+=======
+&gt; Total deployments:   1
+&gt; Final cost:          0.00135269 ETH
+
+
+
+
+Starting migrations...
+======================
+&gt; Network name:    'goerli'
+&gt; Network id:      5
+&gt; Block gas limit: 29970705 (0x1c95111)
+
+
+1_counter.js
+============
+
+   Deploying 'Counter'
+   -------------------
+   &gt; transaction hash:    0x376710e125c35233b468bd232444acc2239c38e837aeecf9ef9de6762715eca8
+   &gt; Blocks: 0            Seconds: 5
+   &gt; contract address:    0xAc8dC14e7aC85556Bcc22c052FbB5Bc05D4E77D8
+   &gt; block number:        6818298
+   &gt; block timestamp:     1651505843
+   &gt; account:             0x736D76f4C2d4b4CCced0CCA92d3dF0F0e456F35D
+   &gt; balance:             0.04813429249775099
+   &gt; gas used:            135269 (0x21065)
+   &gt; gas price:           10 gwei
+   &gt; value sent:          0 ETH
+   &gt; total cost:          0.00135269 ETH
+
+   &gt; Saving artifacts
+   -------------------------------------
+   &gt; Total cost:          0.00135269 ETH
+
+Summary
+=======
+&gt; Total deployments:   1
+&gt; Final cost:          0.00135269 ETH
+
+
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h4>补充内容</h4>
+<ol>
+<li>
+<p>Truffle console使用（可以直接在控制台调用合约）</p>
+<p>先把合约部署到development</p>
+<p><code>truffle console --network development</code>开启调用模式</p>
+</li>
+<li>
+<p><a href="http://truffle-min.sh">truffle-min.sh</a>(压缩artifacts文件)</p>
+<p>我们compile后，是会在build里输出一个json，但是这个json很大，所以可以借助这个脚本来对这个json进行压缩，可以从几千行压缩到几十行，然后我们后续的开发有引用这个json的需求的时候，就可以引入这个压缩的json</p>
+</li>
+</ol>
+<h3>3. Hardhat</h3>
+<p>Hardhat:编译、部署、测试和调试以太坊应用的开发环境，围绕task（任务）和plugins（插件）概念设计</p>
+<p>在命令行运行Hardhat时，都是在运行任务，例如：npx hardhat compile就是运行compile任务</p>
+<p>Hardhat node:开发区块链，提供本地模拟的链上环境</p>
+<p><a href="https://hardhat.org/getting-started/">官方文档</a>,<a href="https://learnblockchain.cn/docs/hardhat/getting-started/">中文文档</a></p>
+<p><a href="https://github.com/NomicFoundation/hardhat-hackathon-boilerplate">参考代码</a></p>
+<p><a href="https://github.com/clark-cui/hardhat-demo">我的代码</a></p>
+<h4>创建工程</h4>
+<pre><code class="language-shell">mkdir hardhat-demo //创建一个folder
+cd hardhat-demo
+npm init //初始化npm
+npm i -s hardhat //当前目录下安装hardhat
+npx hardhat //在当前目录下创建项目,可以选basic-sample(注意，这一步要开启shell proxy)
+</code></pre>
+<p>contracts里新建Counter.sol，添加一下内容</p>
+<pre><code class="language-solidity">// SPDX-License-Identifier:  MIT
+pragma solidity ^0.8.0;
+import &quot;hardhat/console.sol&quot;;
+
+contract Counter{
+    uint public counter;
+    constructor(){
+        counter = 0;
+
+    }
+    function count() public{
+        counter+=1;
+        console.log(&quot;curr counter:&quot;,counter);
+    }
+    function add(uint x) public{
+        counter=counter+x;
+    }
+}
+</code></pre>
+<h4>合约编译</h4>
+<pre><code class="language-js">//先修改hardhat.config.js，设置编译器版本
+module.exports={
+  Solidity:&quot;0.8.9&quot;
+}
+//然后命令行输入
+npx hardhat compile 
+</code></pre>
+<h4>部署</h4>
+<ol>
+<li>
+<p>编写部署脚本</p>
+<pre><code class="language-js">//scripts/deploy_counter.js
+const hre = require(&quot;hardhat&quot;);
+async function main() {
+  //await hre.run('compile');
+  const Counter = await hre.ethers.getContractFactory(&quot;Counter&quot;);
+  const counter = await Counter.deploy(); //deploy里的括号可以传参，具体看合约里的construtor有没有参数而定
+
+  await counter.deployed();
+  console.log(&quot;Counter deployed to:&quot;, counter.address);
+}
+main()
+  .then(() =&gt; process.exit(0))
+  .catch((error) =&gt; {
+    console.error(error);
+    process.exit(1);
+  });
+
+</code></pre>
+<p>如果想要一次部署多个合约，比如这里有counter和greeter合约，那么可以这么写</p>
+<pre><code class="language-js">//scripts/deploy.js
+
+const { ethers } = require(&quot;hardhat&quot;);
+
+async function main() {
+  const [deployer] = await ethers.getSigners();
+  console.log('Deploying contracts with the account: ' + deployer.address);
+
+  // Deploy Greeter
+  const Greeter = await ethers.getContractFactory(&quot;Greeter&quot;);
+  const greeter = await Greeter.deploy(&quot;Hello, Hardhat!&quot;);
+
+
+  // Deploy Counter
+  const Counter = await hre.ethers.getContractFactory(&quot;Counter&quot;);
+  const counter = await Counter.deploy();
+  
+  // console.log
+	console.log(&quot;Greeter deployed to:&quot;, greeter.address);
+  console.log(&quot;Counter deployed to:&quot;, counter.address);
+
+}
+
+main()
+    .then(() =&gt; process.exit())
+    .catch(error =&gt; {
+        console.error(error);
+        process.exit(1);
+})
+</code></pre>
+</li>
+<li>
+<p>部署到本地网络</p>
+<p>先启动一个本地网络<code>npx hardhat node</code>,然后再根据端口值来修改hardhat.config.js，增加以下内容</p>
+<pre><code class="language-js">//hardhat.config.js
+module.exports={
+  networks:{
+    development:{
+      url:&quot;http://127.0.0.1:8545&quot;,
+      chainId:31337
+    }
+  }
+}
+</code></pre>
+<p>执行部署<code>npx hardhat run scripts/deploy_xxx.js [--network 网络]</code>，而这里的话，就是执行<code>npx hardhat run scripts/deploy_counter.js --network development</code></p>
+</li>
+<li>
+<p>部署到链上</p>
+<p>需要部署到链上的节点，所以先去<a href="https://infura.io/">infura.io</a>创建一个project，然后copy project id（选择endpoints是goerli）</p>
+<p>本地添加.api_key和.mnemonic，.gitignore添加过滤这两项，然后修改hardhat.config.js,增加以下内容</p>
+<pre><code class="language-js">//hardhat.config.js
+const fs = require('fs');
+const api_key = fs.readFileSync('.api_key').toString().trim();
+const mnemonic = fs.readFileSync('.mnemonic').toString().trim();
+module.exports={
+  networks:{
+    goerli:{
+      url:`https://goerli.infura.io/v3/${api_key}`,
+      accounts:{
+        mnemonic:mnemonic,
+      }
+    }
+  }
+}
+</code></pre>
+</li>
+</ol>
+<p>​		执行部署<code>npx hardhat run scripts/deploy.js --network goerli</code></p>
+<h4>测试</h4>
+<pre><code class="language-js">const {expect} = require(&quot;chai&quot;);
+const {ethers} = require(&quot;hardhat&quot;);
+
+describe(&quot;Counter&quot;, function () {
+  it(&quot;counter should be 0 when init , be added 1 after count be called, be added x after add be called with x&quot;, async function () {
+    const Counter = await ethers.getContractFactory(&quot;Counter&quot;);
+    const counterInstance = await Counter.deploy();
+    await counterInstance.deployed();
+    expect(await counterInstance.counter()).to.equal(0);
+
+    const setCountTx = await counterInstance.count();
+
+    // wait until the transaction is mined
+    await setCountTx.wait();
+
+    expect(await counterInstance.counter()).to.equal(1);
+
+    const addCountTx = await counterInstance.add(10);
+    await addCountTx.wait();
+    expect(await counterInstance.counter()).to.equal(11);
+  });
+});
+</code></pre>
+<p><code>npx hardhat test</code>执行测试</p>
+<h4>实战</h4>
+<ol>
+<li>
+<p>调试利器：console.log</p>
+<pre><code class="language-solidity">import &quot;hardhat/console.sol&quot;;
+
+console.log(counter);
+</code></pre>
+</li>
+<li>
+<p>灵活参数部署，利用hardhat可以在代码中引用(这里值的是合约初始化的参数，也就是constructor需要的参数，比如Greeter合约，这里可以在部署脚本里传入参数，比如deploy_greeter.js所写。也可以用nodejs的方式，在命令行传入参数,然后在部署脚本里取出来)</p>
+<ol>
+<li>
+<pre><code class="language-solidity">// Counter.sol
+// SPDX-License-Identifier:  MIT
+pragma solidity ^0.8.0;
+import &quot;hardhat/console.sol&quot;;
+
+contract Counter{
+    uint public counter;
+    constructor(uint _counter){
+        counter = _counter;
+
+    }
+    function count() public{
+        counter+=1;
+        console.log(&quot;curr counter:&quot;,counter);
+    }
+    function add(uint x) public{
+        counter=counter+x;
+    }
+}
+
+// test_counter.js
+const {expect} = require(&quot;chai&quot;);
+const {ethers} = require(&quot;hardhat&quot;);
+
+describe(&quot;Counter&quot;, function () {
+  it(&quot;counter should be 0 when init , be added 1 after count be called, be added x after add be called with x&quot;, async function () {
+    const Counter = await ethers.getContractFactory(&quot;Counter&quot;);
+    const counterInstance = await Counter.deploy(0);
+    await counterInstance.deployed();
+    expect(await counterInstance.counter()).to.equal(0);
+
+    const setCountTx = await counterInstance.count();
+
+    // wait until the transaction is mined
+    await setCountTx.wait();
+
+    expect(await counterInstance.counter()).to.equal(1);
+
+    const addCountTx = await counterInstance.add(10);
+    await addCountTx.wait();
+    expect(await counterInstance.counter()).to.equal(11);
+  });
+});
+
+//deploy_counter.js
+//其余相同，只需改下面这一句
+ const counter = await Counter.deploy(0);
+
+</code></pre>
+</li>
+<li>
+<p>设置deploy脚本</p>
+<pre><code class="language-js">const {ethers} = require(&quot;hardhat&quot;);
+
+const params=process.argv;
+const value=params[2];
+console.log(&quot;Counter deploy with value:&quot;,value);
+async function main() {
+  //await hre.run('compile');
+  const Counter = await ethers.getContractFactory(&quot;Counter&quot;);
+  const counter = await Counter.deploy(value);
+
+  await counter.deployed();
+  console.log(&quot;Counter deployed to:&quot;, counter.address);
+
+}
+main()
+  .then(() =&gt; process.exit(0))
+  .catch((error) =&gt; {
+    console.error(error);
+    process.exit(1);
+  });
+
+
+</code></pre>
+</li>
+<li>
+<p>执行node脚本,并传递参数</p>
+<p>需要两个命令，可以在命令行依次执行，<a href="http://xn--4gqvdzgque2iqseq47a.sh">也可以写成一个.sh</a>，<code>sh ./deploy_by_param.sh   </code>执行这个.sh即可</p>
+<pre><code class="language-shell">// ./deploy_by_param.sh
+export HARDHAT_NETWORK='development' //设置network的值是development；这就是node执行hardhat脚本附着hardhat参数的方式+
+node scripts/deploy_by_param.js 10 //在这里传入初始化参数是10
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>代码扁平：<code>npx hardhat flatten xxx.sol &gt; xxx.sol</code></p>
+<p>本质的意义是，当一个合约的里面有import引用的时候，可以用这个命令把引用的代码和本身的代码放在一起，方便看，这里的话就是<code>npx hardhat flatten contracts/Counter.sol &gt;&gt;Counter.sol</code></p>
+</li>
+<li>
+<p>代码验证</p>
+<p>当合约部署在链上后，可以通过这个命令来对代码进行验证</p>
+<pre><code class="language-shell">1.先安装 npm i hardhat-etherscan --dev
+2.hardhat.config.js里添加require(&quot;@nomiclabs/hardhat-etherscan&quot;)
+3.添加scankey,const scankey=`${scanKey}`; //因为调用etherscan的api，所以需要去他那里申请一个key, https://etherscan.io/,这个key最好也用隐藏文件，不要暴露出去
+4.在配置里，networks的下面，添加同级项 etherscan:{apiKey:scankey}
+5.命令行执行npx hardhat verify address --network xxx // address是合约的部署地址，xxx是要验证的网络
+</code></pre>
+</li>
+<li>
+<p>ABI导出</p>
+<p>当合约部署后，需要导出ABI供前端调用，默认的deploy就会导出一个总的json里面包括abi，不过比较大而已，这里是仅导出abi的json</p>
+<pre><code class="language-shell">1.先安装 npm i hardhat-abi-exporter --dev
+2.hardhat.config.js里添加require(&quot;hardhat-abi-exporter&quot;)
+3.hardhat.config.js里配置下导出,新建./abi目录来存放
+  abiExporter: {
+    path: './abi',
+    runOnCompile: true,
+    clear: true,
+    flat: true,
+    spacing: 2,
+    pretty: false,
+  }
+4.npx hardhat export-abi
+</code></pre>
+</li>
+<li>
+<p>自定义Task</p>
+<p>在hardhat.config.js里可以写task,然后通过<code>npx hardhat taskName</code>完成一些想要做的事，也可以在task文件夹里写，然后在hardhat.config.js用require引入</p>
+<pre><code class="language-js">task(&quot;accounts&quot;,&quot;Prints the list of accounts&quot;,async(taskArgs,hre)=&gt;{
+  const accounts =await hre.ethers.getSigners();
+  for(const account of accounts){
+    console.log(account.address)
+  }
+})
+
+//命令行 npx hardhat accounts执行
+</code></pre>
+</li>
+<li>
+<p>书写脚本去调用合约，实现前端与合约的交互</p>
+<ol>
+<li>
+<p>前端想要调用合约，那就得知道合约的地址和abi，之前有用npm处理了abi的单独导出，但是并没有处理合约的地址，所以这里我们改造下deploy脚本，让它自动保存地址和abi到一个data的目录下</p>
+<pre><code class="language-js">// scripts/deploy_counter.js
+const hre = require(&quot;hardhat&quot;);
+async function main() {
+  //await hre.run('compile');
+  const Counter = await hre.ethers.getContractFactory(&quot;Counter&quot;);
+  const counter = await Counter.deploy(0);
+
+  await counter.deployed();
+  console.log(&quot;Counter deployed to:&quot;, counter.address);
+  saveFrontendFiles(counter);
+}
+
+function saveFrontendFiles(counter) {
+  const fs = require(&quot;fs&quot;);
+  const contractsDir = &quot;./data&quot;;
+
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir);
+  }
+
+  fs.writeFileSync(
+    contractsDir + &quot;/contract-address.json&quot;,
+    JSON.stringify({
+      Counter: counter.address
+    }, undefined, 2)
+  );
+
+  const CounterArtifact = artifacts.readArtifactSync(&quot;Counter&quot;);
+
+  fs.writeFileSync(
+    contractsDir + &quot;/Counter.json&quot;,
+    JSON.stringify(CounterArtifact, null, 2)
+  );
+}
+main()
+  .then(() =&gt; process.exit(0))
+  .catch((error) =&gt; {
+    console.error(error);
+    process.exit(1);
+  });
+
+//然后执行脚本 npx hardhat run scripts/deploy_counter.js --network development
+</code></pre>
+</li>
+<li>
+<p>新建action.js实现前端调用合约的逻辑</p>
+<pre><code class="language-js">const {
+  ethers
+} = require(&quot;hardhat&quot;)
+const CounterArtifact = require(&quot;../data/Counter.json&quot;)
+const contractAddress = require(&quot;../data/contract-address.json&quot;);
+
+(async () =&gt; {
+  // init
+  const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8545/');
+
+  // Then, we initialize the contract using that provider and the token's
+  // artifact. You can do this same thing with your contracts.
+  const counter = new ethers.Contract(
+    contractAddress.Counter,
+    CounterArtifact.abi,
+    provider.getSigner(0)
+  );
+
+  console.log(&quot;counter值是：&quot;,await counter.counter())
+
+  await counter.count();
+  console.log(&quot;counter值是：&quot;,await counter.counter())
+
+})()
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[区块链科普]]></title>
+            <link>https://clark-cui.top/posts/区块链科普.html</link>
+            <guid>https://clark-cui.top/posts/区块链科普.html</guid>
+            <pubDate>Wed, 27 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[区块链基础知识]]></description>
+            <content:encoded><![CDATA[<h2>什么是区块链</h2>
+<p>由链连接的一个个区块构成，特点是去中心化。</p>
+<p>是分布式账本，有一个大帐本，还有无数小账本，人人可以参与记账，共同维护，解决了信任问题，因为只要有任何一方有篡改，那么就会和别的账本不一致，这样就可以保证数据的安全。</p>
+<p>挖矿：指区块链网络中的一种奖励行为，为了激励大家参与数据维护，会发放一定量的比特币作为奖励。</p>
+<p>挖矿原理：每隔一段时间，就需要矿工把没有确认的交易收集起来，进行处理，谁能最先处理好数据，并进行广播，得到大部分的确认没问题，就会得到奖励。参与挖矿的人越多，参与数据确认的人也就越多，我们的数据也就越安全。</p>
+<p>区块链的分叉：是一种区块链的升级机制。相当于现有区块链中，某一个区块开始，他的下一个区块有 2 个，相当于从这里开始，有两条路径可选，像树枝一样。分为硬分叉和软分叉，逐渐过渡的是软分叉，隔离开的是硬分叉。</p>
+<p>分类：共有链，私有链，联盟链。对任何人开发的是共有链，属于个人或者公司的是私有链，属于几个公司组成的联盟的是联盟链。共有链开放程度最大，去中心化最大，但是效率最低。私有链开放程度最低，去中心化最低，效率最高。</p>
+<p>区块链的核心技术：分布式存储，共识机制，智能合约，密码学。分布式存储就是每个人那里都有一份小账本；共识机制就是决定谁获得数据的记账权的机制，也就是该用哪个矿工记录的数据；智能合约就像合同，是一种大家的约定，部署在链上，起到数据执行的作用；密码学起到数据安全和数据证明的作用。</p>
+<h2>区块链中的密码学：</h2>
+<p>区块链中主要用到的两个算法是哈希算法和非对称加密。</p>
+<ol>
+<li>
+<p>哈希算法：是一个函数，用于将任意长度的二进制数据转换为固定长度的二进制数据，这个固定长度的二进制数据就是哈希值。<br>
+它具有三个特点：<br>
+一是哈希值是不可逆的：由一个哈希值是无法反推算出它的原始输入值的，所以哈希加密能保障原始数据的安全。<br>
+二是哈希值是不可变的：对于输入值的改变，哪怕只是一小点的变化，哈希值的变化也会非常大。所以区块链中的每一个区块，都会以上一个区块的哈希值作为标识，除非有人能破解整条链上的哈希值，否则数据一旦被记录，就不会被篡改，因为只要改了数据，他的哈希值就变了，那么这个区块就会从链上断开。<br>
+三是哈希值是抗碰撞的：也就是两个不同的输入，是不会得到相同的哈希值的。区块链中的交易和地址就是用哈希生成的，这保证了交易和地址的唯一性。</p>
+</li>
+<li>
+<p>非对称加密：是一种加密方法。比如钥匙和锁，用同一把钥匙去加密和解密，那就是对称加密，钥匙也就是密钥。而非对称加密有两个密钥，一个私钥，一个公钥，公钥是公开的，私钥是私有的，公钥可以解开私钥加密的内容，私钥也可以解开公钥加密的内容。在区块链中，它并不是用来加密数据的，而是用来解决身份验证问题的。</p>
+</li>
+</ol>
+<h2>区块链中的分布式账本</h2>
+<p>是一种数据存储的技术，是一个去中心化的分布式数据库。分布式数据库的诞生，主要是为了解决单一数据库的种种问题，比如某一数据库瘫痪了，那么还能有别的数据库顶替。没有一个中心，大家都能访问就是去中心化。分布式账本的作用不只是保障了数据的多重备份，同时还赋予了去中心化的属性，防止巨头的数据垄断。</p>
+<h2>拜占庭将军问题</h2>
+<p>本质上是区块链中，如果某一节点发送错误信息，或者节点中产生了分歧，该怎么办的问题。<br>
+具体背景是：拜占庭帝国想要攻打一个国家，他派出了多支军队进行围攻，但敌方也很强大，军队必须在同一个时间一起发动进攻才能胜利。现在的问题是，军队分散在敌国的四周，只能依靠通信兵骑马互相通信来确定进攻时间。但是通信兵可能在送信过程中被敌方击杀，而且这几支军队中有叛徒存在，可能会向别的军队传达虚假指令。这种情况下，怎么才能获取胜利？<br>
+推广到区块链，相当于区块链中，可能有节点因为网络问题，发不了信息，或者有节点恶心发送错误信息。<br>
+拜占庭容错：是一种数学观点证明，简单来说就是，信息的伪造和错误并不重要，只要诚实的将军数量大于总数的三分之二，整个系统也可以达成一致。<br>
+基于拜占庭容错的观点，诞生了很多解决拜占庭将军问题的方案，比如共识机制。</p>
+<h2>共识机制</h2>
+<p>就是一套每个节点都要遵守的规则，规定了每个节点如何记账，节点之间如何交换信息。<br>
+目前主流的有两种，一种是 pow 共识机制，一种是 pos 共识机制。</p>
+<ol>
+<li>
+<p>pow 共识机制：也就是 proof of work 工作量证明，最早是用来解决垃圾邮件问题，目前是区块链中主流的共识机制。主要是通过竞争记账的方式来解决各个节点间的一致性问题。原理是：每一个节点都能参与数据处理，也就是打包区块，每一个区块都要依靠自己的计算能力与他人竞争，争夺记账的权利，也就是每隔 10 分钟，参与的节点会进行 1 次算力竞赛，也就是不断寻找一个随机数 Nonce，谁先找到满足异地过条件的 Nonce 值，且通知全网，获得大部分认可，就会获得记账的权利，它所打包的区块会连接到区块链的链上，同时，它处理的数据，也会被别的节点的账本记录，然后他会得到一定的比特币作为奖励。通过算力竞赛的方式，提高了攻击者的成本，理论上除非它能掌握全网 51%以上的算力，否则整个网络的任何东西，都是无法被篡改的。它的缺点就是，浪费大量的计算资源，性能效率低下等等</p>
+</li>
+<li>
+<p>pos 共识机制：也即是 proof of stake 权益证明。简单来说，就是谁拥有的权益多，谁说了算。它是在 pow 的基础上做了改进，pow 允许所有人都可以成为节点，参与算力竞赛，抉出记账权。而 pos 则提高了门槛，虽然所有人都可以成为节点，但是只有拥有足够的权益（比如抵押一定数量的代币）的节点才能成为验证节点，每隔一段时间，系统会从验证节点中挑选出节点来给他记账权，每隔一段时间会重新选择，系统保证选择的随机性，记账完成后会得到奖励。它解决了资源浪费的问题，但它的缺点是，容易造成强者恒强的局面，理论上谁能掌握全网 51%的代币，谁就能掌握整个网络，所以他的去中心化更弱一些。</p>
+</li>
+</ol>
+<h2>智能合约</h2>
+<p>也就是一种约定，当满足一定条件后，程序自动执行的技术。人与机构的智能合约还是挺普遍了，比如无人售货机。但是人和人之间的智能合约却还没有普及，当没有一个中心化的机构来做担保，那交易双方如何保证合约的执行？这就是智能合约解决的问题。依托于区块链，它能被搭建在应用层中，记录在区块上，保证了不可篡改，和透明公开，同时当满足条件时，智能合约也会自动执行。</p>
+<h2>双花问题</h2>
+<p>意思是一笔钱被花了两次，分两个子问题，一种是因为同步延迟的问题，导致一笔钱被重复花了几次；另一种是一笔钱只使用了 1 次，但是通过黑客攻击或者造假的方式，把这笔钱又复制了 1 份，再次使用。传统的中心化交易，由中心化机构解决这个问题，但是区块链中，因为交易需要广播有延时，所以更容易发生双花问题。<br>
+共识机制中引入了时间戳和 UTXO 模型来解决问题</p>
+<h4>UTXO 账户模型</h4>
+<p>中文意思是：未花费交易输出。它不只是记录交易结果，而是把交易过程都记录下来，本质是一种流水记账。可以由记录值反推出整条交易链路。通过可追溯的链路，解决了第一种双花问题。</p>
+<h3>时间戳</h3>
+<p>时间戳就是数据的生产日期，用来证明数据在某个时间点已经存在，用来解决第二种双花问题。</p>
+<h2>侧链技术</h2>
+<p>让链和链之间产生价值交互的一种技术，简单来说，就是建立新的一条区块链，与原有的一条链产生联系，资产可以在两条链中进行转移。主要应用于弥补原来的链的不足。原来的链叫主链，新的链叫侧链。一般来说，资产只能在一条链中转移，之所以这里可以做到在两条链转移，主要是使用了双向锚定的技术。例如，当主链的一定数量的比特币要转移到侧链时，就把主链的同等数量的比特币锁定，在侧链放出同等数量的侧链代币。同理，当从侧链向主链转移时，侧链的代币锁定，主链释放同等数量的比特币。</p>
+<h2>跨链技术</h2>
+<p>跨链技术就是侧链技术的升级版，只不过从之前的 1 对 1 的关系变成了 1 对多。就是让多条链之间产生价值交互的一种技术。解决了各条区块链之间形成的孤岛问题。<br>
+实现跨链的方式：</p>
+<ol>
+<li>公证技术：提出一个公共的协议，能适用于各条链的系统，大家都以此作为统一的支付标准</li>
+<li>中继：建一条的新的链，让其他链与这条新链产生联系。相当于是需要跨链的这些链都有一条相同的侧链，大家都通过这条侧链来作为中介进行价值交互（okc 就是用的这种技术）</li>
+<li>分布式私钥控制：相当于建立一个去中心化的银行，各条链通过这个银行来进行价值交互</li>
+<li>哈希锁定（在闪电网络中讲）</li>
+</ol>
+<h2>闪电网络</h2>
+<p>2015 年提出来，用来解决比特币交易拥堵的一项技术。比特币最开始设计的时候，一个区块只有 1M 大小，只能记录上千笔交易，很快容量就不够了，造成拥堵。社区提出两个方案，一种是扩大比特币区块容量，另一种是不扩容的方案。闪电网络就属于不扩容的方案。<br>
+原理是：交易过程中，把交易的过程放在链下，在链下记录交易副本，在交易完成后，把交易的结果再拿回链上，再进行全网广播。相当于把交易的过程放到了侧链，主链只需要记录结果，解决了拥堵问题。同时，因为交易的过程是在链下进行的，只需要智能合约来执行，不需要每一步都进行全网的广播和确认，所以大大提升了处理效率。<br>
+闪电网络也能进行跨链，它要求需要跨链的两条链都支持闪电网络，两条链都将资产暂存到链下的通道中的临时账户，通过哈希锁定，让不同链的资产在兑换时能同时结算</p>
+<h2>隔离见证技术</h2>
+<p>也是一种解决区块链拥堵的方案，不同于闪电网络的链下处理方案，它是在链上进行的。之前提到的直接扩大区块容量其实比较有争议，因为区块容量扩大后，可能会导致一些节点无法完成区块验证工作，也会导致全网算力的下降。所以这是一种不修改区块容量的技术。<br>
+原理是：腾空间。一般交易记录会含有交易信息和非交易信息（比如谁的私钥签名等等），把非交易信息剥离出来，放到新的结构中，从而腾出空间来。</p>
+<h2>分片技术</h2>
+<p>为了解决区块链的效率问题和可扩展性问题而诞生的技术。背景是，区块链是一条链式结构，在这条链上需要处理很多工作（比如交易记录、智能合约、记账、数据记录、数据存储、数据安全等等），这些工作糅合在一起，影响效率。分片技术是分而治之的原理，就是把每个区块划分成一个个分片，每个分片承担不同的职责，节点也分散到各个分片上，每个分片上的节点聚焦自己的工作，大大加快效率。但这样会降低区块链的中心化程度，也降低安全性。因为原理黑客攻击的话，需要攻击全网的大部分节点才能达到效果，使用分片技术后，黑客只需要搞定这些节点中的分片就可以了。所以有一个新的机制，会生成随机数，为其他分片分配节点。因为节点是随机分配的，黑客就很难知道节点都有谁。</p>
+<h2>区块链基础技术总结</h2>
+<p>主要是四大技术：分布式账本、共识机制、密码学、智能合约，分别起到了数据的存储、数据的处理、数据的安全、数据的应用的作用，共同构成了区块链的基础框架。在这些技术的基础上，区块链仍然面临着效率问题、可扩展性问题、价值孤岛的互操作性问题，通过引入侧链、跨链、闪电网络、隔离见证、分片等技术来解决这些问题。</p>
+<h2>比特币</h2>
+<p>是一种投资商品，数字资产，数字黄金。由中本聪发明的，具有总量恒定，机制透明，不受任何控制，由机器来执行的特点。</p>
+<h3>比特币与区块链的关系</h3>
+<p>中本聪最早只是想创造一种去中心化的数字货币，也就是比特币。但是人们发现，比特币的底层机制十分优秀，于是提取出来，形成了区块链技术。比特币相当于是区块链的一种应用。也迎来了以数字货币为代表的区块链 1.0 时代。</p>
+<h2>什么是数字货币的减半</h2>
+<p>一开始中本聪在设计比特币的时候，使用的是一个总量恒定的通缩型经济模型，也就是每 10 分钟会产生一个新的区块，每个区块带来 50 个比特币。而每产生 21 万个区块之后，也就是每过 4 年之后，区块带来的比特币奖励就会减半，也就是从第 21 万零 1 个区块开始，每个区块只带来 25 个比特币奖励。依此类推，当到第 33 次减半之后，每个区块的奖励会从 0.0021 个比特币奖励直接变为 0。所以总体算下来，比特币的总量就只有 2100 万枚。这就是减半机制，大部分的数字货币都沿袭了比特币的这一机制。</p>
+<h2>莱特币</h2>
+<p>是主流币的一种，创始人是李启威，因为早期比特币网络拥堵，交易速度慢，所以他想打造一个对标比特币支付，更轻更快的数字货币，也就是莱特币，其实就是山寨比特币。早期不愠不火，后来因为勇于试验新技术，所以被当作比特币的试验田，发展不错。</p>
+<h2>以太坊</h2>
+<p>以太坊是数字货币中，除比特币之外，最有开创意义的一个项目。以太坊就是一个开源的，能让大家自由开发智能合约的区块链公共平台，就像安卓或者 windows 这类的操作系统，它能提供一套专门的脚本语言，让大家可以随意地在上面开发各种区块链式的应用程序。以太坊虽然是平台，但是他和数字货币有紧密的关系，因为以太坊中的 Gas 机制。在以太坊的工作原理中，所有用户写好的智能合约都需要通过一个叫做虚拟机的东西作为介质去执行，而这个介质会被以太坊网络中参与的矿工共同维护，进而形成一个属于以太坊的计算网络。当你想要执行智能合约时，都需要通过这个计算网络去进行处理，并且会消耗一定的网络资源，而你也需要承担一定的成本。在以太坊网络中，衡量智能合约运行成本的标准就是 Gas。在以太坊网络的设定中，Gas 就是智能合约的运行燃料，用户想要执行智能合约时，就需要向矿工购买 Gas,如果用法币的话不管是跨境转账还是汇率都比较麻烦，于是以太坊就参照比特币的模式，也搞了一套数字货币体系来解决这个问题。即可以作为激励机制，奖励矿工，又可以充当手续费。所以以太坊本身的定位虽然是区块链版的操作系统，但是它也做了属于自己的数字货币。</p>
+<h3>以太坊带来的影响</h3>
+<p>在以太坊之前，区块链只有数字货币这种用途，以太坊开创了区块链技术在别的方向的应用。以太坊在上方应用层的层面，给出了一套编程语言，让用户可以通过智能合约，自由地开发去中心化 app，在下方数据管理层面，则通过 pos 共识机制，打造了一个去中心化的数据库，让用户数据归属于用户自己。以太坊开创了区块链 2.0</p>
+<h2>比特币的历史</h2>
+<p>1999 年由密码学大牛组建密码朋克（cypherpunk）论坛，之后产生过一些数字货币，直到 20008 年，一个中本聪的 id 在密码朋克论坛中发表了比特币白皮书。哈尔芬尼，比特币的第二父亲，密码朋克论坛成员，密码学大牛，已去世。中本聪曾活跃在 bitcointalk 论坛，但在发生维基解密事件后消失。在此之后国内爆发了挖矿浪潮。而国外，则是由 V 神在比特币社区发布了 eth 白皮书，并带领团队筹集了 31000 个比特币，总共 1800 万美元，在瑞士成立了 eth 基金会，开启了区块链 2.0，2015 年 eth 主网上线，开启了 eth1.0。2016 年 eth2.0 的发布，稳固了 eth 生态，让公链生态走上 c 位。同年，比特币迎来第二次挖矿减半。</p>
+<p>2017 年 3 月，因为比特币的容量问题，以中国矿工为首的一派和以美国比特币核心维护团队一派产生了不同意见（一方主张直接扩容，一方主张以闪电网络和隔离验证来解决），所以比特币的第一次硬分叉诞生，以吴忌寒为首的比特大陆发布了比特币现金（BCH），区块容量从 1M 提升为 8M，效率是原来的 8 倍，巅峰时曾经算力是比特币（BTC）的两倍，但因为价格问题，最终还是走向了算力崩溃，不过 BCH 也走出了自己的道路。<br>
+2018 年比特币现金（BCH）又发生了分叉，一派是以 CSW 博士为代表的 BSV 版本派（主张 BCH 应该像中本聪论文所描述的那样，专注于数字货币的转账交易，并将区块扩容为 128M），另一派是以吴忌寒为代表的 ABC 版本派（主张在当前环境下，BCH 应该像以太坊一样，往基础建设公链的方向发展，开拓出更多应用场景，增强 BCH 的竞争力），双方决定通过算力来决定谁来获取比特币现金的继承权，赢者是主链，通过比较谁能挖出更多的区块来决定，最终 ABC 派获胜，不过 BSV 派也独立了出来，单独成立了一条链，这场大战造成了加密货币市值的腰斩。</p>
+<h2>NFT 初探</h2>
+<p>NFT 本质就是原来的东西+数字签名，用户可以通过 NFT 平台去验证来鉴别真假。</p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[虚拟机配置]]></title>
+            <link>https://clark-cui.top/posts/虚拟机配置.html</link>
+            <guid>https://clark-cui.top/posts/虚拟机配置.html</guid>
+            <pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[配置虚拟机开发环境]]></description>
+            <content:encoded><![CDATA[<h3>linux shell</h3>
+<ul>
+<li>mv [OPTIONS] source destination 将一个文件或目录重命名或移动到另一个位置</li>
+<li>pwd 打印当前位置</li>
+<li>vi 编辑当前文件</li>
+<li>nano 一些 Linux 系统默认文件编辑器，比 vim 简单，^ 是 ctrl,M-是 alt，但是我们<a href="https://www.cnblogs.com/kaishirenshi/p/12194312.html">应该把他修改为 vim</a></li>
+<li>ls (ls -a 展示所有文件) 展示文件</li>
+<li>mkdir 创建文件夹</li>
+<li>touch 创建文件</li>
+<li>cp [options] source dest ( -r 若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件) 复制文件</li>
+<li>cat /etc/passwd 查看用户信息</li>
+<li>sudo adduser username 创建用户（用户的目录在/home/user）</li>
+<li>sudo usermod -aG sudo username 把用户添加到 sudo 组（拥有 sudo 访问权限）</li>
+<li>sudo deluser username 删除用户</li>
+<li>sudo deluser --remove-home username 删除用户并且删除用户的家目录</li>
+<li>su user 切换用户(切换 root 需要 sudo su root，重开 terminal 默认就是 root)</li>
+<li>sudo passwd user (root 用户操作，重置密码,密码存储在 bitwarden)</li>
+<li>配置不同用户的环境
+<ul>
+<li>修改所有用户的环境变量：/etc/profile 文件</li>
+<li>只修改 root 用户的环境变量：~/.bashrc 文件（也就是/root/.bashrc）</li>
+<li>只修改某个非 root 用户的环境变量：/home/非 root 用户名/.bashrc 文件</li>
+<li>理论上的最佳实践是，开启 wsl2，新建一个 root 组的用户 clark,然后所有配置都在 clark 用户操作，因为 electron build 如果是 root 用户会有问题（需要加 --no-sandbox，如果是依赖的话就加不了这一行）</li>
+</ul>
+</li>
+</ul>
+<h3>安装 VMware</h3>
+<ul>
+<li>先在 423down 搜索 VMware Workstation PRO(阿里云盘里有 16 版本)</li>
+<li>安装，安装时注意勾选 WHP，为了兼容 windows 的 Linux 子系统的虚拟机 Hyper-v</li>
+<li>其他均默认即可</li>
+</ul>
+<h3>安装 Linuxmint</h3>
+<ul>
+<li><a href="https://linuxmint.com/download.php">linuxmint 官网下载 cinnamon edition 版本的 iso</a></li>
+<li>打开 vmware，创建新的虚拟机，选择自定义（高级），均默认，注意选择 iso 的文件地址，然后一直完成后即可</li>
+<li>Start linux mint，进入桌面后，点击桌面光盘 install linux mint，如果没反应就重启试试，这时候是有点卡，然后全都默认设置，设置下 root 用户和密码，完成后重启</li>
+<li>此时桌面是小窗，还有点卡，点击 Vmware 的设置栏“虚拟机”，点击&quot;安装 VMware tools&quot;，如果这一栏是灰色，则<a href="https://www.jianshu.com/p/af4313d92fee">按照这里操作</a>，也就是先关闭虚拟机，选择虚拟机设置，添加“软盘”，添加“CD/DVD”,使用物理驱动器连接，然后开启虚拟机，点击“重新安装 VMware Tools”</li>
+<li>桌面会有 VMware Tools 的软盘，点击打开，再点击打开 vmwareTools-10.3.10-13333.tar.gz,点击工具栏的“Extract”，选择目录“DownLoads”，然后打开 terminal，sudo su root,进入 DownLoads 目录，进入该文件夹， ./vmware-install.pl 执行安装脚本，然后一路回车即可安装完成，参考<a href="https://blog.csdn.net/weixin_43059285/article/details/103352682">这里的后半段</a></li>
+<li>编辑虚拟机设置，选项，共享文件夹，选择总是启用（方便文件传输），然后添加一个文件夹用于 share,此文件夹在虚拟机的路径是/mnt/hgfs/filesName</li>
+<li>编辑虚拟机设置，选项，高级，为启用了 Hyper-V 的主机禁用侧通道缓解（提升性能）</li>
+<li>里面安装 cfw，下载 tar.gz 文件，双击打开，点击 extract 解压缩，然后在当前打开命令行，输入./cfw，</li>
+<li>然后配置本机走 cfw 的代理即可（里面的 firefox 浏览器默认是走的本机的配置，所以只需要配置本机代理接口，设置-network-proxy，manual-设置 127.0.0.1:8080,把 cfw 的端口改成 8080,并设置为开机启动）</li>
+<li>代理这里会有一点问题，就是虚拟机里面开不了 tun mode，只能手动配置代理，其实不太方便，虚拟机的网络走的是 NAT 模式，网络上有把其改为桥接模式，然后外围的 windows 的 clash 开启 lan，里面连接外围代理的设置，但我觉得没有我的这种好</li>
+<li>目前遗留了一个 bug，就是 VMtools 的跨系统自动鼠标指针和跨系统的复制粘贴不能用，不清楚是什么原因，查了下，应该是 VMtools 的部分功能没起作用，在配置了试了下，没啥用。目前是可用状态，就不折腾了</li>
+</ul>
+<h3>安装manjaro-kde</h3>
+<ul>
+<li><a href="https://manjaro.org/downloads/official/kde/">官网下载对应 iso</a>，下载后文件放入对应位置</li>
+<li>安装过程一致，选择经典，但是自己把内存调大点，注意，语言一定要选择英文，不然最后文件夹名会是中文（如果不小心弄了中文，除了重装，还有曲线救国的方法<a href="https://segmentfault.com/a/1190000037454534">链接</a>），在命令行里就是很长的一串字符，特别麻烦，选完后，编辑配置，高级，设置共享文件夹和禁用侧通道，然后开启虚拟机，安装系统</li>
+<li><a href="https://www.liangzl.com/get-article-detail-206412.html">我使用的分区信息都在这里，参考链接</a></li>
+<li><a href="https://blog.csdn.net/cxy1430826258/article/details/105050867">参考链接二，我的炫龙里的镜像没有使用这个，但是可以参考</a></li>
+<li>安装太慢了...对比 mint 配置也很繁琐...但是界面真的很新颖，跟 mint 上个世纪的页面比，好看很多</li>
+<li>如果分辨率有问题，重启下虚拟机就好了</li>
+<li>然后就是配置软件源，设置代理软件（安装 cfw），安装常用软件</li>
+<li>配置下中文输入法，alt+space 唤起搜索，输入 input，进入 config，选择 Pinyin, shortcut 里有写 ctrl+space 切换输入法</li>
+<li>在 linux-mint 中，无法复制粘贴和无法拖动文件的 bug 在这里却没有复现，但是共享文件夹却没有挂载到/mnt/目录，也不知道为啥...<a href="https://zhuanlan.zhihu.com/p/344845390">参考这里的链接应该能解决</a>，我就不折腾了，都能复制粘贴了，我还要共享文件夹干嘛...</li>
+<li>最后遗留一个坑，<s>cfw 是装上了，但是系统代理配置了没起作用，没时间折腾了，下次有机会再看吧，做饭了</s> 系统代理设置了，火狐浏览器设置自动跟随系统无效，设置手动 127.0.0.1:8080 后成功</li>
+</ul>
+<h3>总结</h3>
+<ul>
+<li>不同的镜像竟然有不同的坑,linux 桌面端果然是个大坑...坚定了我继续用 windows+wsl2 的道路...或者直接用 mac 也行，啥都帮我弄好了，相信 less is more</li>
+</ul>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[mac外接显示器]]></title>
+            <link>https://clark-cui.top/posts/mac外接显示器.html</link>
+            <guid>https://clark-cui.top/posts/mac外接显示器.html</guid>
+            <pubDate>Fri, 15 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[mac外接显示器的坑]]></description>
+            <content:encoded><![CDATA[<h2>背景</h2>
+<blockquote>
+<p>我是不喜欢用 mac，但是最近想给 Logseq 提代码，但是 windows 上跑不起来，discord 问了一圈，发现开发者都是用的 mac，所以他们就没有配 windows 的开发环境...</p>
+<p>然后试了 docker，但是在 windows 上跑一个 Playwright 的测试就是跑不起来...也 debug 不了，实在没辙了</p>
+<p>默默拿起公司配的 macbook，几分钟配好环境...真的方便，不得不承认，但是插上显示器的瞬间，我傻眼了，咋这么糊啊，我 2k 的显示器看着像 720p...</p>
+</blockquote>
+<h2>方案</h2>
+<blockquote>
+<p>遇事不决，先 Google,哦~果然是 known issue.</p>
+</blockquote>
+<p>大概调研了下，大致就是改下 mac 的配置文件，但是得进恢复模式改，类似 PC 的 bios 设置吧，有写好的脚本，直接用就行，比较坑的一点是如果系统更新，就得再来一遍。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/227788155?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=1114657556978700288&amp;utm_campaign=shareopn">放一篇写的不错的教程</a></p>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[TypeScript学习笔记]]></title>
+            <link>https://clark-cui.top/posts/TypeScript学习笔记.html</link>
+            <guid>https://clark-cui.top/posts/TypeScript学习笔记.html</guid>
+            <pubDate>Fri, 03 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[typescript学习笔记]]></description>
+            <content:encoded><![CDATA[<h2>tips</h2>
+<ul>
+<li>
+<p>传递数组或者对象作为函数参数时，可以用 Readonly&lt;&gt; 包裹原来的类型声明，譬如 <code>Readonly&lt;Array&lt;number&gt;&gt;</code>，TypeScript 编译器会通过拒绝编译来保护这个参数不被修改。如果的确需要一个可以被修改的数组，可以通过 spread 操作 [...array] 来复制这个数组</p>
+<ul>
+<li>
+<pre><code class="language-ts">function sortNumbers(array: Readonly&lt;Array&lt;number&gt;&gt;) {
+  return [...array].sort((a, b) =&gt; a - b);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>使用 unkown 而不是 any 来标注类型尚未明确的变量。Any 告诉 TypeScript 编译器，不需要检查类型；而 unkown 则是把检查留到使用变量的时候。使用时可以通过 typeof 运算符获取到变量的实际类型，通过 as 添加上类型后就可以正常使用了</p>
+</li>
+<li>
+<p>使用 Records 来代替 Objects，因为可以限定键的范围。如</p>
+<pre><code class="language-ts">type AllowedKeys = &quot;name&quot; | &quot;age&quot;;
+
+// use a type here instead of interface
+type Person = Record&lt;AllowedKeys, unknown&gt;;
+
+const Human: Person = {
+  name: &quot;Steve&quot;,
+  age: 42,
+};
+</code></pre>
+</li>
+</ul>
+<h2>tsconfig</h2>
+<h3>隐式推断</h3>
+<p>ts 有隐式类型推断。开启后隐式 any 的推断会被检查并报错。</p>
+<pre><code class="language-typescript">// x被隐式推断成any,抛出错误
+function getNum(x) {
+  return x;
+}
+// problems: Parameter 'x' implicitly has an 'any' type.
+</code></pre>
+<pre><code class="language-typescript">// 主动声明x是any避免错误
+function getNum(x: any) {
+  return x;
+}
+</code></pre>
+<pre><code class="language-typescript">// 这种情况不会报错，因为隐式推断成undefined
+let y;
+console.log(y);
+</code></pre>
+<pre><code class="language-typescript">// 这种情况也不会报错，因为赋值的时候类型推断成number
+let z;
+z = 123;
+console.log(z);
+</code></pre>
+<h3>严格检查</h3>
+<p>默认情况 undefined 和 null 是其他类型的子类型，也就是其他类型变量可以被赋值 null 或 undefined。开启后会检查这种情况并报错。</p>
+<pre><code class="language-typescript">let num: number = undefined;
+// problems:Type 'undefined' is not assignable to type 'number'.
+</code></pre>
+<h3>错误不输出</h3>
+<p>ts 默认即使编译报错也会生成 Js 文件，这一项设置 true,可以在报错的时候，不生成 js</p>
+<h2>基础</h2>
+<h3>标记类型</h3>
+<ul>
+<li>boolean,number,string,null,undefined</li>
+<li>void(一般用于函数空返回值，void 类型的变量可以赋值 undefined,不能赋值 null)</li>
+<li>any(允许被赋值给任意类型，any 类型不会被类型检查）</li>
+<li>unkonwn(允许被赋值给任意类型)</li>
+</ul>
+<h3>类型推论</h3>
+<p>定义时未指定类型且未赋值会被推断成 any，若赋值则会推断成赋值的类型</p>
+<pre><code class="language-ts">let myFavoriteNumber = &quot;seven&quot;; //推断成string
+</code></pre>
+<h3>联合类型</h3>
+<p>‘或’</p>
+<pre><code class="language-ts">let myFavoriteNumber: string | number;
+</code></pre>
+<h3>交叉类型</h3>
+<p>‘与’</p>
+<pre><code class="language-typescript">interface A {
+  a: string;
+}
+interface B {
+  b: string;
+}
+let test: A &amp; B = {
+  a: &quot;test a&quot;,
+  b: &quot;test b&quot;,
+};
+</code></pre>
+<h3>对象的类型</h3>
+<h4>描述对象的形状（shape）</h4>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+  age: number;
+}
+let tom: Person = {
+  name: &quot;Tom&quot;,
+  age: 25,
+};
+</code></pre>
+<h4>定义的变量比接口少一些属性或多一些属性都是不允许的</h4>
+<p>可选属性</p>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+  age?: number;
+}
+
+let tom: Person = {
+  name: &quot;Tom&quot;,
+};
+</code></pre>
+<p>任意属性</p>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+
+let tom: Person = {
+  name: &quot;Tom&quot;,
+  gender: &quot;male&quot;,
+};
+</code></pre>
+<p>需要注意的是，一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集：</p>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: string;
+}
+
+let tom: Person = {
+  name: &quot;Tom&quot;,
+  age: 25,
+  gender: &quot;male&quot;,
+};
+
+// index.ts(3,5): error TS2411: Property 'age' of type 'number' is not assignable to string index type 'string'.
+// index.ts(7,5): error TS2322: Type '{ [x: string]: string | number; name: string; age: number; gender: string; }' is not assignable to type 'Person'.
+//   Index signatures are incompatible.
+//     Type 'string | number' is not assignable to type 'string'.
+//       Type 'number' is not assignable to type 'string'.
+
+//上例中，任意属性的值允许是 string，但是可选属性 age 的值却是 number，number 不是 string 的子属性，所以报错了。
+</code></pre>
+<p>一个接口中只能定义一个任意属性。如果接口中有多个类型的属性，则可以在任意属性中使用联合类型：</p>
+<pre><code class="language-typescript">interface Person {
+  name: string;
+  age?: number;
+  [propName: string]: string | number | undefined; // 因为age不一定有，可能是undefined
+}
+
+let tom: Person = {
+  name: &quot;Tom&quot;,
+  age: 25,
+  gender: &quot;male&quot;,
+};
+</code></pre>
+<p>只读属性</p>
+<blockquote>
+<p>有时候我们希望对象中的一些字段只能在创建的时候被赋值，那么可以用 readonly 定义只读属性<br>
+简单例子</p>
+</blockquote>
+<pre><code class="language-typescript">interface Person {
+  readonly id: number;
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+
+let tom: Person = {
+  id: 89757,
+  name: &quot;Tom&quot;,
+  gender: &quot;male&quot;,
+};
+
+tom.id = 9527;
+
+// index.ts(14,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
+// 上例中，使用 readonly 定义的属性 id 初始化后，又被赋值了，所以报错了。
+</code></pre>
+<p>注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候：</p>
+<pre><code class="language-typescript">interface Person {
+  readonly id: number;
+  name: string;
+  age?: number;
+  [propName: string]: any;
+}
+
+let tom: Person = {
+  name: &quot;Tom&quot;,
+  gender: &quot;male&quot;,
+};
+
+tom.id = 89757;
+
+// index.ts(8,5): error TS2322: Type '{ name: string; gender: string; }' is not assignable to type 'Person'.
+//   Property 'id' is missing in type '{ name: string; gender: string; }'.
+// index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
+//例中，报错信息有两处，第一处是在对 tom 进行赋值的时候，没有给 id 赋值。第二处是在给 tom.id 赋值的时候，由于它是只读属性，所以报错了。
+</code></pre>
+<h3>数组的类型</h3>
+<h4>类型+方括号表示法</h4>
+<pre><code class="language-ts">let fibonacci: number[] = [1, 2, 3, 4];
+</code></pre>
+<h4>泛型表示法（常用）</h4>
+<pre><code class="language-ts">let fibonacci: Array&lt;number&gt; = [1, 2, 3, 4];
+</code></pre>
+<h4>接口表示法（不常见）</h4>
+<pre><code class="language-ts">interface NumberArray {
+  [index: number]: number;
+}
+let fibonacci: NumberArray = [1, 2, 3, 4];
+</code></pre>
+<h4>类数组的表示</h4>
+<p>类数组不是数组，不能用数组表示，但是可以参照接口表示法来写<br>
+比如函数参数 arguments。但事实上常用的类数组都有自己的接口定义，如 IArguments, NodeList, HTMLCollection 等</p>
+<pre><code class="language-ts">function sum() {
+  let args: {
+    [index: number]: number;
+    length: number;
+    callee: Function;
+  } = arguments;
+}
+//上述等价于
+function sum() {
+  let args: IArguments = arguments;
+}
+//IArguments 是 TypeScript 中定义好了的类型，它实际上就是：
+interface IArguments {
+  [index: number]: any;
+  length: number;
+  callee: Function;
+}
+</code></pre>
+<h3>函数的类型</h3>
+<h4>函数声明式（简单，推荐）</h4>
+<pre><code class="language-ts">function sum(x: number, y: number): number {
+  return x + y;
+}
+</code></pre>
+<h4>函数表达式</h4>
+<pre><code class="language-ts">let mySum: (x: number, y: number) =&gt; number = (
+  x: number,
+  y: number
+): number =&gt; {
+  return x + y;
+};
+// 第一个冒号到第一个等号之间的可以省略，相当于不写type
+//ts会类型推断的，不然这么写
+//就像写了两遍
+
+//或者这么写，注意是Function不是function，其实也相当于少写了type
+let newSum: Function = (x: number, y: number): number =&gt; {
+  return x + y;
+};
+</code></pre>
+<h4>用接口定义函数,注意参数的括号</h4>
+<pre><code class="language-ts">interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+let mySearch: SearchFunc = (source: string, subString: string): boolean =&gt; {
+  return source.search(subString) !== -1;
+};
+</code></pre>
+<h4>可选参数（可选参数要放在最后），参数默认值</h4>
+<pre><code class="language-ts">function buildName(firstName?: string, lastName: string = &quot;Clark&quot;): string {
+  if (firstName) {
+    return firstName + lastName;
+  }
+  return lastName;
+}
+</code></pre>
+<h4>剩余参数，...rest 访问剩余参数</h4>
+<pre><code class="language-ts">function myPush(array: Array&lt;unknown&gt;, ...rest: Array&lt;unknown&gt;) {
+  rest.forEach((item) =&gt; {
+    array.push(item);
+  });
+}
+myPush([], 1, 2, 3);
+</code></pre>
+<h4>重载</h4>
+<p>重载允许一个函数接受不同数量或类型的参数时，作出不同的处理<br>
+比如，我们需要实现一个函数 reverse，输入数字 123 的时候，输出反转的数字 321，输入字符串 'hello' 的时候，输出反转的字符串 'olleh'</p>
+<pre><code class="language-ts">function reverse(x: number | string): number | string | void {
+  if (typeof x === &quot;number&quot;) {
+    return Number(x.toString().split(&quot;&quot;).reverse().join(&quot;&quot;));
+  } else if (typeof x === &quot;string&quot;) {
+    return x.split(&quot;&quot;).reverse().join(&quot;&quot;);
+  }
+}
+</code></pre>
+<p>然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串<br>
+这时，我们可以使用重载定义多个 reverse 的函数类型：</p>
+<pre><code class="language-ts">function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string | void {
+  if (typeof x === &quot;number&quot;) {
+    return Number(x.toString().split(&quot;&quot;).reverse().join(&quot;&quot;));
+  } else if (typeof x === &quot;string&quot;) {
+    return x.split(&quot;&quot;).reverse().join(&quot;&quot;);
+  }
+}
+//上例中，我们重复定义了多次函数 reverse，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
+
+//注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+</code></pre>
+<h3>类型断言</h3>
+<h4>语法</h4>
+<ul>
+<li>值 as 类型（推荐）</li>
+<li><code>&lt;类型&gt;</code>值 （不推荐，tsx 语法中<code>&lt;Foo&gt;</code>表示 ReactNode；而在 ts 中泛型也是这种语法，容易混淆）</li>
+<li>作用：给一个类型断言，让 ts 编译器听你的，若使用不当会造成运行时错误。常用于 ts 的一些不好解决的报错</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-ts">interface Cat {
+  name: string;
+  run(): void;
+}
+interface Fihs {
+  name: string;
+  swim(): void;
+}
+function isFish(animal: Cat | Fish) {
+  if (typeof (animal as Fish).swim) {
+    return true;
+  }
+  return false;
+}
+</code></pre>
+<pre><code class="language-ts">(window as any).foo = 1;
+</code></pre>
+<pre><code class="language-ts">function getCacheData(key: string): any {
+  return (window as any).cache[key];
+}
+
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+const tom = getCacheData(&quot;tom&quot;) as Cat;
+tom.run();
+</code></pre>
+<pre><code class="language-ts">//用泛型可以更好地实现上述代码
+function getCacheData&lt;T&gt;(key: string): T {
+  return (window as any).cache[key];
+}
+
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+const tom = getCacheData&lt;Cat&gt;(&quot;tom&quot;);
+tom.run();
+</code></pre>
+<h3>声明文件</h3>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[js变量提升]]></title>
+            <link>https://clark-cui.top/posts/变量提升.html</link>
+            <guid>https://clark-cui.top/posts/变量提升.html</guid>
+            <pubDate>Tue, 08 Dec 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[javascript的变量提升机制]]></description>
+            <content:encoded><![CDATA[<blockquote>
+<p><a href="https://juejin.im/post/6844903607066689550">https://juejin.im/post/6844903607066689550</a></p>
+<p>这篇文章讲的还可以，但是有一点讲错了，我在这里补充一下，再加几个常见的面试题。</p>
+</blockquote>
+<h2>要点</h2>
+<ul>
+<li>变量声明 var 和函数声明 function 都会有声明的提升，提升到函数作用域或者全局作用域的顶端，后面提升的排在之前提升的后面，重复的会覆盖之前的声明。</li>
+<li>先提升变量，相同的变量合并，赋值 undefined，再提升函数。</li>
+</ul>
+<h2>举几个例子</h2>
+<h3>变量声明与函数声明的提升顺序</h3>
+<pre><code class="language-javascript">console.log(a); //Function
+function a() {
+  return 4;
+}
+var a = 3;
+console.log(a); //3
+
+//相当于
+var a = undefined; //先提升变量，变量全部提升完后，再提升函数
+function a() {
+  return 4;
+}
+console.log(a);
+a = 3;
+console.log(a);
+</code></pre>
+<h3>变量声明的合并</h3>
+<pre><code class="language-javascript">console.log(a)      //Function
+var a=3;
+function a(){
+    return 4
+}
+var a=4;
+console.log(a)      //4
+
+//相当于
+var a =undefined；   //变量声明合并
+function a(){
+    return 4
+}
+console.log(a)
+a=3;
+a=4;
+console.log(a)
+</code></pre>
+<h3>提升到函数作用域顶部</h3>
+<pre><code class="language-javascript">var a = 4;
+(function () {
+  if (typeof a == undefined) {
+    var a = 5;
+    console.log(a); //5
+  } else {
+    console.log(a);
+  }
+})();
+
+//相当于
+var a = undefined;
+a = 4;
+(function () {
+  var a = undefined; //提升变量到函数作用域顶端，并覆盖之前的声明
+  if (typeof a == undefined) {
+    a = 5;
+    console.log(a);
+  } else {
+    console.log(a);
+  }
+})();
+</code></pre>
+<h3>函数声明提升</h3>
+<pre><code class="language-javascript">foo(); //'foo'
+bar(); //TypeError bar is not a function
+
+function foo() {
+  console.log(&quot;foo&quot;);
+}
+
+var bar = function () {
+  console.log(&quot;bar&quot;);
+};
+
+//相当于
+var bar = undefined; //先提升变量
+function foo() {
+  //提升函数声明
+  console.log(&quot;foo&quot;);
+}
+foo();
+bar();
+bar = function () {
+  console.log(&quot;bar&quot;);
+};
+</code></pre>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+        <item>
+            <title><![CDATA[代理配置]]></title>
+            <link>https://clark-cui.top/posts/proxyConfig.html</link>
+            <guid>https://clark-cui.top/posts/proxyConfig.html</guid>
+            <pubDate>Wed, 10 Jun 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[由于网络问题，需要做一些代理的设置，这里是我的一些记录]]></description>
+            <content:encoded><![CDATA[<h3>chrome</h3>
+<p>chrome 安装 SwitchyOmega 把条件都删除，选择规则列表，autoProxy 规则网址填入 <a href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</a> 立即更新情景模式(要开代理，注意不要被 switchyOmega 影响到，可以先把他设置为系统代理) 规则下设置 proxy 其他设置直接连接（此时本地代理工具无效），proxy 设置 127.0.0.1 端口 7890 应用选项 选择 auto switch</p>
+<h3>clash</h3>
+<ul>
+<li>开启 lan 模式，让内网能连接使用代理，用于 wsl2 连接代理</li>
+<li>开启 tun 模式，<a href="https://docs.cfw.lbyczf.com/contents/tun.html#windows">文档地址</a>，为不走代理的软件走软件，开启后很多命令行都不用再设置代理，比如 wsl2</li>
+<li>一般开 clash 的 tun 模式就行，手动的地址是<code>http://127.0.0.1:7890</code></li>
+<li><a href="https://maofun.com/739.html">clash 配合 switch 插件</a></li>
+</ul>
+]]></content:encoded>
+            <author>rongchuancui@gmail.com (Clark Cui)</author>
+        </item>
+    </channel>
+</rss>

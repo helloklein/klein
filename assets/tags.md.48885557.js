@@ -1,0 +1,1 @@
+import{_ as t,c as a,b as o,r as s,o as r}from"./app.4feed8ca.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{"layout":"page"},"headers":[],"relativePath":"tags.md"}'),n={name:"tags.md"};function c(p,_,d,l,m,i){const e=s("Tags",!0);return r(),a("div",null,[o(e)])}const u=t(n,[["render",c]]);export{g as __pageData,u as default};
